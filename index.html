@@ -244,23 +244,25 @@
   /* PARTNERS */
   .partners-grid{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
   }
   .partner-logo{
     background: var(--cream);
     border-radius: 12px;
-    padding: 18px;
+    padding: 16px;
     display:flex;
     align-items:center;
     justify-content:center;
-    min-height: 96px;
+    height: 150px;
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .partner-logo:hover{ transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,0.35); }
   .partner-logo img{
     max-width:100%;
-    max-height: 64px;
+    max-height: 100%;
+    width:auto;
+    height:auto;
     object-fit: contain;
   }
   a.partner-logo{ text-decoration:none; cursor:pointer; }
@@ -268,9 +270,7 @@
     position:relative;
     border: 2px solid var(--gold);
     box-shadow: 0 0 0 3px rgba(224,168,59,0.18);
-    min-height: 110px;
   }
-  .partner-logo.featured img{ max-height: 74px; }
   .partner-logo.featured:hover{ box-shadow: 0 0 0 3px rgba(224,168,59,0.28), 0 12px 28px rgba(0,0,0,0.4); }
   .partner-logo.featured::after{
     content: "★";
