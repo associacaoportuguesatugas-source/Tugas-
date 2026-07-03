@@ -357,9 +357,48 @@
     font-size: 15px;
   }
 
+  /* LEGAL PARTNERSHIP SPOTLIGHT */
+  .legal-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .legal-card{
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 32px;
+    text-align:center;
+  }
+  .legal-card img{ max-width:100%; max-height:90px; object-fit:contain; margin-bottom:26px; }
+  .legal-features{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    text-align:left;
+  }
+  .legal-feature{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14.5px;
+    font-weight:600;
+    color:#1a1408;
+  }
+  .legal-feature .icon{
+    width:26px; height:26px;
+    border-radius:50%;
+    background: var(--green);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px;
+    flex-shrink:0;
+  }
+
   @media (max-width: 760px){
     .nav-links{ display:none; }
     .about-grid{ grid-template-columns: 1fr; }
+    .legal-grid{ grid-template-columns: 1fr; }
     .culture-grid{ grid-template-columns: repeat(2, 1fr); }
     .contact{ padding: 40px 22px; margin: 0 16px; }
   }
@@ -515,6 +554,30 @@
       <a class="partner-logo" href="https://www.instagram.com/mimi.beautylounge?igsh=OWYxOHMxOWdmbzVo" target="_blank" rel="noopener"><img src="assets/parceiros/mimi-beauty-lounge.png" alt="MiMi Beauty Lounge" loading="lazy"></a>
       <a class="partner-logo" href="https://www.instagram.com/lucia2455?igsh=MThnenA4b3BwZjhuNQ==" target="_blank" rel="noopener"><img src="assets/parceiros/lucia-ribeiro.png" alt="Lúcia Ribeiro Nähservice" loading="lazy"></a>
       <a class="partner-logo" href="https://zurique.consuladoportugal.mne.gov.pt/pt/" target="_blank" rel="noopener"><img src="assets/parceiros/consulado-portugal.png" alt="Consulado Geral de Portugal em Zurique" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<section id="juridico">
+  <div class="wrap">
+    <div class="legal-grid">
+      <div class="about-text">
+        <div class="eyebrow" data-i18n="juridico_eyebrow">Parceria Jurídica</div>
+        <h2 style="font-size:32px; margin-bottom:18px;" data-i18n="juridico_h2">Uma parceria de que muito nos orgulhamos</h2>
+        <p data-i18n="juridico_p1">O apoio jurídico é um dos pilares mais importantes do nosso trabalho — e também uma das parcerias de que mais nos orgulhamos. Ela assenta na <strong>Dra. Fernanda Pontes</strong>, da Advocacia AG, uma advogada que partilha os mesmos valores e princípios que nos definem: proximidade, confiança e compromisso genuíno com a comunidade portuguesa.</p>
+        <p data-i18n="juridico_p2">Graças a esta parceria, os nossos associados passam a ter acesso a <strong>apoio jurídico especializado, em português</strong>, com a <strong>primeira consulta totalmente gratuita</strong> — sempre com o acompanhamento e apoio total da Associação Portuguesa Tuga em cada passo do processo.</p>
+        <div class="cta-row" style="justify-content:flex-start; margin-top:28px;">
+          <a href="https://www.advocacia.ch/team" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="juridico_btn">Conhecer a Advocacia AG</a>
+        </div>
+      </div>
+      <div class="legal-card">
+        <img src="assets/parceiros/advocacia-ag.jpg" alt="Advocacia AG — Rechtskanzlei">
+        <div class="legal-features">
+          <div class="legal-feature"><span class="icon">✓</span><span data-i18n="juridico_f1">Apoio jurídico em português</span></div>
+          <div class="legal-feature"><span class="icon">✓</span><span data-i18n="juridico_f2">Primeira consulta totalmente gratuita</span></div>
+          <div class="legal-feature"><span class="icon">✓</span><span data-i18n="juridico_f3">Com o apoio total da Associação Tuga</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -692,6 +755,14 @@ const translations = {
     parceiros_eyebrow: "Parceiros & Patrocinadores",
     parceiros_h2: "Quem caminha ao nosso lado",
     parceiros_p: "Empresas e profissionais que apoiam a nossa missão e fortalecem a comunidade portuguesa na Suíça.",
+    juridico_eyebrow: "Parceria Jurídica",
+    juridico_h2: "Uma parceria de que muito nos orgulhamos",
+    juridico_p1: 'O apoio jurídico é um dos pilares mais importantes do nosso trabalho — e também uma das parcerias de que mais nos orgulhamos. Ela assenta na <strong>Dra. Fernanda Pontes</strong>, da Advocacia AG, uma advogada que partilha os mesmos valores e princípios que nos definem: proximidade, confiança e compromisso genuíno com a comunidade portuguesa.',
+    juridico_p2: 'Graças a esta parceria, os nossos associados passam a ter acesso a <strong>apoio jurídico especializado, em português</strong>, com a <strong>primeira consulta totalmente gratuita</strong> — sempre com o acompanhamento e apoio total da Associação Portuguesa Tuga em cada passo do processo.',
+    juridico_btn: "Conhecer a Advocacia AG",
+    juridico_f1: "Apoio jurídico em português",
+    juridico_f2: "Primeira consulta totalmente gratuita",
+    juridico_f3: "Com o apoio total da Associação Tuga",
     socio_eyebrow: "Torna-te sócio",
     socio_h2: "Queres fazer parte da nossa comunidade?",
     socio_p: "Se quiseres tornar-te associado da Associação Portuguesa Tuga, preenche o formulário de inscrição com os teus dados. É simples, rápido e é o primeiro passo para fazeres parte desta família.",
@@ -752,6 +823,14 @@ const translations = {
     parceiros_eyebrow: "Partner & Sponsoren",
     parceiros_h2: "Wer an unserer Seite steht",
     parceiros_p: "Unternehmen und Fachleute, die unsere Mission unterstützen und die portugiesische Gemeinschaft in der Schweiz stärken.",
+    juridico_eyebrow: "Rechtspartnerschaft",
+    juridico_h2: "Eine Partnerschaft, auf die wir sehr stolz sind",
+    juridico_p1: 'Die rechtliche Unterstützung ist eine der wichtigsten Säulen unserer Arbeit — und zugleich eine der Partnerschaften, auf die wir am stolzesten sind. Sie beruht auf <strong>Dra. Fernanda Pontes</strong> von der Advocacia AG, einer Anwältin, die dieselben Werte und Grundsätze teilt, die uns ausmachen: Nähe, Vertrauen und echtes Engagement für die portugiesische Gemeinschaft.',
+    juridico_p2: 'Dank dieser Partnerschaft erhalten unsere Mitglieder Zugang zu <strong>spezialisierter Rechtsberatung auf Portugiesisch</strong>, mit einer <strong>kostenlosen Erstberatung</strong> — stets begleitet von der vollen Unterstützung der Associação Portuguesa Tuga bei jedem Schritt.',
+    juridico_btn: "Advocacia AG kennenlernen",
+    juridico_f1: "Rechtliche Unterstützung auf Portugiesisch",
+    juridico_f2: "Kostenlose Erstberatung",
+    juridico_f3: "Mit voller Unterstützung des Tuga-Vereins",
     socio_eyebrow: "Mitglied werden",
     socio_h2: "Möchtest du Teil unserer Gemeinschaft werden?",
     socio_p: "Wenn du Mitglied der Associação Portuguesa Tuga werden möchtest, fülle das Anmeldeformular mit deinen Daten aus. Es ist einfach, schnell und der erste Schritt, um Teil dieser Familie zu werden.",
