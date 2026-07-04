@@ -241,6 +241,27 @@
   .culture-item h4{ font-family:'Fraunces', serif; font-size:16px; color: var(--gold-light); margin-bottom:6px; }
   .culture-item p{ font-size: 13px; color: var(--muted); line-height:1.5; margin:0; }
 
+  /* WINZERFEST */
+  .wz-intro{ max-width: 760px; }
+  .wz-intro p{ color: var(--muted); line-height: 1.75; font-size: 16px; margin: 0 0 16px; }
+  .wz-intro strong{ color: var(--cream); }
+  .wz-features{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 40px 0;
+  }
+  .wz-feature{
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 28px 22px;
+    text-align:center;
+  }
+  .wz-feature .icon{ font-size: 32px; margin-bottom: 14px; }
+  .wz-feature h3{ font-size: 18px; color: var(--cream); margin-bottom: 8px; }
+  .wz-feature p{ font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
+
   /* PARTNERS */
   .partners-grid{
     display:grid;
@@ -434,6 +455,7 @@
     .about-grid{ grid-template-columns: 1fr; }
     .legal-grid{ grid-template-columns: 1fr; }
     .testimonial-grid{ grid-template-columns: 1fr; margin-top: 32px; }
+    .wz-features{ grid-template-columns: 1fr; }
     .culture-grid{ grid-template-columns: repeat(2, 1fr); }
     .contact{ padding: 40px 22px; margin: 0 16px; }
   }
@@ -662,6 +684,35 @@
   </div>
 </section>
 
+<section id="winzerfest">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="wz_eyebrow">Evento 2026</div>
+      <h2 data-i18n="wz_h2">Estaremos na Winzerfest de Döttingen 2026</h2>
+      <p data-i18n="wz_p_intro">A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, e em 2026 a Associação Portuguesa Tuga vai marcar presença.</p>
+    </div>
+    <div class="wz-intro">
+      <p data-i18n="wz_p1">A nossa participação tem um objetivo claro: construir uma ponte de integração entre a gastronomia portuguesa e os vinhos suíços — verdadeiras joias, muitas vezes desconhecidas e pouco reconhecidas a nível europeu, apesar do seu valor e qualidade surpreendentes. Gastronomia portuguesa e vinicultura suíça: uma junção perfeita.</p>
+      <p data-i18n="wz_p2">Vamos estar presentes com um espaço gastronómico e um espaço/bar de dança, para marcar a diferença e mostrar a presença da nossa comunidade — com um objetivo maior que tudo: a integração e a partilha dos valores da nossa cultura portuguesa, sempre agradecidos pela amabilidade, hospitalidade e recetividade deste país especial que é a Suíça.</p>
+    </div>
+    <div class="wz-features">
+      <div class="wz-feature">
+        <div class="icon">🍽️</div>
+        <h3 data-i18n="wz_f1_h">Espaço Gastronómico</h3>
+        <p data-i18n="wz_f1_p">Sabores autênticos de Portugal para descobrir e partilhar.</p>
+      </div>
+      <div class="wz-feature">
+        <div class="icon">💃</div>
+        <h3 data-i18n="wz_f2_h">Espaço &amp; Bar de Dança</h3>
+        <p data-i18n="wz_f2_p">Música, animação e boa disposição à portuguesa.</p>
+      </div>
+    </div>
+    <div class="quote-block" data-i18n="wz_transparency">
+      Somos uma associação sem fins lucrativos e transparente, com órgãos administrativos e fiscais, estatutos e objetivos bem definidos. Todo o valor angariado neste evento será integralmente canalizado para a compra de material necessário para a nossa sede.
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="section-head">
@@ -788,6 +839,16 @@ const translations = {
     c2_h: "Tradições", c2_p: "Mantemos vivas as tradições que nos unem.",
     c3_h: "Gastronomia", c3_p: "Sabores que representam o que somos.",
     c4_h: "Convívio", c4_p: "Momentos que fortalecem laços e criam memórias.",
+    wz_eyebrow: "Evento 2026",
+    wz_h2: "Estaremos na Winzerfest de Döttingen 2026",
+    wz_p_intro: "A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, e em 2026 a Associação Portuguesa Tuga vai marcar presença.",
+    wz_p1: "A nossa participação tem um objetivo claro: construir uma ponte de integração entre a gastronomia portuguesa e os vinhos suíços — verdadeiras joias, muitas vezes desconhecidas e pouco reconhecidas a nível europeu, apesar do seu valor e qualidade surpreendentes. Gastronomia portuguesa e vinicultura suíça: uma junção perfeita.",
+    wz_p2: "Vamos estar presentes com um espaço gastronómico e um espaço/bar de dança, para marcar a diferença e mostrar a presença da nossa comunidade — com um objetivo maior que tudo: a integração e a partilha dos valores da nossa cultura portuguesa, sempre agradecidos pela amabilidade, hospitalidade e recetividade deste país especial que é a Suíça.",
+    wz_f1_h: "Espaço Gastronómico",
+    wz_f1_p: "Sabores autênticos de Portugal para descobrir e partilhar.",
+    wz_f2_h: "Espaço & Bar de Dança",
+    wz_f2_p: "Música, animação e boa disposição à portuguesa.",
+    wz_transparency: "Somos uma associação sem fins lucrativos e transparente, com órgãos administrativos e fiscais, estatutos e objetivos bem definidos. Todo o valor angariado neste evento será integralmente canalizado para a compra de material necessário para a nossa sede.",
     vis_eyebrow: "Visão para o futuro",
     vis_h2: "Juntos, construímos hoje o futuro que queremos para amanhã",
     v1_h: "Rede de apoio", v1_p: "Uma comunidade forte, unida e solidária.",
@@ -859,6 +920,16 @@ const translations = {
     c2_h: "Traditionen", c2_p: "Wir halten die Traditionen lebendig, die uns verbinden.",
     c3_h: "Gastronomie", c3_p: "Geschmäcker, die zeigen, wer wir sind.",
     c4_h: "Geselligkeit", c4_p: "Momente, die Bande stärken und Erinnerungen schaffen.",
+    wz_eyebrow: "Veranstaltung 2026",
+    wz_h2: "Wir sind an der Winzerfest Döttingen 2026 dabei",
+    wz_p_intro: "Die Winzerfest Döttingen ist das grösste Weinfest der Deutschschweiz — ein einzigartiges Fest, und 2026 wird die Associação Portuguesa TUGA dabei sein.",
+    wz_p1: "Unsere Teilnahme hat ein klares Ziel: eine Brücke der Integration zwischen der portugiesischen Gastronomie und den Schweizer Weinen zu bauen — wahre Schätze, die trotz ihrer überraschenden Qualität und ihres Wertes auf europäischer Ebene oft unbekannt und wenig anerkannt sind. Portugiesische Gastronomie und Schweizer Weinbau: eine perfekte Verbindung.",
+    wz_p2: "Wir werden mit einem gastronomischen Bereich und einer Tanz-/Barzone präsent sein, um einen Unterschied zu machen und die Präsenz unserer Gemeinschaft zu zeigen — mit einem übergeordneten Ziel: Integration und das Teilen der Werte unserer portugiesischen Kultur, stets dankbar für die Freundlichkeit, Gastfreundschaft und Offenheit dieses besonderen Landes, der Schweiz.",
+    wz_f1_h: "Gastronomischer Bereich",
+    wz_f1_p: "Authentische portugiesische Aromen zum Entdecken und Teilen.",
+    wz_f2_h: "Tanzbereich & Bar",
+    wz_f2_p: "Musik, Unterhaltung und portugiesische Lebensfreude.",
+    wz_transparency: "Wir sind ein gemeinnütziger und transparenter Verein mit klar definierten Verwaltungs- und Steuerorganen, Statuten und Zielen. Der gesamte bei dieser Veranstaltung gesammelte Erlös fliesst vollständig in die Anschaffung der notwendigen Ausstattung für unser Vereinslokal.",
     vis_eyebrow: "Zukunftsvision",
     vis_h2: "Gemeinsam bauen wir heute die Zukunft, die wir uns für morgen wünschen",
     v1_h: "Unterstützungsnetzwerk", v1_p: "Eine starke, geeinte und solidarische Gemeinschaft.",
