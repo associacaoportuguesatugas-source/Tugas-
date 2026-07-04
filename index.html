@@ -494,6 +494,60 @@
     margin-top: 2px;
   }
 
+  /* DIRECTORS */
+  .director-block{
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+  }
+  .director-block h3{
+    font-family:'Fraunces', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .director-role{
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+  }
+  .director-block p{
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 15.5px;
+    margin: 0;
+  }
+  .director-thanks{ margin-top: 34px; }
+  .director-thanks > p{
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 15.5px;
+    margin-bottom: 20px;
+  }
+  .names-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .names-grid span{
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .names-more{
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
   @media (max-width: 760px){
     .nav-links{ display:none; }
     .about-grid{ grid-template-columns: 1fr; }
@@ -854,9 +908,43 @@
       </div>
       <div class="leader-card">
         <p data-i18n="lid_nuno_quote">"Quem faz associativismo à espera de ganhar dinheiro escolheu o caminho errado. Isto faz-se por amor e por prazer — o prazer de ver uma comunidade mais unida, mais forte e mais apoiada. É essa recompensa, impossível de contar em números, que verdadeiramente vale a pena."</p>
-        <div class="signature">Nuno Mendes</div>
+        <div class="signature">Nuno Neves</div>
         <div class="leader-role" data-i18n="lid_nuno_role">Vice-Presidente</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="direcao">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="dir_eyebrow">Um agradecimento especial</div>
+      <h2 data-i18n="dir_h2">À nossa Direção</h2>
+    </div>
+    <div class="director-block">
+      <h3>Carlos Almeida</h3>
+      <div class="director-role" data-i18n="dir_carlos_role">Diretor Geral</div>
+      <p data-i18n="dir_carlos_text">Ao nosso Diretor Geral, o nosso agradecimento mais sincero — não pelo seu talento, que está muito acima da média, mas sim pela dedicação e pelo tempo que generosamente nos dá. É nos seus valores, nos seus princípios e no ser humano extraordinário que é que encontramos a verdadeira força desta associação.</p>
+    </div>
+    <div class="director-block">
+      <h3>Adelino Monteiro</h3>
+      <div class="director-role" data-i18n="dir_adelino_role">Diretor</div>
+      <p data-i18n="dir_adelino_text">Um dos mais recentes membros da nossa equipa, mas que já trouxe consigo valor e ética. Agradecemos a forma como abraçou este projeto sem fins lucrativos, com o mesmo entusiasmo de quem cá está desde o primeiro dia.</p>
+    </div>
+    <div class="director-thanks">
+      <p data-i18n="dir_others_intro">Um agradecimento também a todos os restantes diretores e sócios ativos que, de uma forma ou de outra, sempre acrescentaram valor e lealdade a este projeto:</p>
+      <div class="names-grid">
+        <span>Daniel Grond</span>
+        <span>Carla Pereira</span>
+        <span>Andreas Graf</span>
+        <span>Maria Pereira</span>
+        <span>António Stocker</span>
+        <span>Daniela Neves</span>
+        <span>Lúcia Ribeiro</span>
+        <span>Rui Brasão</span>
+        <span>Edgar</span>
+      </div>
+      <p class="names-more" data-i18n="dir_others_more">E muitos outros que, com o seu tempo e dedicação, tornam esta associação naquilo que é.</p>
     </div>
   </div>
 </section>
@@ -955,6 +1043,14 @@ const translations = {
     lid_marco_role: "Presidente",
     lid_nuno_quote: '"Quem faz associativismo à espera de ganhar dinheiro escolheu o caminho errado. Isto faz-se por amor e por prazer — o prazer de ver uma comunidade mais unida, mais forte e mais apoiada. É essa recompensa, impossível de contar em números, que verdadeiramente vale a pena."',
     lid_nuno_role: "Vice-Presidente",
+    dir_eyebrow: "Um agradecimento especial",
+    dir_h2: "À nossa Direção",
+    dir_carlos_role: "Diretor Geral",
+    dir_carlos_text: "Ao nosso Diretor Geral, o nosso agradecimento mais sincero — não pelo seu talento, que está muito acima da média, mas sim pela dedicação e pelo tempo que generosamente nos dá. É nos seus valores, nos seus princípios e no ser humano extraordinário que é que encontramos a verdadeira força desta associação.",
+    dir_adelino_role: "Diretor",
+    dir_adelino_text: "Um dos mais recentes membros da nossa equipa, mas que já trouxe consigo valor e ética. Agradecemos a forma como abraçou este projeto sem fins lucrativos, com o mesmo entusiasmo de quem cá está desde o primeiro dia.",
+    dir_others_intro: "Um agradecimento também a todos os restantes diretores e sócios ativos que, de uma forma ou de outra, sempre acrescentaram valor e lealdade a este projeto:",
+    dir_others_more: "E muitos outros que, com o seu tempo e dedicação, tornam esta associação naquilo que é.",
     foot_p: "Porque juntos somos mais fortes. 🇵🇹 🇨🇭"
   },
   de: {
@@ -1043,6 +1139,14 @@ const translations = {
     lid_marco_role: "Präsident",
     lid_nuno_quote: '"Wer sich im Vereinswesen engagiert, um Geld zu verdienen, hat den falschen Weg gewählt. Das hier geschieht aus Liebe und aus Freude — der Freude, eine geeintere, stärkere und besser unterstützte Gemeinschaft zu sehen. Es ist diese Belohnung, die sich nicht in Zahlen messen lässt, die wirklich zählt."',
     lid_nuno_role: "Vizepräsident",
+    dir_eyebrow: "Ein besonderer Dank",
+    dir_h2: "Unserem Vorstand",
+    dir_carlos_role: "Generaldirektor",
+    dir_carlos_text: "Unserem Generaldirektor gilt unser aufrichtigster Dank — nicht für sein Talent, das weit über dem Durchschnitt liegt, sondern für seine Hingabe und die Zeit, die er uns grosszügig schenkt. In seinen Werten, seinen Prinzipien und dem aussergewöhnlichen Menschen, der er ist, finden wir die wahre Kraft dieses Vereins.",
+    dir_adelino_role: "Vorstandsmitglied",
+    dir_adelino_text: "Eines der neuesten Mitglieder unseres Teams, das bereits Werte und Ethik mitgebracht hat. Wir danken ihm dafür, wie er sich diesem gemeinnützigen Projekt angeschlossen hat — mit derselben Begeisterung wie jemand, der von Anfang an dabei ist.",
+    dir_others_intro: "Ein Dank auch an alle weiteren Vorstandsmitglieder und aktiven Mitglieder, die auf die eine oder andere Weise stets Wert und Loyalität zu diesem Projekt beigetragen haben:",
+    dir_others_more: "Und noch viele weitere, die mit ihrer Zeit und ihrem Einsatz diesen Verein zu dem machen, was er ist.",
     foot_p: "Denn gemeinsam sind wir stärker. 🇵🇹 🇨🇭"
   }
 };
