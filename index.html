@@ -242,6 +242,20 @@
   .culture-item p{ font-size: 13px; color: var(--muted); line-height:1.5; margin:0; }
 
   /* WINZERFEST */
+  .wz-badge{ margin-top: 22px; }
+  .wz-badge a{
+    display:inline-flex; align-items:center; gap:12px;
+    background: var(--cream);
+    border-radius: 999px;
+    padding: 8px 22px 8px 8px;
+    text-decoration:none;
+    color:#1a1408;
+    font-weight:600;
+    font-size:14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wz-badge a:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
+  .wz-badge img{ width:40px; height:40px; object-fit:contain; border-radius:50%; background:#fff; }
   .wz-intro{ max-width: 760px; }
   .wz-intro p{ color: var(--muted); line-height: 1.75; font-size: 16px; margin: 0 0 16px; }
   .wz-intro strong{ color: var(--cream); }
@@ -689,7 +703,13 @@
     <div class="section-head">
       <div class="eyebrow" data-i18n="wz_eyebrow">Evento 2026</div>
       <h2 data-i18n="wz_h2">Estaremos na Winzerfest de Döttingen 2026</h2>
-      <p data-i18n="wz_p_intro">A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, e em 2026 a Associação Portuguesa Tuga vai marcar presença.</p>
+      <p data-i18n="wz_p_intro">A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, que reuniu mais de 52 mil visitantes em 2025. Em 2026, na sua 73.ª edição (2 a 4 de outubro), a Associação Portuguesa Tuga vai marcar presença.</p>
+      <div class="wz-badge">
+        <a href="https://www.winzerfest.ch/" target="_blank" rel="noopener">
+          <img src="assets/parceiros/winzerfest-logo.svg" alt="Winzerfest Döttingen" loading="lazy">
+          <span data-i18n="wz_official_site">Site oficial da Winzerfest Döttingen</span>
+        </a>
+      </div>
     </div>
     <div class="wz-intro">
       <p data-i18n="wz_p1">A nossa participação tem um objetivo claro: construir uma ponte de integração entre a gastronomia portuguesa e os vinhos suíços — verdadeiras joias, muitas vezes desconhecidas e pouco reconhecidas a nível europeu, apesar do seu valor e qualidade surpreendentes. Gastronomia portuguesa e vinicultura suíça: uma junção perfeita.</p>
@@ -841,7 +861,8 @@ const translations = {
     c4_h: "Convívio", c4_p: "Momentos que fortalecem laços e criam memórias.",
     wz_eyebrow: "Evento 2026",
     wz_h2: "Estaremos na Winzerfest de Döttingen 2026",
-    wz_p_intro: "A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, e em 2026 a Associação Portuguesa Tuga vai marcar presença.",
+    wz_p_intro: "A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, que reuniu mais de 52 mil visitantes em 2025. Em 2026, na sua 73.ª edição (2 a 4 de outubro), a Associação Portuguesa Tuga vai marcar presença.",
+    wz_official_site: "Site oficial da Winzerfest Döttingen",
     wz_p1: "A nossa participação tem um objetivo claro: construir uma ponte de integração entre a gastronomia portuguesa e os vinhos suíços — verdadeiras joias, muitas vezes desconhecidas e pouco reconhecidas a nível europeu, apesar do seu valor e qualidade surpreendentes. Gastronomia portuguesa e vinicultura suíça: uma junção perfeita.",
     wz_p2: "Vamos estar presentes com um espaço gastronómico e um espaço/bar de dança, para marcar a diferença e mostrar a presença da nossa comunidade — com um objetivo maior que tudo: a integração e a partilha dos valores da nossa cultura portuguesa, sempre agradecidos pela amabilidade, hospitalidade e recetividade deste país especial que é a Suíça.",
     wz_f1_h: "Espaço Gastronómico",
@@ -922,7 +943,8 @@ const translations = {
     c4_h: "Geselligkeit", c4_p: "Momente, die Bande stärken und Erinnerungen schaffen.",
     wz_eyebrow: "Veranstaltung 2026",
     wz_h2: "Wir sind an der Winzerfest Döttingen 2026 dabei",
-    wz_p_intro: "Die Winzerfest Döttingen ist das grösste Weinfest der Deutschschweiz — ein einzigartiges Fest, und 2026 wird die Associação Portuguesa TUGA dabei sein.",
+    wz_p_intro: "Die Winzerfest Döttingen ist das grösste Weinfest der Deutschschweiz — ein einzigartiges Fest, das 2025 über 52'000 Besucherinnen und Besucher zählte. 2026 wird die Associação Portuguesa TUGA bei der 73. Ausgabe (2. bis 4. Oktober) dabei sein.",
+    wz_official_site: "Offizielle Website der Winzerfest Döttingen",
     wz_p1: "Unsere Teilnahme hat ein klares Ziel: eine Brücke der Integration zwischen der portugiesischen Gastronomie und den Schweizer Weinen zu bauen — wahre Schätze, die trotz ihrer überraschenden Qualität und ihres Wertes auf europäischer Ebene oft unbekannt und wenig anerkannt sind. Portugiesische Gastronomie und Schweizer Weinbau: eine perfekte Verbindung.",
     wz_p2: "Wir werden mit einem gastronomischen Bereich und einer Tanz-/Barzone präsent sein, um einen Unterschied zu machen und die Präsenz unserer Gemeinschaft zu zeigen — mit einem übergeordneten Ziel: Integration und das Teilen der Werte unserer portugiesischen Kultur, stets dankbar für die Freundlichkeit, Gastfreundschaft und Offenheit dieses besonderen Landes, der Schweiz.",
     wz_f1_h: "Gastronomischer Bereich",
