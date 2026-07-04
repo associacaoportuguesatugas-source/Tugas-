@@ -464,6 +464,36 @@
     text-align: right;
   }
 
+  /* LEADERSHIP QUOTES */
+  .leaders-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  .leader-card{
+    background: var(--panel);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 34px 38px;
+  }
+  .leader-card p{
+    color: var(--cream);
+    font-family:'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0;
+  }
+  .leader-card .signature{ margin-top: 18px; }
+  .leader-role{
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: right;
+    margin-top: 2px;
+  }
+
   @media (max-width: 760px){
     .nav-links{ display:none; }
     .about-grid{ grid-template-columns: 1fr; }
@@ -810,6 +840,27 @@
   </div>
 </section>
 
+<section id="lideranca">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="lid_eyebrow">A nossa voz</div>
+      <h2 data-i18n="lid_h2">Palavras de quem lidera</h2>
+    </div>
+    <div class="leaders-grid">
+      <div class="leader-card">
+        <p data-i18n="lid_marco_quote">"Nós somos o que fazemos e se não o fazemos não o somos. Podemos ter os valores mais bonitos escritos nos nossos estatutos, mas só se tornam verdadeiros quando se traduzem em ações concretas — em apoio real, presença constante e trabalho diário pela nossa comunidade. É isso, e só isso, que nos torna quem somos."</p>
+        <div class="signature">Marco Pereira</div>
+        <div class="leader-role" data-i18n="lid_marco_role">Presidente</div>
+      </div>
+      <div class="leader-card">
+        <p data-i18n="lid_nuno_quote">"Quem faz associativismo à espera de ganhar dinheiro escolheu o caminho errado. Isto faz-se por amor e por prazer — o prazer de ver uma comunidade mais unida, mais forte e mais apoiada. É essa recompensa, impossível de contar em números, que verdadeiramente vale a pena."</p>
+        <div class="signature">Nuno Mendes</div>
+        <div class="leader-role" data-i18n="lid_nuno_role">Vice-Presidente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="foot-logo">ASSOCIAÇÃO PORTUGUESA TUGA</div>
   <p data-i18n="foot_p">Porque juntos somos mais fortes. 🇵🇹 🇨🇭</p>
@@ -898,6 +949,12 @@ const translations = {
     socio_h2: "Queres fazer parte da nossa comunidade?",
     socio_p: "Se quiseres tornar-te associado da Associação Portuguesa Tuga, preenche o formulário de inscrição com os teus dados. É simples, rápido e é o primeiro passo para fazeres parte desta família.",
     socio_btn: "Inscrever-me como sócio",
+    lid_eyebrow: "A nossa voz",
+    lid_h2: "Palavras de quem lidera",
+    lid_marco_quote: '"Nós somos o que fazemos e se não o fazemos não o somos. Podemos ter os valores mais bonitos escritos nos nossos estatutos, mas só se tornam verdadeiros quando se traduzem em ações concretas — em apoio real, presença constante e trabalho diário pela nossa comunidade. É isso, e só isso, que nos torna quem somos."',
+    lid_marco_role: "Presidente",
+    lid_nuno_quote: '"Quem faz associativismo à espera de ganhar dinheiro escolheu o caminho errado. Isto faz-se por amor e por prazer — o prazer de ver uma comunidade mais unida, mais forte e mais apoiada. É essa recompensa, impossível de contar em números, que verdadeiramente vale a pena."',
+    lid_nuno_role: "Vice-Presidente",
     foot_p: "Porque juntos somos mais fortes. 🇵🇹 🇨🇭"
   },
   de: {
@@ -980,6 +1037,12 @@ const translations = {
     socio_h2: "Möchtest du Teil unserer Gemeinschaft werden?",
     socio_p: "Wenn du Mitglied der Associação Portuguesa Tuga werden möchtest, fülle das Anmeldeformular mit deinen Daten aus. Es ist einfach, schnell und der erste Schritt, um Teil dieser Familie zu werden.",
     socio_btn: "Jetzt Mitglied werden",
+    lid_eyebrow: "Unsere Stimme",
+    lid_h2: "Worte der Vereinsführung",
+    lid_marco_quote: '"Wir sind, was wir tun, und wenn wir es nicht tun, sind wir es nicht. Wir können die schönsten Werte in unseren Statuten stehen haben, aber sie werden erst wahr, wenn sie sich in konkretes Handeln übersetzen — in echte Unterstützung, ständige Präsenz und tägliche Arbeit für unsere Gemeinschaft. Genau das, und nur das, macht uns zu dem, was wir sind."',
+    lid_marco_role: "Präsident",
+    lid_nuno_quote: '"Wer sich im Vereinswesen engagiert, um Geld zu verdienen, hat den falschen Weg gewählt. Das hier geschieht aus Liebe und aus Freude — der Freude, eine geeintere, stärkere und besser unterstützte Gemeinschaft zu sehen. Es ist diese Belohnung, die sich nicht in Zahlen messen lässt, die wirklich zählt."',
+    lid_nuno_role: "Vizepräsident",
     foot_p: "Denn gemeinsam sind wir stärker. 🇵🇹 🇨🇭"
   }
 };
