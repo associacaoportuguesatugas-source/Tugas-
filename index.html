@@ -394,11 +394,46 @@
     font-size:13px;
     flex-shrink:0;
   }
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 46px;
+    align-items:center;
+    margin-top: 56px;
+  }
+  .testimonial-photo img{
+    width:100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  }
+  .testimonial-text{
+    background: var(--panel);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 34px 38px;
+  }
+  .testimonial-text p{
+    color: var(--cream);
+    font-family:'Fraunces', serif;
+    font-size: 17.5px;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0 0 16px;
+  }
+  .signature{
+    margin-top: 20px;
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 27px;
+    color: var(--gold-light);
+    text-align: right;
+  }
 
   @media (max-width: 760px){
     .nav-links{ display:none; }
     .about-grid{ grid-template-columns: 1fr; }
     .legal-grid{ grid-template-columns: 1fr; }
+    .testimonial-grid{ grid-template-columns: 1fr; margin-top: 32px; }
     .culture-grid{ grid-template-columns: repeat(2, 1fr); }
     .contact{ padding: 40px 22px; margin: 0 16px; }
   }
@@ -571,12 +606,23 @@
         </div>
       </div>
       <div class="legal-card">
-        <img src="assets/parceiros/advocacia-ag.jpg" alt="Advocacia AG — Rechtskanzlei">
+        <img src="assets/parceiros/fernanda-pontes-logo.jpg" alt="Advocacia Fernanda Pontes">
         <div class="legal-features">
           <div class="legal-feature"><span class="icon">✓</span><span data-i18n="juridico_f1">Apoio jurídico em português</span></div>
           <div class="legal-feature"><span class="icon">✓</span><span data-i18n="juridico_f2">Primeira consulta totalmente gratuita</span></div>
           <div class="legal-feature"><span class="icon">✓</span><span data-i18n="juridico_f3">Com o apoio total da Associação Tuga</span></div>
         </div>
+      </div>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-photo">
+        <img src="assets/parceiros/fernanda-pontes-photo.jpg" alt="Dra. Fernanda Pontes" loading="lazy">
+      </div>
+      <div class="testimonial-text">
+        <p data-i18n="juridico_test_p1">"Os direitos existem para todos, mas nem todos sabem como exercê-los. É por isso que considero tão importante o trabalho da Associação TUGA, que se dedica a informar, orientar e apoiar quem mais precisa.</p>
+        <p data-i18n="juridico_test_p2">Aceitei esta parceria porque acredito que, quando profissionais e associações unem esforços, conseguem criar um impacto positivo e duradouro na vida das pessoas.</p>
+        <p data-i18n="juridico_test_p3">Ajudar alguém a encontrar uma solução para um problema é, muitas vezes, muito mais do que prestar um serviço: é devolver tranquilidade, confiança e esperança."</p>
+        <div class="signature">Fernanda Pontes</div>
       </div>
     </div>
   </div>
@@ -763,6 +809,9 @@ const translations = {
     juridico_f1: "Apoio jurídico em português",
     juridico_f2: "Primeira consulta totalmente gratuita",
     juridico_f3: "Com o apoio total da Associação Tuga",
+    juridico_test_p1: '"Os direitos existem para todos, mas nem todos sabem como exercê-los. É por isso que considero tão importante o trabalho da Associação TUGA, que se dedica a informar, orientar e apoiar quem mais precisa.',
+    juridico_test_p2: "Aceitei esta parceria porque acredito que, quando profissionais e associações unem esforços, conseguem criar um impacto positivo e duradouro na vida das pessoas.",
+    juridico_test_p3: 'Ajudar alguém a encontrar uma solução para um problema é, muitas vezes, muito mais do que prestar um serviço: é devolver tranquilidade, confiança e esperança."',
     socio_eyebrow: "Torna-te sócio",
     socio_h2: "Queres fazer parte da nossa comunidade?",
     socio_p: "Se quiseres tornar-te associado da Associação Portuguesa Tuga, preenche o formulário de inscrição com os teus dados. É simples, rápido e é o primeiro passo para fazeres parte desta família.",
@@ -831,6 +880,9 @@ const translations = {
     juridico_f1: "Rechtliche Unterstützung auf Portugiesisch",
     juridico_f2: "Kostenlose Erstberatung",
     juridico_f3: "Mit voller Unterstützung des Tuga-Vereins",
+    juridico_test_p1: '"Die Rechte existieren für alle, aber nicht alle wissen, wie sie diese ausüben können. Deshalb halte ich die Arbeit des Vereins TUGA für so wichtig, der sich dafür einsetzt, zu informieren, zu beraten und jenen zu helfen, die es am meisten brauchen.',
+    juridico_test_p2: "Ich habe diese Partnerschaft angenommen, weil ich glaube, dass Fachleute und Vereine, wenn sie ihre Kräfte bündeln, eine positive und nachhaltige Wirkung auf das Leben der Menschen erzielen können.",
+    juridico_test_p3: 'Jemandem zu helfen, eine Lösung für ein Problem zu finden, bedeutet oft weit mehr, als eine Dienstleistung zu erbringen: Es bedeutet, Ruhe, Vertrauen und Hoffnung zurückzugeben."',
     socio_eyebrow: "Mitglied werden",
     socio_h2: "Möchtest du Teil unserer Gemeinschaft werden?",
     socio_p: "Wenn du Mitglied der Associação Portuguesa Tuga werden möchtest, fülle das Anmeldeformular mit deinen Daten aus. Es ist einfach, schnell und der erste Schritt, um Teil dieser Familie zu werden.",
