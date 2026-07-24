@@ -349,6 +349,38 @@
     opacity:0.7;
     margin-top:4px;
   }
+  .partner-logo.partner-star{
+    position:relative;
+    padding:30px 16px;
+    border:1px solid rgba(224,168,59,0.4);
+  }
+  .partner-logo.partner-star:hover{
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  }
+  .partner-logo.partner-star::after{
+    content:"★";
+    position:absolute;
+    top:-9px; right:-9px;
+    width:22px; height:22px;
+    border-radius:50%;
+    background:var(--gold-light);
+    color:#1a1408;
+    font-size:11px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.4);
+  }
+  .partner-star-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .partner-star-caption{
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.5;
+    margin:0;
+    text-align:center;
+  }
 
   /* VISION */
   .vision-grid{
@@ -715,6 +747,10 @@
       <a class="partner-logo featured" href="https://www.haefeli-bruegger.ch/home/" target="_blank" rel="noopener"><img src="assets/parceiros/haefeli-bruegger.png" alt="Häfeli-Brügger AG" loading="lazy"></a>
       <a class="partner-logo featured" href="https://www.knecht-weinbau.ch/" target="_blank" rel="noopener"><img src="assets/parceiros/knecht-weinbau.png" alt="Weinbau Rolf + Tanja Knecht" loading="lazy"></a>
       <a class="partner-logo featured" href="https://www.advocacia.ch/team" target="_blank" rel="noopener"><img src="assets/parceiros/advocacia-ag.jpg" alt="Advocacia AG — Rechtskanzlei" loading="lazy"></a>
+      <div class="partner-star-wrap">
+        <a class="partner-logo partner-star partner-text" href="https://servisolutions.ch/" target="_blank" rel="noopener">Serv &amp; Solutions<small>Seguro de Serviço Fúnebre</small></a>
+        <p class="partner-star-caption">Parceiro Estrela ⭐ — Seguro de serviço fúnebre com 50% de desconto no primeiro ano para associados da Tuga.</p>
+      </div>
       <div class="partner-logo featured"><img src="assets/parceiros/lukasz-wcislo.png" alt="Lukasz Wcislo — E-Scooter & E-Bike Service" loading="lazy"></div>
       <a class="partner-logo featured" href="https://www.birchmeier-gruppe.ch" target="_blank" rel="noopener"><img src="assets/parceiros/birchmeier.svg" alt="Birchmeier Bau AG" loading="lazy"></a>
       <a class="partner-logo" href="https://www.instagram.com/dangeesevent?igsh=MWEybHlzMjBwYmY4aw==" target="_blank" rel="noopener"><img src="assets/parceiros/dangees-event.png" alt="Dangee's Event — Swiss Food & Catering" loading="lazy"></a>
