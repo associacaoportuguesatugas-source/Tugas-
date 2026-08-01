@@ -320,6 +320,111 @@
     .video-frame{ padding: 12px; border-radius: 16px; }
   }
 
+  /* EVENTOS */
+  .events-groups{
+    display:flex;
+    flex-direction:column;
+    gap:56px;
+  }
+  .events-group-label{
+    font-family:'Fraunces', serif;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-weight:700;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .events-group-label.label-past{ color: var(--muted); }
+  .events-group-label.label-past::before{
+    content:"";
+    width:9px; height:9px;
+    border-radius:50%;
+    background: var(--muted);
+    display:inline-block;
+  }
+  .events-group-label.label-upcoming{ color: var(--gold-light); }
+  .events-group-label.label-upcoming::before{
+    content:"";
+    width:9px; height:9px;
+    border-radius:50%;
+    background: var(--gold-light);
+    display:inline-block;
+    box-shadow: 0 0 8px rgba(224,168,59,0.6);
+  }
+  .events-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+  }
+  .event-card{
+    position:relative;
+    overflow:hidden;
+    border-radius: 14px;
+    padding: 26px 24px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .event-card.is-past{
+    background: var(--panel-2);
+    border: 1px solid rgba(167,162,154,0.18);
+    opacity: 0.88;
+  }
+  .event-card.is-past:hover{ opacity:1; transform: translateY(-3px); }
+  .event-card.is-upcoming{
+    background: var(--panel);
+    border: 1px solid rgba(224,168,59,0.35);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.3);
+    padding-top: 29px;
+  }
+  .event-card.is-upcoming::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:4px;
+    background: linear-gradient(90deg, var(--gold-light) 0%, var(--gold) 55%, var(--red) 100%);
+  }
+  .event-card.is-upcoming:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.4);
+    border-color: rgba(224,168,59,0.6);
+  }
+  .event-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:14px;
+    flex-wrap:wrap;
+  }
+  .event-date{
+    font-family:'Work Sans', sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    color: var(--muted);
+  }
+  .event-card.is-upcoming .event-date{ color: var(--gold-light); }
+  .event-tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:4px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .event-tag.tag-past{ background: rgba(167,162,154,0.15); color: var(--muted); }
+  .event-tag.tag-upcoming{ background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #1a1408; }
+  .event-card h3{ font-size:19px; color: var(--cream); margin-bottom:8px; }
+  .event-loc{ font-size:13px; color: var(--gold-light); font-weight:600; margin-bottom:12px; }
+  .event-card.is-past .event-loc{ color: var(--muted); }
+  .event-card p{ font-size:14.5px; color: var(--muted); line-height:1.6; margin:0; }
+  @media (max-width: 760px){
+    .event-card{ padding: 22px 20px; }
+  }
+
   /* PARTNERS */
   .partners-grid{
     display:grid;
@@ -786,6 +891,64 @@
   </div>
 </section>
 
+<section id="eventos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="eventos_eyebrow">Vida de Associação</div>
+      <h2 data-i18n="eventos_h2">Eventos</h2>
+      <p data-i18n="eventos_p">Do que já vivemos juntos ao que está para vir — estes são os momentos que unem a nossa comunidade.</p>
+    </div>
+    <div class="events-groups">
+      <div>
+        <div class="events-group-label label-past" data-i18n="eventos_label_passados">Já Aconteceram</div>
+        <div class="events-grid">
+          <div class="event-card is-past">
+            <div class="event-card-top">
+              <span class="event-date" data-i18n="eventos_p1_data">25 de abril de 2026</span>
+              <span class="event-tag tag-past" data-i18n="eventos_p1_tag">Realizado</span>
+            </div>
+            <h3 data-i18n="eventos_p1_titulo">Dia da Liberdade</h3>
+            <div class="event-loc" data-i18n="eventos_p1_local">Klingnau</div>
+            <p data-i18n="eventos_p1_desc">Apresentação da associação aos sócios e amigos, num momento de convívio e boas-vindas à comunidade Tuga.</p>
+          </div>
+          <div class="event-card is-past">
+            <div class="event-card-top">
+              <span class="event-date" data-i18n="eventos_p2_data">7 de junho de 2026</span>
+              <span class="event-tag tag-past" data-i18n="eventos_p2_tag">Realizado</span>
+            </div>
+            <h3 data-i18n="eventos_p2_titulo">Dia Mundial da Criança</h3>
+            <div class="event-loc" data-i18n="eventos_p2_local">Klingnau</div>
+            <p data-i18n="eventos_p2_desc">Uma tarde dedicada aos mais novos, com atividades e animação para toda a família.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="events-group-label label-upcoming" data-i18n="eventos_label_proximos">Próximos Eventos</div>
+        <div class="events-grid">
+          <div class="event-card is-upcoming">
+            <div class="event-card-top">
+              <span class="event-date" data-i18n="eventos_f1_data">2–4 de outubro de 2026</span>
+              <span class="event-tag tag-upcoming" data-i18n="eventos_f1_tag">Brevemente</span>
+            </div>
+            <h3 data-i18n="eventos_f1_titulo">Tapas &amp; Petiscos — Sabores Unidos</h3>
+            <div class="event-loc" data-i18n="eventos_f1_local">Winzerfest, Döttingen</div>
+            <p data-i18n="eventos_f1_desc">Gastronomia portuguesa e vinícola suíça de mãos dadas: três dias de sabores, tradição e boa companhia na Winzerfest de Döttingen.</p>
+          </div>
+          <div class="event-card is-upcoming">
+            <div class="event-card-top">
+              <span class="event-date" data-i18n="eventos_f2_data">5 de dezembro de 2026</span>
+              <span class="event-tag tag-upcoming" data-i18n="eventos_f2_tag">Brevemente</span>
+            </div>
+            <h3 data-i18n="eventos_f2_titulo">Festa de Natal da Associação Portuguesa Tuga</h3>
+            <div class="event-loc" data-i18n="eventos_f2_local">Klingnau</div>
+            <p data-i18n="eventos_f2_desc">Celebramos o Natal em comunidade, com espírito festivo, boa mesa e muita animação para sócios e amigos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="parceiros">
   <div class="wrap">
     <div class="section-head">
@@ -1194,6 +1357,31 @@ const translations = {
     musica_eyebrow: "A Nossa Música",
     musica_h2: "O Hino da Associação Tuga",
     musica_p: "Orgulho, comunidade e tradição portuguesa na Suíça — ouve o hino que nos representa.",
+    eventos_eyebrow: "Vida de Associação",
+    eventos_h2: "Eventos",
+    eventos_p: "Do que já vivemos juntos ao que está para vir — estes são os momentos que unem a nossa comunidade.",
+    eventos_label_passados: "Já Aconteceram",
+    eventos_label_proximos: "Próximos Eventos",
+    eventos_p1_data: "25 de abril de 2026",
+    eventos_p1_tag: "Realizado",
+    eventos_p1_titulo: "Dia da Liberdade",
+    eventos_p1_local: "Klingnau",
+    eventos_p1_desc: "Apresentação da associação aos sócios e amigos, num momento de convívio e boas-vindas à comunidade Tuga.",
+    eventos_p2_data: "7 de junho de 2026",
+    eventos_p2_tag: "Realizado",
+    eventos_p2_titulo: "Dia Mundial da Criança",
+    eventos_p2_local: "Klingnau",
+    eventos_p2_desc: "Uma tarde dedicada aos mais novos, com atividades e animação para toda a família.",
+    eventos_f1_data: "2–4 de outubro de 2026",
+    eventos_f1_tag: "Brevemente",
+    eventos_f1_titulo: "Tapas & Petiscos — Sabores Unidos",
+    eventos_f1_local: "Winzerfest, Döttingen",
+    eventos_f1_desc: "Gastronomia portuguesa e vinícola suíça de mãos dadas: três dias de sabores, tradição e boa companhia na Winzerfest de Döttingen.",
+    eventos_f2_data: "5 de dezembro de 2026",
+    eventos_f2_tag: "Brevemente",
+    eventos_f2_titulo: "Festa de Natal da Associação Portuguesa Tuga",
+    eventos_f2_local: "Klingnau",
+    eventos_f2_desc: "Celebramos o Natal em comunidade, com espírito festivo, boa mesa e muita animação para sócios e amigos.",
     parceiros_eyebrow: "Parceiros & Patrocinadores",
     parceiros_h2: "Quem caminha ao nosso lado",
     parceiros_p: "Empresas e profissionais que apoiam a nossa missão e fortalecem a comunidade portuguesa na Suíça.",
@@ -1315,6 +1503,31 @@ const translations = {
     musica_eyebrow: "Unser Lied",
     musica_h2: "Die Hymne des Vereins Tuga",
     musica_p: "Stolz, Gemeinschaft und portugiesische Tradition in der Schweiz — hör dir unsere Hymne an.",
+    eventos_eyebrow: "Vereinsleben",
+    eventos_h2: "Veranstaltungen",
+    eventos_p: "Von dem, was wir bereits gemeinsam erlebt haben, bis zu dem, was noch kommt — das sind die Momente, die unsere Gemeinschaft verbinden.",
+    eventos_label_passados: "Bereits Stattgefunden",
+    eventos_label_proximos: "Nächste Veranstaltungen",
+    eventos_p1_data: "25. April 2026",
+    eventos_p1_tag: "Stattgefunden",
+    eventos_p1_titulo: "Tag der Freiheit",
+    eventos_p1_local: "Klingnau",
+    eventos_p1_desc: "Vorstellung des Vereins vor Mitgliedern und Freunden, mit geselligem Beisammensein und einem herzlichen Willkommen in der Tuga-Gemeinschaft.",
+    eventos_p2_data: "7. Juni 2026",
+    eventos_p2_tag: "Stattgefunden",
+    eventos_p2_titulo: "Weltkindertag",
+    eventos_p2_local: "Klingnau",
+    eventos_p2_desc: "Ein Nachmittag ganz für die Kleinen, mit Aktivitäten und Unterhaltung für die ganze Familie.",
+    eventos_f1_data: "2.–4. Oktober 2026",
+    eventos_f1_tag: "Demnächst",
+    eventos_f1_titulo: "Tapas & Petiscos — Vereinte Aromen",
+    eventos_f1_local: "Winzerfest, Döttingen",
+    eventos_f1_desc: "Portugiesische Küche und Schweizer Weinkultur Hand in Hand: drei Tage voller Aromen, Tradition und guter Gesellschaft am Winzerfest Döttingen.",
+    eventos_f2_data: "5. Dezember 2026",
+    eventos_f2_tag: "Demnächst",
+    eventos_f2_titulo: "Weihnachtsfest des Vereins Tuga",
+    eventos_f2_local: "Klingnau",
+    eventos_f2_desc: "Wir feiern Weihnachten in Gemeinschaft — mit festlicher Stimmung, gutem Essen und viel Unterhaltung für Mitglieder und Freunde.",
     parceiros_eyebrow: "Partner & Sponsoren",
     parceiros_h2: "Wer an unserer Seite steht",
     parceiros_p: "Unternehmen und Fachleute, die unsere Mission unterstützen und die portugiesische Gemeinschaft in der Schweiz stärken.",
