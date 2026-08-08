@@ -779,11 +779,11 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    height:70px;
+    height:92px;
     margin-bottom:16px;
     text-decoration:none;
   }
-  .star-partner-logo img{ max-width:100%; max-height:70px; width:auto; object-fit:contain; }
+  .star-partner-logo img{ max-width:100%; max-height:92px; width:auto; object-fit:contain; }
   .star-partner-logo.star-partner-textlogo{
     font-family:'Fraunces', serif;
     font-weight:700;
@@ -812,13 +812,13 @@
     box-shadow: inset 0 0 0 1px rgba(26,20,8,0.10);
   }
   .star-partner-card--contrast .star-partner-logo img{
-    width: 210px;
-    height: 39px;
-    max-width: 210px;
-    max-height: 39px;
+    width: 270px;
+    height: 50px;
+    max-width: 270px;
+    max-height: 50px;
   }
-  .star-partner-logo--round img{
-    width:70px; height:70px; max-height:70px;
+  . img{
+    width:90px; height:90px; max-height:90px;
     object-fit:cover;
     border-radius:50%;
   }
@@ -838,16 +838,18 @@
     width:28px; height:28px; font-size:13px; top:-14px;
   }
   .star-partner-card--compact .star-partner-logo{
-    height:50px;
+    height:64px;
     margin-bottom:10px;
   }
-  .star-partner-card--compact .star-partner-logo img{ max-height:50px; }
+  .star-partner-card--compact .star-partner-logo img{ max-height:64px; }
   .star-partner-card--compact .star-partner-logo.star-partner-textlogo{ font-size:16px; }
   .star-partner-card--compact h3{
     font-size:14px;
     margin-bottom:0;
   }
-  </style>
+  .star-partner-card{cursor:pointer;transition:transform 0.2s, box-shadow 0.2s;}
+.star-partner-card:hover{transform:translateY(-4px);box-shadow:0 0 0 3px rgba(224,168,59,0.28), 0 14px 30px rgba(0,0,0,0.25);}
+</style>
 </head>
 <body>
 
@@ -1068,6 +1070,11 @@
         <a class="star-partner-logo" href="https://www.haefeli-bruegger.ch/home/" target="_blank" rel="noopener"><img src="assets/parceiros/haefeli-bruegger.png" alt="Häfeli-Brügger AG" loading="lazy"></a>
         <h3>Häfeli-Brügger AG</h3>
         <p data-i18n="star_haefeli_p">A Tuga agradece à <strong>Häfeli-Brügger AG</strong> pelo generoso patrocínio à nossa comunidade. Sediada em Klingnau — a mesma localidade que acolhe a Tuga — é uma empresa familiar há três gerações, especializada em transportes, logística, reciclagem e gestão de resíduos na Suíça e no sul da Alemanha. Certificada ISO, trata anualmente mais de 40 000 toneladas de resíduos e opera uma das maiores centrais de biogás do país.</p>
+      </div>
+      <div class="star-partner-card">
+        <a class="star-partner-logo" href="https://gentomobil.ch/" target="_blank" rel="noopener"><img src="https://gentomobil.ch/wp-content/uploads/2024/04/cropped-cropped-GENTOMOBIL_Logo.png" alt="Gentomobil GmbH" loading="lazy"></a>
+        <h3>Gentomobil GmbH</h3>
+        <p data-i18n="star_gentomobil_p">A Tuga agradece à <strong>Gentomobil GmbH</strong> pelo apoio à nossa comunidade. Sediada em Kleindöttingen, é especialista suíça em veículos elétricos para a mobilidade sénior — os chamados elektromobile — com modelos entre 6 e 45 km/h, alguns sem necessidade de carta de condução e outros com cabine para todo o ano. Importadora direta desde 2019 e com experiência no setor desde 2015, garante aconselhamento pessoal, entregas rápidas e peças sobressalentes em stock. O seu trabalho é especialmente valioso para a nossa comunidade mais envelhecida, a quem devolve mobilidade e independência no dia a dia — mas não só, pois qualquer pessoa que precise de mais liberdade de movimento encontra ali uma solução de confiança.</p>
       </div>
       <div class="star-partner-card">
         <div class="star-partner-logo star-partner-logo--round"><img src="assets/parceiros/lukasz-wcislo.png" alt="Lukasz Wcislo — E-Scooter & E-Bike Service" loading="lazy"></div>
@@ -1550,6 +1557,7 @@ const translations = {
     parceiros_p: "Empresas e profissionais que apoiam a nossa missão e fortalecem a comunidade portuguesa na Suíça.",
     star_eyebrow: "Patrocinadores Estrela ★",
     star_haefeli_p: "A Tuga agradece à <strong>Häfeli-Brügger AG</strong> pelo generoso patrocínio à nossa comunidade. Sediada em Klingnau — a mesma localidade que acolhe a Tuga — é uma empresa familiar há três gerações, especializada em transportes, logística, reciclagem e gestão de resíduos na Suíça e no sul da Alemanha. Certificada ISO, trata anualmente mais de 40 000 toneladas de resíduos e opera uma das maiores centrais de biogás do país.",
+    star_gentomobil_p: "A Tuga agradece à <strong>Gentomobil GmbH</strong> pelo apoio à nossa comunidade. Sediada em Kleindöttingen, é especialista suíça em veículos elétricos para a mobilidade sénior — os chamados elektromobile — com modelos entre 6 e 45 km/h, alguns sem necessidade de carta de condução e outros com cabine para todo o ano. Importadora direta desde 2019 e com experiência no setor desde 2015, garante aconselhamento pessoal, entregas rápidas e peças sobressalentes em stock. O seu trabalho é especialmente valioso para a nossa comunidade mais envelhecida, a quem devolve mobilidade e independência no dia a dia — mas não só, pois qualquer pessoa que precise de mais liberdade de movimento encontra ali uma solução de confiança.",
     star_serv_p: "A Tuga agradece à <strong>Serv &amp; Solutions GmbH</strong> pela parceria que dá tranquilidade às famílias portuguesas na Suíça. Especialista em seguros de serviço fúnebre, a empresa acompanha os associados da Tuga nos momentos mais difíceis, ajudando a simplificar a burocracia — com condições especiais para sócios da associação.",
     star_dyabohr_p: "A Tuga agradece à <strong>Dyabohr GmbH</strong> pelo apoio à nossa associação. Sediada em Mönthal, no cantão de Aargau, e liderada por Paulo Da Silva, é especialista em corte, perfuração, serragem a cabo e prensagem hidráulica de betão, bem como em desmonte e demolição controlada — do planeamento até à eliminação correta dos materiais.",
     star_birchmeier_p: "A Tuga agradece à <strong>Birchmeier Bau AG</strong> pelo apoio à nossa associação. Sediada em Döttingen, é uma empresa de construção da Birchmeier Gruppe — grupo familiar suíço na terceira geração e um dos maiores da construção no noroeste da Suíça, com cerca de 650 colaboradores. Dedica-se a obras de engenharia civil e estrutural, demolição, renovação energética de telhados e trabalhos de betão.",
@@ -1712,6 +1720,7 @@ const translations = {
     parceiros_p: "Unternehmen und Fachleute, die unsere Mission unterstützen und die portugiesische Gemeinschaft in der Schweiz stärken.",
     star_eyebrow: "Stern-Sponsoren ★",
     star_haefeli_p: "Die Tuga bedankt sich bei der <strong>Häfeli-Brügger AG</strong> für die grosszügige Unterstützung unserer Gemeinschaft. Mit Sitz in Klingnau — demselben Ort, in dem auch die Tuga beheimatet ist — führt das Familienunternehmen seit drei Generationen die Bereiche Transport, Logistik sowie Recycling und Entsorgung in der Schweiz und in Süddeutschland. ISO-zertifiziert bewirtschaftet sie jährlich über 40 000 Tonnen Abfallstoffe und betreibt eine der grössten Kompogasanlagen des Landes.",
+    star_gentomobil_p: "Die Tuga bedankt sich bei der <strong>Gentomobil GmbH</strong> für die Unterstützung unserer Gemeinschaft. Mit Sitz in Kleindöttingen ist sie die Schweizer Spezialistin für Elektromobile und Seniorenmobile — mit Modellen von 6 bis 45 km/h, teils führerscheinfrei und teils mit Kabine für den ganzjährigen Einsatz. Als Direktimporteurin seit 2019 und mit Branchenerfahrung seit 2015 bietet sie persönliche Beratung, schnelle Lieferzeiten und ein grosses Ersatzteillager. Ihre Arbeit ist besonders wertvoll für unsere ältere Gemeinschaft, der sie mehr Mobilität und Unabhängigkeit im Alltag zurückgibt — aber nicht nur: Auch alle anderen, die mehr Bewegungsfreiheit brauchen, finden hier eine zuverlässige Lösung.",
     star_serv_p: "Die Tuga bedankt sich bei der <strong>Serv &amp; Solutions GmbH</strong> für eine Partnerschaft, die portugiesischen Familien in der Schweiz Sicherheit gibt. Als Spezialistin für Bestattungsversicherungen begleitet das Unternehmen Tuga-Mitglieder in den schwierigsten Momenten und hilft, die Bürokratie zu vereinfachen — mit besonderen Konditionen für Vereinsmitglieder.",
     star_dyabohr_p: "Die Tuga bedankt sich bei der <strong>Dyabohr GmbH</strong> für die Unterstützung unseres Vereins. Mit Sitz in Mönthal im Kanton Aargau und unter der Leitung von Paulo Da Silva ist das Unternehmen spezialisiert auf Betonschneiden, -bohren, -seilen und -pressen sowie auf Rückbau und kontrollierten Abbruch — von der Planung bis zur fachgerechten Entsorgung.",
     star_birchmeier_p: "Die Tuga bedankt sich bei der <strong>Birchmeier Bau AG</strong> für die Unterstützung unseres Vereins. Mit Sitz in Döttingen ist sie ein Bauunternehmen der Birchmeier Gruppe — ein Schweizer Familienunternehmen in dritter Generation und eines der führenden Bauunternehmen der Nordwestschweiz mit rund 650 Mitarbeitenden. Sie ist im Hoch- und Tiefbau, Rückbau, in der energetischen Dachsanierung sowie in Betonarbeiten tätig.",
@@ -1801,5 +1810,6 @@ document.querySelectorAll('[data-lang-btn]').forEach(btn => {
 });
 </script>
 
-</body>
+<script>document.querySelectorAll('.star-partner-card').forEach(function(card){var link=card.querySelector('a[href]');if(!link)return;var href=link.getAttribute('href');card.addEventListener('click',function(e){if(e.target.closest('a'))return;window.open(href,'_blank','noopener');});});</script>
+</script></body>
 </html>
