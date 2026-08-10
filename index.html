@@ -752,14 +752,21 @@
     pointer-events:none;
     z-index:0;
   }
+  .hero-sponsor-bg::before{
+    content:"";
+    position:absolute; inset:0;
+    z-index:0;
+    background: radial-gradient(ellipse 62% 56% at 50% 42%, rgba(242,201,106,0.32) 0%, rgba(242,201,106,0.12) 45%, transparent 72%);
+  }
   .hero-sponsor-bg::after{
     content:"";
     position:absolute; inset:0;
-    z-index:1;
-    background: linear-gradient(180deg, rgba(11,11,12,0.5) 0%, rgba(11,11,12,0.72) 45%, rgba(11,11,12,0.9) 100%);
+    z-index:2;
+    background: linear-gradient(180deg, rgba(11,11,12,0.35) 0%, rgba(11,11,12,0.58) 45%, rgba(11,11,12,0.85) 100%);
   }
   .hero-sponsor-slide{
     position:absolute; inset:0;
+    z-index:1;
     display:flex; align-items:center; justify-content:center;
     opacity:0;
     transition: opacity 1.8s ease;
@@ -767,12 +774,12 @@
   .hero-sponsor-slide.is-active{ opacity:1; }
   .hero-sponsor-slide img{
     width:auto; height:auto;
-    max-width:82%; max-height:82%;
+    max-width:90%; max-height:88%;
     object-fit:contain;
-    filter: drop-shadow(0 14px 46px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 0 70px rgba(242,201,106,0.28)) drop-shadow(0 14px 46px rgba(0,0,0,0.6));
   }
   @media (max-width:600px){
-    .hero-sponsor-slide img{ max-width:88%; max-height:70%; }
+    .hero-sponsor-slide img{ max-width:92%; max-height:74%; }
   }
 
   /* STAR PARTNERS SPOTLIGHT */
