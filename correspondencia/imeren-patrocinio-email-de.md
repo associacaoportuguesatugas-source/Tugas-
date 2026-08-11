@@ -19,7 +19,7 @@ Als Gegenleistung für Ihr Sponsoring bieten wir Ihnen:
 - Werbung und Präsenz auf unseren Social-Media-Kanälen
 - Werbung auf den Tischsets/Tischpapieren bei unseren Veranstaltungen
 - Werbung in den Büchern/Publikationen, die wir künftig herausgeben werden
-- Und als besonderes Zeichen unserer Dankbarkeit: Während des gesamten Sponsoring-Jahres 2027 werden wir sämtliche Lebensmittel, die wir für unsere Veranstaltungen und Aktivitäten benötigen, bei Imeren beziehen.
+- Und als Zeichen unserer Dankbarkeit: Bei der Wahl unserer Einkaufsquellen werden wir Imeren stets bevorzugt berücksichtigen – das heisst, wann immer möglich, tätigen wir unsere Einkäufe bei Ihnen. Am Wochenende der Winzerfest wird Imeren ausserdem unsere feste Anlaufstelle sein, falls wir während der Veranstaltung kurzfristig Produkte nachkaufen müssen.
 
 Im Anhang finden Sie unser Dossier mit weiteren Informationen über die Associação Portuguesa Tuga sowie die Details zu dieser Partnerschaft.
 
