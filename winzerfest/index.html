@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winzerfest — Gestor de Fichas</title>
+<meta name="description" content="Aplicacao local para criar e organizar as fichas da Winzerfest antes do envio para a grafica.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237A1E2B'/><text y='68' x='50' text-anchor='middle' font-size='54' font-family='system-ui' fill='%23fff'>W</text></svg>">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================================================ cabecalho -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">WF</div>
+      <div>
+        <h1 class="brand__title">Winzerfest — Gestor de Fichas</h1>
+        <p class="brand__subtitle">Edicao <span id="app-edition">WF26</span> &middot; Associacao Portuguesa Tuga</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn--primary" id="btn-new">+ Nova ficha</button>
+
+      <div class="menu-wrap">
+        <button type="button" class="btn" id="btn-export" aria-haspopup="true" aria-expanded="false" aria-controls="export-menu">
+          Exportar &#9662;
+        </button>
+        <div class="menu" id="export-menu" hidden>
+          <button type="button" class="menu__item" data-export="xlsx">
+            <span class="menu__tag">XLSX</span>
+            <span>Excel<small>Tabela com cores e formulas</small></span>
+          </button>
+          <button type="button" class="menu__item" data-export="pdf">
+            <span class="menu__tag">PDF</span>
+            <span>PDF para a grafica<small>Abre a impressao — "Guardar como PDF"</small></span>
+          </button>
+          <button type="button" class="menu__item" data-export="csv">
+            <span class="menu__tag">CSV</span>
+            <span>CSV<small>Separador ";" — abre no Excel</small></span>
+          </button>
+          <div class="menu__sep"></div>
+          <button type="button" class="menu__item" data-export="json">
+            <span class="menu__tag">JSON</span>
+            <span>Copia de seguranca<small>Guardar / transportar os dados</small></span>
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="btn" id="btn-print-view">Lista para a grafica</button>
+      <button type="button" class="btn btn--ghost" id="btn-import">Importar</button>
+      <button type="button" class="btn btn--ghost" id="btn-reset" title="Repor o catalogo inicial da Winzerfest">Repor</button>
+      <button type="button" class="btn btn--ghost btn--icon" id="btn-theme" title="Mudar tema">☾</button>
+      <input type="file" id="import-file" accept=".json,.csv,text/csv,application/json" class="visually-hidden">
+    </div>
+  </header>
+
+  <!-- ============================================================ tabela -->
+  <main>
+    <section class="section" aria-labelledby="fichas-title">
+      <div class="section__head">
+        <h2 id="fichas-title">Fichas</h2>
+        <p class="section__hint">Edite precos, quantidades, cor e design directamente na tabela — as alteracoes sao guardadas automaticamente.</p>
+      </div>
+
+      <div class="panel">
+        <div class="toolbar">
+          <div class="search">
+            <span class="search__icon" aria-hidden="true">&#128269;</span>
+            <label class="visually-hidden" for="search">Pesquisar fichas</label>
+            <input type="search" id="search" placeholder="Pesquisar produto, design, codigo ou observacoes…  (tecla /)">
+            <button type="button" class="search__clear" id="search-clear" title="Limpar pesquisa" hidden>&times;</button>
+          </div>
+
+          <div class="filters" id="color-filters" role="group" aria-label="Filtrar por cor da ficha"></div>
+
+          <div class="sorter">
+            <label for="sort-select">Ordenar por</label>
+            <select id="sort-select">
+              <option value="color">Cor da ficha</option>
+              <option value="product">Produto</option>
+              <option value="price">Preco</option>
+              <option value="quantity">Quantidade</option>
+              <option value="design">Design</option>
+              <option value="total">Valor total</option>
+            </select>
+            <button type="button" id="sort-dir" title="Inverter ordem">↑</button>
+          </div>
+        </div>
+
+        <div class="toolbar__meta">
+          <span id="result-count">—</span>
+          <span aria-hidden="true">&middot;</span>
+          <span class="save-status" id="save-status">Guardado automaticamente</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="fichas">
+            <thead><tr id="fichas-head-row"></tr></thead>
+            <tbody id="fichas-body"></tbody>
+            <tfoot id="fichas-foot"></tfoot>
+          </table>
+        </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="empty-state__icon" aria-hidden="true">&#128203;</p>
+          <p data-empty-text>Ainda nao existem fichas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ resumo -->
+    <section class="section" id="summary" aria-labelledby="summary-title">
+      <div class="section__head">
+        <h2 id="summary-title">Resumo automatico</h2>
+        <p class="section__hint" data-summary-scope>Valores de todas as fichas</p>
+      </div>
+
+      <div class="panel summary">
+        <dl class="summary__totals">
+          <div class="stat">
+            <dt>Total de produtos</dt>
+            <dd data-total-products>0</dd>
+          </div>
+          <div class="stat">
+            <dt>Total de fichas a imprimir</dt>
+            <dd data-total-quantity>0</dd>
+          </div>
+          <div class="stat stat--highlight">
+            <dt>Valor total previsto</dt>
+            <dd data-total-value>CHF 0.00</dd>
+          </div>
+        </dl>
+
+        <div class="summary__colors" id="summary-colors"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================ formulario -->
+<dialog id="ficha-dialog" data-color="branco">
+  <form method="dialog" novalidate>
+    <div class="dialog__head">
+      <h2 data-dialog-title>Nova ficha</h2>
+    </div>
+
+    <div class="dialog__body">
+      <ul class="form-errors" data-form-errors hidden></ul>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="f-color">Cor da ficha</label>
+          <select id="f-color" name="color"></select>
+          <span class="field__hint" data-color-scope></span>
+        </div>
+
+        <div class="field">
+          <label for="f-product">Produto</label>
+          <input type="text" id="f-product" name="product" placeholder="ex. Vinho tinto 75cl" required>
+        </div>
+
+        <div class="field">
+          <label for="f-price">Preco em francos (CHF)</label>
+          <input type="number" id="f-price" name="price" min="0" step="0.05" inputmode="decimal" placeholder="0.00">
+        </div>
+
+        <div class="field">
+          <label for="f-quantity">Quantidade a imprimir</label>
+          <input type="number" id="f-quantity" name="quantity" min="0" step="10" inputmode="numeric" placeholder="0">
+        </div>
+
+        <div class="field field--wide">
+          <label for="f-design">Design — nome ou referencia do ficheiro grafico</label>
+          <div class="field__row">
+            <input type="text" id="f-design" name="design" placeholder="ex. WF26-VER-01_vinho-tinto-75cl">
+            <button type="button" class="btn" data-suggest-design>Sugerir</button>
+          </div>
+          <span class="field__hint">Se ficar vazio, e gerada uma referencia automatica.</span>
+        </div>
+
+        <div class="field">
+          <label for="f-code">Codigo interno (opcional)</label>
+          <input type="text" id="f-code" name="code" placeholder="ex. BAR-12">
+        </div>
+
+        <div class="field">
+          <label for="f-notes">Observacoes</label>
+          <input type="text" id="f-notes" name="notes" placeholder="ex. imprimir em papel mais grosso">
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog__foot">
+      <button type="button" class="btn btn--ghost" data-cancel>Cancelar</button>
+      <button type="submit" class="btn btn--primary"><span data-submit-label>Adicionar ficha</span></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============================================================ confirmacao -->
+<dialog id="confirm-dialog">
+  <div class="dialog__head"><h2 data-confirm-title>Confirmar</h2></div>
+  <div class="dialog__body"><p data-confirm-message></p></div>
+  <div class="dialog__foot">
+    <form method="dialog"><button type="submit" class="btn btn--ghost">Cancelar</button></form>
+    <button type="button" class="btn btn--primary" data-confirm-ok>Confirmar</button>
+  </div>
+</dialog>
+
+<!-- ============================================================ lista grafica -->
+<div class="print-view" id="print-view" hidden>
+  <div class="print-toolbar">
+    <h2>Lista final para a grafica</h2>
+    <button type="button" class="btn btn--primary" data-print-now>Imprimir / Guardar PDF</button>
+    <button type="button" class="btn" data-print-close>Fechar</button>
+  </div>
+  <div class="print-sheet" id="print-root"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Nucleo -->
+<script src="js/core/config.js"></script>
+<script src="js/core/model.js"></script>
+<script src="js/core/seed.js"></script>
+<script src="js/core/store.js"></script>
+<script src="js/core/utils.js"></script>
+<script src="js/core/ui.js"></script>
+<!-- Exportacoes -->
+<script src="js/export/zip.js"></script>
+<script src="js/export/xlsx.js"></script>
+<script src="js/export/csv.js"></script>
+<script src="js/export/print.js"></script>
+<script src="js/export/backup.js"></script>
+<!-- Interface -->
+<script src="js/features/table.js"></script>
+<script src="js/features/summary.js"></script>
+<script src="js/features/toolbar.js"></script>
+<script src="js/features/form.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
