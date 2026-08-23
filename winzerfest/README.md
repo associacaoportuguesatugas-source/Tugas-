@@ -8,7 +8,18 @@ JavaScript simples. Basta abrir o ficheiro `index.html` num browser
 (Chrome, Edge, Firefox ou Safari).
 
 ```
-winzerfest/index.html   ← abrir este ficheiro
+winzerfest/index.html                  ← abrir este ficheiro
+winzerfest/winzerfest-app-completo.html ← ou este: a app inteira num só ficheiro
+```
+
+O `winzerfest-app-completo.html` é a mesma aplicação, com o CSS e o JavaScript
+já incorporados — serve para enviar por e-mail, guardar numa pen ou abrir em
+qualquer computador sem copiar a pasta toda. É gerado a partir dos ficheiros de
+trabalho com:
+
+```
+cd winzerfest
+node build-ficheiro-unico.js
 ```
 
 Os dados ficam guardados automaticamente no próprio browser (localStorage).
@@ -91,6 +102,8 @@ gestão completa da Winzerfest: bares, turnos, stock, contas).
 ```
 winzerfest/
 ├── index.html              Estrutura da página (sem lógica)
+├── build-ficheiro-unico.js Gera a versão de ficheiro único
+├── winzerfest-app-completo.html  Versão de ficheiro único (gerada)
 ├── css/
 │   ├── base.css            Tokens de design (cores, espaços, temas) e layout
 │   ├── components.css      Botões, filtros, tabela, resumo, diálogos, avisos

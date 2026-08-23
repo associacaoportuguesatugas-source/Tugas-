@@ -41,6 +41,12 @@
 
     /** Descarrega um Blob com o nome indicado. */
     download: function (blob, filename) {
+      // Quando a app corre dentro de uma pagina publicada (link partilhado),
+      // o browser bloqueia downloads directos: pede-se ao anfitriao.
+      if (window.claude && typeof window.claude.use === 'function') {
+        utils.saveViaHost(blob, filename);
+        return;
+      }
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
@@ -49,6 +55,26 @@
       a.click();
       document.body.removeChild(a);
       setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    },
+
+    /** Guarda o ficheiro atraves do anfitriao (versao publicada online). */
+    saveViaHost: function (blob, filename) {
+      var ext = (filename.split('.').pop() || '').toUpperCase();
+      Promise.resolve(window.claude.use('downloads')).then(function (downloads) {
+        if (!downloads) return Promise.reject({ code: 'unavailable' });
+        return blob.arrayBuffer().then(function (buffer) {
+          return downloads.save({ filename: filename, data: buffer });
+        });
+      }).catch(function (error) {
+        var code = error && error.code;
+        if (code === 'declined') return;
+        if (code === 'rejected_extension' || code === 'extension_not_enabled') {
+          WF.ui.toast('Neste link nao e possivel guardar ficheiros ' + ext +
+            '. Abra a aplicacao no computador (winzerfest/index.html) para exportar em ' + ext + '.', { type: 'error' });
+        } else {
+          WF.ui.toast('Nao foi possivel guardar o ficheiro neste ambiente. Use a aplicacao no computador.', { type: 'error' });
+        }
+      });
     },
 
     /** Nome de ficheiro para exportacoes. */

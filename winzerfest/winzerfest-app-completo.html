@@ -1,0 +1,2703 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winzerfest — Gestor de Fichas</title>
+<meta name="description" content="Aplicacao local para criar e organizar as fichas da Winzerfest antes do envio para a grafica.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237A1E2B'/><text y='68' x='50' text-anchor='middle' font-size='54' font-family='system-ui' fill='%23fff'>W</text></svg>">
+<style>
+/* ===== css/base.css ===== */
+/* ==========================================================================
+   base.css — Tokens de design, reset e estrutura da pagina.
+   Tema claro por defeito, tema escuro opcional (data-theme="dark").
+   ========================================================================== */
+
+:root {
+  /* Cores neutras (tons suaves) */
+  --bg: #F5F7FA;
+  --surface: #FFFFFF;
+  --surface-2: #FBFCFE;
+  --border: #E3E8EF;
+  --border-strong: #CDD5E0;
+  --text: #1A2233;
+  --text-soft: #5A6579;
+  --text-faint: #8A94A6;
+
+  /* Cor de marca */
+  --brand: #7A1E2B;
+  --brand-soft: #F6EAEC;
+  --brand-ink: #FFFFFF;
+
+  /* Estados */
+  --ok: #1F7A48;
+  --ok-soft: #E8F5EE;
+  --danger: #B3261E;
+  --danger-soft: #FBEAE9;
+
+  /* Formas */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(20, 30, 50, .06);
+  --shadow: 0 4px 16px rgba(20, 30, 50, .08);
+  --shadow-lg: 0 18px 48px rgba(20, 30, 50, .18);
+
+  /* Espacos */
+  --gap: 16px;
+  --pad: 20px;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+[data-theme="dark"] {
+  --bg: #0F131C;
+  --surface: #161C28;
+  --surface-2: #1B2230;
+  --border: #26303F;
+  --border-strong: #354154;
+  --text: #E8ECF3;
+  --text-soft: #A7B1C2;
+  --text-faint: #7C879A;
+  --brand: #C7566A;
+  --brand-soft: #2A1A20;
+  --brand-ink: #FFFFFF;
+  --ok: #4ECB8B;
+  --ok-soft: #14261D;
+  --danger: #F08076;
+  --danger-soft: #2A1614;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow: 0 4px 16px rgba(0, 0, 0, .45);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .6);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.25; font-weight: 650; letter-spacing: -.01em; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* ------------------------------------------------------------------ layout */
+.app {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 clamp(12px, 3vw, 32px) 64px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap);
+  padding: 16px 0;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand { display: flex; align-items: center; gap: 12px; margin-right: auto; }
+
+.brand__mark {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(140deg, var(--brand), color-mix(in srgb, var(--brand) 60%, #E2A03F));
+  color: var(--brand-ink);
+  font-weight: 700;
+  letter-spacing: .02em;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand__title { font-size: 1.05rem; }
+.brand__subtitle { margin: 0; font-size: .8rem; color: var(--text-soft); }
+
+.header-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.section { margin-top: 22px; }
+.section__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+  margin-bottom: 12px;
+}
+.section__head h2 { font-size: 1.05rem; }
+.section__hint { margin: 0; color: var(--text-soft); font-size: .85rem; }
+
+.save-status { font-size: .78rem; color: var(--text-faint); }
+.save-status--error { color: var(--danger); font-weight: 600; }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+body.is-previewing { overflow: hidden; }
+
+/* ===== css/components.css ===== */
+/* ==========================================================================
+   components.css — Botoes, filtros, tabela, resumo, dialogos e avisos.
+   ========================================================================== */
+
+/* Cores das linhas por cor de ficha (suaves, legiveis nos dois temas) */
+:root {
+  --row-branco: #F8FAFC;  --line-branco: #94A3B8;
+  --row-verde:  #EEF9F0;  --line-verde:  #2FA84F;
+  --row-laranja:#FEF4E9;  --line-laranja:#F08A24;
+  --row-azul:   #EEF4FD;  --line-azul:   #2F76D6;
+  --row-amarelo:#FEFAEA;  --line-amarelo:#D9A400;
+}
+[data-theme="dark"] {
+  --row-branco: #1B2230;
+  --row-verde:  #16281C;
+  --row-laranja:#2E2113;
+  --row-azul:   #152238;
+  --row-amarelo:#2C2513;
+}
+
+/* ------------------------------------------------------------------ botoes */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 15px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 550;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .08s ease;
+}
+.btn:hover { background: var(--surface-2); border-color: var(--text-faint); }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.btn--primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-ink);
+}
+.btn--primary:hover { background: color-mix(in srgb, var(--brand) 88%, #000); border-color: transparent; }
+
+.btn--ghost { background: transparent; border-color: transparent; color: var(--text-soft); }
+.btn--ghost:hover { background: var(--surface-2); color: var(--text); }
+
+.btn--icon { padding: 9px 12px; }
+
+.icon-btn {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+}
+.icon-btn:hover { background: var(--surface-2); border-color: var(--border); color: var(--text); }
+.icon-btn--danger:hover { background: var(--danger-soft); border-color: transparent; color: var(--danger); }
+
+/* ------------------------------------------------------------------ menu de exportacao */
+.menu-wrap { position: relative; }
+.menu {
+  position: absolute; right: 0; top: calc(100% + 8px);
+  min-width: 250px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: 40;
+}
+.menu__item {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 9px 10px;
+  border: 0; border-radius: var(--radius-sm);
+  background: transparent; text-align: left; cursor: pointer;
+}
+.menu__item:hover { background: var(--surface-2); }
+.menu__item small { display: block; color: var(--text-faint); font-size: .75rem; }
+.menu__tag {
+  min-width: 44px; padding: 3px 7px;
+  border-radius: 6px;
+  background: var(--brand-soft); color: var(--brand);
+  font-size: .68rem; font-weight: 700; text-align: center; letter-spacing: .04em;
+}
+.menu__sep { height: 1px; margin: 6px 4px; background: var(--border); }
+
+/* ------------------------------------------------------------------ barra de ferramentas */
+.toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  padding: 14px var(--pad);
+}
+.search {
+  position: relative;
+  flex: 1 1 260px;
+  min-width: 200px;
+}
+.search input {
+  width: 100%;
+  padding: 10px 38px 10px 36px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+.search input:focus { outline: 2px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 0; border-color: var(--brand); }
+.search__icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-faint); }
+.search__clear {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; border: 0; border-radius: 50%;
+  background: var(--border); color: var(--text-soft); cursor: pointer; line-height: 1;
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: .88rem;
+  transition: border-color .15s ease, background .15s ease;
+}
+.chip:hover { background: var(--surface-2); }
+.chip.is-active {
+  border-color: color-mix(in srgb, var(--chip, var(--brand)) 70%, var(--text-faint));
+  background: color-mix(in srgb, var(--chip, var(--brand)) 16%, var(--surface));
+  font-weight: 600;
+}
+.chip__count { color: var(--text-faint); font-variant-numeric: tabular-nums; font-size: .78rem; }
+
+.color-chip {
+  width: 13px; height: 13px; border-radius: 4px;
+  background: var(--chip, #ccc);
+  border: 1px solid rgba(0, 0, 0, .18);
+  flex: none;
+}
+
+.sorter { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.sorter label { color: var(--text-soft); font-size: .85rem; }
+.sorter select {
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+#sort-dir { width: 34px; height: 34px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); cursor: pointer; }
+
+.toolbar__meta {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 var(--pad) 12px;
+  color: var(--text-soft); font-size: .82rem;
+}
+
+/* ------------------------------------------------------------------ tabela */
+.table-wrap { overflow-x: auto; border-top: 1px solid var(--border); }
+
+.fichas {
+  width: 100%;
+  min-width: 1080px;
+  border-collapse: collapse;
+}
+.fichas th, .fichas td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+.fichas thead th {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--surface-2);
+  color: var(--text-soft);
+  font-size: .76rem; font-weight: 650;
+  text-transform: uppercase; letter-spacing: .05em;
+  white-space: nowrap;
+}
+.th-sort {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 0; background: none; padding: 0;
+  color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit;
+  cursor: pointer;
+}
+.th-sort:hover { color: var(--text); }
+.th-sort__icon::after { content: '↕'; opacity: .35; }
+.th-sort.is-active { color: var(--brand); }
+.th-sort.is-active[data-dir="asc"] .th-sort__icon::after { content: '↑'; opacity: 1; }
+.th-sort.is-active[data-dir="desc"] .th-sort__icon::after { content: '↓'; opacity: 1; }
+
+.ficha-row { transition: background .12s ease; }
+.ficha-row[data-color="branco"]  { background: var(--row-branco);  box-shadow: inset 4px 0 0 var(--line-branco); }
+.ficha-row[data-color="verde"]   { background: var(--row-verde);   box-shadow: inset 4px 0 0 var(--line-verde); }
+.ficha-row[data-color="laranja"] { background: var(--row-laranja); box-shadow: inset 4px 0 0 var(--line-laranja); }
+.ficha-row[data-color="azul"]    { background: var(--row-azul);    box-shadow: inset 4px 0 0 var(--line-azul); }
+.ficha-row[data-color="amarelo"] { background: var(--row-amarelo); box-shadow: inset 4px 0 0 var(--line-amarelo); }
+.ficha-row:hover { filter: brightness(.985); }
+[data-theme="dark"] .ficha-row:hover { filter: brightness(1.15); }
+
+.product-name { display: block; font-weight: 600; }
+
+.cell-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  transition: border-color .12s ease, background .12s ease;
+}
+.cell-input:hover { border-color: var(--border-strong); }
+.cell-input:focus { outline: none; border-color: var(--brand); background: var(--surface); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent); }
+.cell-input--num { max-width: 120px; text-align: right; font-variant-numeric: tabular-nums; }
+.cell-input--text { font-family: var(--mono); font-size: .82rem; }
+.cell-input--color { min-width: 104px; }
+
+.color-picker { display: inline-flex; align-items: center; gap: 8px; }
+.color-picker .color-dot {
+  width: 14px; height: 14px; border-radius: 4px;
+  background: var(--dot); border: 1px solid rgba(0, 0, 0, .2); flex: none;
+}
+
+.col-product { min-width: 195px; }
+.col-design { min-width: 195px; }
+.col-notes { min-width: 140px; }
+.col-code { min-width: 120px; }
+.col-num { text-align: right; }
+.col-total { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.col-actions { width: 1%; white-space: nowrap; }
+.row-actions { display: flex; gap: 2px; justify-content: flex-end; }
+
+.fichas tfoot th {
+  background: var(--surface-2);
+  border-top: 2px solid var(--border-strong);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.empty-state { padding: 48px 24px; text-align: center; color: var(--text-soft); }
+.empty-state__icon { font-size: 30px; opacity: .5; }
+
+/* ------------------------------------------------------------------ resumo */
+.summary { padding: var(--pad); }
+.summary__totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.stat {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.stat dt { color: var(--text-soft); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+.stat dd { margin: 4px 0 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.stat--highlight { background: var(--brand-soft); border-color: color-mix(in srgb, var(--brand) 30%, transparent); }
+.stat--highlight dd { color: var(--brand); }
+
+.summary__colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 12px;
+}
+.color-card {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.color-card[data-color="branco"]  { border-left: 4px solid var(--line-branco); }
+.color-card[data-color="verde"]   { border-left: 4px solid var(--line-verde); }
+.color-card[data-color="laranja"] { border-left: 4px solid var(--line-laranja); }
+.color-card[data-color="azul"]    { border-left: 4px solid var(--line-azul); }
+.color-card[data-color="amarelo"] { border-left: 4px solid var(--line-amarelo); }
+.color-card__head { display: flex; align-items: center; gap: 8px; }
+.color-card__head h3 { font-size: .95rem; }
+.color-card__scope { margin: 6px 0 12px; color: var(--text-faint); font-size: .76rem; min-height: 2.4em; }
+.color-card__stats { display: flex; gap: 14px; margin: 0; }
+.color-card__stats dt { color: var(--text-faint); font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; }
+.color-card__stats dd { margin: 2px 0 0; font-weight: 650; font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------------ dialogos */
+dialog {
+  width: min(660px, calc(100vw - 24px));
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+dialog::backdrop { background: rgba(12, 18, 30, .5); backdrop-filter: blur(2px); }
+
+.dialog__head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 18px var(--pad);
+  border-bottom: 1px solid var(--border);
+}
+.dialog__head::before {
+  content: ''; width: 10px; height: 26px; border-radius: 4px; background: var(--border-strong);
+}
+#ficha-dialog[data-color="branco"]  .dialog__head::before { background: var(--line-branco); }
+#ficha-dialog[data-color="verde"]   .dialog__head::before { background: var(--line-verde); }
+#ficha-dialog[data-color="laranja"] .dialog__head::before { background: var(--line-laranja); }
+#ficha-dialog[data-color="azul"]    .dialog__head::before { background: var(--line-azul); }
+#ficha-dialog[data-color="amarelo"] .dialog__head::before { background: var(--line-amarelo); }
+
+.dialog__body { padding: var(--pad); }
+.dialog__foot {
+  display: flex; justify-content: flex-end; gap: 8px;
+  padding: 14px var(--pad);
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field--wide { grid-column: 1 / -1; }
+.field label { font-size: .8rem; font-weight: 600; color: var(--text-soft); }
+.field input, .field select, .field textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
+}
+.field textarea { resize: vertical; min-height: 68px; }
+.field__hint { color: var(--text-faint); font-size: .74rem; }
+.field__row { display: flex; gap: 8px; }
+.field__row input { flex: 1; }
+
+.form-errors {
+  margin: 0 0 14px; padding: 10px 14px 10px 30px;
+  border-radius: var(--radius-sm);
+  background: var(--danger-soft); color: var(--danger);
+  font-size: .85rem;
+}
+
+/* ------------------------------------------------------------------ avisos */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 90;
+  display: none; align-items: center; gap: 14px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #1A2233; color: #fff;
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+}
+.toast.is-visible { display: flex; }
+.toast--success { background: #14512F; }
+.toast--error { background: #7A1E19; }
+.toast__action {
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: transparent; color: inherit; cursor: pointer;
+  font-size: .82rem;
+}
+.toast__action:hover { background: rgba(255, 255, 255, .14); }
+
+/* ------------------------------------------------------------------ responsivo */
+@media (max-width: 900px) {
+  .fichas { min-width: 0; }
+  .fichas thead, .fichas tfoot { display: none; }
+  .fichas, .fichas tbody, .fichas tr, .fichas td { display: block; width: 100%; }
+  .ficha-row {
+    margin: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .fichas td {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  }
+  .fichas td:last-child { border-bottom: 0; }
+  .fichas td::before {
+    content: attr(data-label);
+    color: var(--text-soft);
+    font-size: .74rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .cell-input--num { max-width: none; }
+  .col-num { text-align: left; }
+  .row-actions { justify-content: flex-start; }
+  .sorter { margin-left: 0; }
+  .field-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== css/print.css ===== */
+/* ==========================================================================
+   print.css — Lista final para a grafica (pre-visualizacao e impressao/PDF).
+   ========================================================================== */
+
+.print-view {
+  position: fixed; inset: 0; z-index: 80;
+  overflow: auto;
+  background: #F1F3F7;
+  padding: 0 0 60px;
+}
+
+.print-toolbar {
+  position: sticky; top: 0; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px clamp(12px, 4vw, 40px);
+  background: #FFFFFF;
+  border-bottom: 1px solid #E3E8EF;
+  color: #1A2233;
+}
+.print-toolbar h2 { font-size: .95rem; margin-right: auto; }
+
+/* A folha */
+.print-sheet {
+  width: min(1100px, calc(100% - 24px));
+  margin: 24px auto;
+  padding: 32px 34px 40px;
+  background: #FFFFFF;
+  color: #141A26;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(20, 30, 50, .12);
+}
+
+.print-head {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #141A26;
+}
+.print-head h1 { font-size: 1.35rem; }
+.print-meta { margin: 4px 0 0; color: #5A6579; font-size: .82rem; }
+.print-head__totals { text-align: right; font-size: .84rem; color: #5A6579; }
+.print-head__totals p { margin: 0; }
+.print-head__totals strong { color: #141A26; font-size: 1rem; }
+
+.print-section { margin-top: 26px; break-inside: avoid; }
+.print-section__title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1rem; margin-bottom: 8px;
+}
+.print-section__title small { color: #6B7688; font-weight: 400; font-size: .78rem; }
+.print-swatch {
+  width: 16px; height: 16px; border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, .25);
+  display: inline-block; flex: none;
+}
+.print-swatch--sm { width: 11px; height: 11px; margin-right: 6px; vertical-align: -1px; }
+
+.print-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.print-table th, .print-table td {
+  padding: 7px 9px;
+  border: 1px solid #D5DBE5;
+  text-align: left;
+}
+.print-table thead th { background: #EFF2F7; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; }
+.print-table tfoot th { background: #F7F9FC; }
+.print-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.print-table .mono { font-family: var(--mono); font-size: .78rem; }
+
+.print-empty { padding: 30px; text-align: center; color: #6B7688; }
+
+.print-foot {
+  display: flex; gap: 40px; margin-top: 46px;
+  font-size: .78rem; color: #5A6579;
+}
+.print-sign { flex: 1; }
+.print-sign span { display: block; border-top: 1px solid #98A2B3; margin-bottom: 5px; }
+
+/* ------------------------------------------------------------------ impressao */
+@media print {
+  @page { size: A4; margin: 12mm; }
+
+  body { background: #fff; }
+  .app, .toast, dialog, .print-toolbar { display: none !important; }
+
+  .print-view {
+    position: static; inset: auto;
+    overflow: visible; padding: 0; background: #fff;
+    display: block !important;
+  }
+  .print-view[hidden] { display: none !important; }
+
+  .print-sheet {
+    width: auto; margin: 0; padding: 0;
+    border-radius: 0; box-shadow: none;
+  }
+
+  .print-section { page-break-inside: avoid; }
+  .print-table thead { display: table-header-group; }
+
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="app">
+
+  <!-- ============================================================ cabecalho -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">WF</div>
+      <div>
+        <h1 class="brand__title">Winzerfest — Gestor de Fichas</h1>
+        <p class="brand__subtitle">Edicao <span id="app-edition">WF26</span> &middot; Associacao Portuguesa Tuga</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn--primary" id="btn-new">+ Nova ficha</button>
+
+      <div class="menu-wrap">
+        <button type="button" class="btn" id="btn-export" aria-haspopup="true" aria-expanded="false" aria-controls="export-menu">
+          Exportar &#9662;
+        </button>
+        <div class="menu" id="export-menu" hidden>
+          <button type="button" class="menu__item" data-export="xlsx">
+            <span class="menu__tag">XLSX</span>
+            <span>Excel<small>Tabela com cores e formulas</small></span>
+          </button>
+          <button type="button" class="menu__item" data-export="pdf">
+            <span class="menu__tag">PDF</span>
+            <span>PDF para a grafica<small>Abre a impressao — "Guardar como PDF"</small></span>
+          </button>
+          <button type="button" class="menu__item" data-export="csv">
+            <span class="menu__tag">CSV</span>
+            <span>CSV<small>Separador ";" — abre no Excel</small></span>
+          </button>
+          <div class="menu__sep"></div>
+          <button type="button" class="menu__item" data-export="json">
+            <span class="menu__tag">JSON</span>
+            <span>Copia de seguranca<small>Guardar / transportar os dados</small></span>
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="btn" id="btn-print-view">Lista para a grafica</button>
+      <button type="button" class="btn btn--ghost" id="btn-import">Importar</button>
+      <button type="button" class="btn btn--ghost" id="btn-reset" title="Repor o catalogo inicial da Winzerfest">Repor</button>
+      <button type="button" class="btn btn--ghost btn--icon" id="btn-theme" title="Mudar tema">☾</button>
+      <input type="file" id="import-file" accept=".json,.csv,text/csv,application/json" class="visually-hidden">
+    </div>
+  </header>
+
+  <!-- ============================================================ tabela -->
+  <main>
+    <section class="section" aria-labelledby="fichas-title">
+      <div class="section__head">
+        <h2 id="fichas-title">Fichas</h2>
+        <p class="section__hint">Edite precos, quantidades, cor e design directamente na tabela — as alteracoes sao guardadas automaticamente.</p>
+      </div>
+
+      <div class="panel">
+        <div class="toolbar">
+          <div class="search">
+            <span class="search__icon" aria-hidden="true">&#128269;</span>
+            <label class="visually-hidden" for="search">Pesquisar fichas</label>
+            <input type="search" id="search" placeholder="Pesquisar produto, design, codigo ou observacoes…  (tecla /)">
+            <button type="button" class="search__clear" id="search-clear" title="Limpar pesquisa" hidden>&times;</button>
+          </div>
+
+          <div class="filters" id="color-filters" role="group" aria-label="Filtrar por cor da ficha"></div>
+
+          <div class="sorter">
+            <label for="sort-select">Ordenar por</label>
+            <select id="sort-select">
+              <option value="color">Cor da ficha</option>
+              <option value="product">Produto</option>
+              <option value="price">Preco</option>
+              <option value="quantity">Quantidade</option>
+              <option value="design">Design</option>
+              <option value="total">Valor total</option>
+            </select>
+            <button type="button" id="sort-dir" title="Inverter ordem">↑</button>
+          </div>
+        </div>
+
+        <div class="toolbar__meta">
+          <span id="result-count">—</span>
+          <span aria-hidden="true">&middot;</span>
+          <span class="save-status" id="save-status">Guardado automaticamente</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="fichas">
+            <thead><tr id="fichas-head-row"></tr></thead>
+            <tbody id="fichas-body"></tbody>
+            <tfoot id="fichas-foot"></tfoot>
+          </table>
+        </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="empty-state__icon" aria-hidden="true">&#128203;</p>
+          <p data-empty-text>Ainda nao existem fichas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ resumo -->
+    <section class="section" id="summary" aria-labelledby="summary-title">
+      <div class="section__head">
+        <h2 id="summary-title">Resumo automatico</h2>
+        <p class="section__hint" data-summary-scope>Valores de todas as fichas</p>
+      </div>
+
+      <div class="panel summary">
+        <dl class="summary__totals">
+          <div class="stat">
+            <dt>Total de produtos</dt>
+            <dd data-total-products>0</dd>
+          </div>
+          <div class="stat">
+            <dt>Total de fichas a imprimir</dt>
+            <dd data-total-quantity>0</dd>
+          </div>
+          <div class="stat stat--highlight">
+            <dt>Valor total previsto</dt>
+            <dd data-total-value>CHF 0.00</dd>
+          </div>
+        </dl>
+
+        <div class="summary__colors" id="summary-colors"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================ formulario -->
+<dialog id="ficha-dialog" data-color="branco">
+  <form method="dialog" novalidate>
+    <div class="dialog__head">
+      <h2 data-dialog-title>Nova ficha</h2>
+    </div>
+
+    <div class="dialog__body">
+      <ul class="form-errors" data-form-errors hidden></ul>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="f-color">Cor da ficha</label>
+          <select id="f-color" name="color"></select>
+          <span class="field__hint" data-color-scope></span>
+        </div>
+
+        <div class="field">
+          <label for="f-product">Produto</label>
+          <input type="text" id="f-product" name="product" placeholder="ex. Vinho tinto 75cl" required>
+        </div>
+
+        <div class="field">
+          <label for="f-price">Preco em francos (CHF)</label>
+          <input type="number" id="f-price" name="price" min="0" step="0.05" inputmode="decimal" placeholder="0.00">
+        </div>
+
+        <div class="field">
+          <label for="f-quantity">Quantidade a imprimir</label>
+          <input type="number" id="f-quantity" name="quantity" min="0" step="10" inputmode="numeric" placeholder="0">
+        </div>
+
+        <div class="field field--wide">
+          <label for="f-design">Design — nome ou referencia do ficheiro grafico</label>
+          <div class="field__row">
+            <input type="text" id="f-design" name="design" placeholder="ex. WF26-VER-01_vinho-tinto-75cl">
+            <button type="button" class="btn" data-suggest-design>Sugerir</button>
+          </div>
+          <span class="field__hint">Se ficar vazio, e gerada uma referencia automatica.</span>
+        </div>
+
+        <div class="field">
+          <label for="f-code">Codigo interno (opcional)</label>
+          <input type="text" id="f-code" name="code" placeholder="ex. BAR-12">
+        </div>
+
+        <div class="field">
+          <label for="f-notes">Observacoes</label>
+          <input type="text" id="f-notes" name="notes" placeholder="ex. imprimir em papel mais grosso">
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog__foot">
+      <button type="button" class="btn btn--ghost" data-cancel>Cancelar</button>
+      <button type="submit" class="btn btn--primary"><span data-submit-label>Adicionar ficha</span></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============================================================ confirmacao -->
+<dialog id="confirm-dialog">
+  <div class="dialog__head"><h2 data-confirm-title>Confirmar</h2></div>
+  <div class="dialog__body"><p data-confirm-message></p></div>
+  <div class="dialog__foot">
+    <form method="dialog"><button type="submit" class="btn btn--ghost">Cancelar</button></form>
+    <button type="button" class="btn btn--primary" data-confirm-ok>Confirmar</button>
+  </div>
+</dialog>
+
+<!-- ============================================================ lista grafica -->
+<div class="print-view" id="print-view" hidden>
+  <div class="print-toolbar">
+    <h2>Lista final para a grafica</h2>
+    <button type="button" class="btn btn--primary" data-print-now>Imprimir / Guardar PDF</button>
+    <button type="button" class="btn" data-print-close>Fechar</button>
+  </div>
+  <div class="print-sheet" id="print-root"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===== js/core/config.js ===== */
+/**
+ * Winzerfest — Gestor de Fichas
+ * config.js — Configuracao central da aplicacao.
+ *
+ * Tudo o que e "dados de negocio" (cores, categorias, prefixos de design)
+ * vive aqui, para que uma futura expansao (novos eventos, novas cores,
+ * novos modulos da Winzerfest) nao obrigue a mexer na logica.
+ */
+(function (WF) {
+  'use strict';
+
+  WF.config = {
+    appName: 'Winzerfest — Gestor de Fichas',
+    edition: 'WF26',
+    currency: 'CHF',
+    storageKey: 'winzerfest.fichas.v1',
+    storageMetaKey: 'winzerfest.meta.v1',
+
+    /**
+     * Cores das fichas.
+     *  key      -> identificador interno (nunca muda)
+     *  label    -> nome apresentado
+     *  scope    -> que produtos pertencem a esta cor
+     *  slug     -> usado nas referencias de design (WF26-BRA-01)
+     *  hex      -> cor "real" da ficha (referencia para a grafica)
+     *  accent   -> cor forte usada em badges e bordas
+     *  tint     -> fundo suave da linha na tabela
+     *  tintDark -> fundo suave da linha em modo escuro
+     *  ink      -> cor de texto legivel sobre o accent
+     */
+    colors: [
+      {
+        key: 'branco', label: 'Branco', slug: 'BRA',
+        scope: 'Cerveja, refrigerantes ou sumos e agua',
+        hex: '#FFFFFF', accent: '#94A3B8', tint: '#F8FAFC', tintDark: '#1B2230', ink: '#0F172A'
+      },
+      {
+        key: 'verde', label: 'Verde', slug: 'VER',
+        scope: 'Vinhos tinto e branco (75cl, 50cl, 1dl) e vinhos portugueses',
+        hex: '#2FA84F', accent: '#2FA84F', tint: '#EEF9F0', tintDark: '#16281C', ink: '#FFFFFF'
+      },
+      {
+        key: 'laranja', label: 'Laranja', slug: 'LAR',
+        scope: 'Comida: sandes de porco no espeto, frango, sardinha, tapas',
+        hex: '#F08A24', accent: '#F08A24', tint: '#FEF4E9', tintDark: '#2E2113', ink: '#3A2206'
+      },
+      {
+        key: 'azul', label: 'Azul', slug: 'AZU',
+        scope: 'Drinks, caipirinha e cafe',
+        hex: '#2F76D6', accent: '#2F76D6', tint: '#EEF4FD', tintDark: '#152238', ink: '#FFFFFF'
+      },
+      {
+        key: 'amarelo', label: 'Amarelo', slug: 'AMA',
+        scope: 'Reservado — pronto para novos produtos',
+        hex: '#F2C230', accent: '#D9A400', tint: '#FEFAEA', tintDark: '#2C2513', ink: '#3A2E03'
+      }
+    ]
+  };
+
+  /** Devolve a definicao de uma cor (com fallback seguro). */
+  WF.config.color = function (key) {
+    return WF.config.colors.filter(function (c) { return c.key === key; })[0] || WF.config.colors[0];
+  };
+
+  /** Lista de chaves de cor, pela ordem oficial de apresentacao. */
+  WF.config.colorKeys = WF.config.colors.map(function (c) { return c.key; });
+
+})(window.WF = window.WF || {});
+
+/* ===== js/core/model.js ===== */
+/**
+ * model.js — Esquema de uma ficha, normalizacao e validacao.
+ *
+ * Uma "ficha" e o cartao/senha que sera impresso pela grafica.
+ * Campos: cor, produto, preco (CHF), quantidade a imprimir, design,
+ * codigo interno (opcional) e observacoes.
+ */
+(function (WF) {
+  'use strict';
+
+  var model = {};
+
+  model.fields = ['id', 'color', 'product', 'price', 'quantity', 'design', 'code', 'notes', 'createdAt', 'updatedAt'];
+
+  model.newId = function () {
+    return 'f_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
+  };
+
+  /** Converte qualquer entrada (texto de formulario, JSON importado) numa ficha valida. */
+  model.normalize = function (raw) {
+    raw = raw || {};
+    var color = String(raw.color || '').toLowerCase();
+    if (WF.config.colorKeys.indexOf(color) === -1) color = WF.config.colorKeys[0];
+
+    var now = new Date().toISOString();
+    return {
+      id: raw.id || model.newId(),
+      color: color,
+      product: String(raw.product == null ? '' : raw.product).trim(),
+      price: model.toPrice(raw.price),
+      quantity: model.toQuantity(raw.quantity),
+      design: String(raw.design == null ? '' : raw.design).trim(),
+      code: String(raw.code == null ? '' : raw.code).trim(),
+      notes: String(raw.notes == null ? '' : raw.notes).trim(),
+      createdAt: raw.createdAt || now,
+      updatedAt: raw.updatedAt || now
+    };
+  };
+
+  /** Aceita "12,50", "12.50", " 12 " e devolve um numero com 2 casas. */
+  model.toPrice = function (value) {
+    if (typeof value === 'number' && isFinite(value)) return Math.round(value * 100) / 100;
+    var n = parseFloat(String(value == null ? '' : value).replace(/\s/g, '').replace(',', '.'));
+    if (!isFinite(n) || n < 0) return 0;
+    return Math.round(n * 100) / 100;
+  };
+
+  model.toQuantity = function (value) {
+    var n = parseInt(String(value == null ? '' : value).replace(/[^\d-]/g, ''), 10);
+    if (!isFinite(n) || n < 0) return 0;
+    return n;
+  };
+
+  /** Devolve uma lista de erros (vazia = ficha valida). */
+  model.validate = function (ficha) {
+    var errors = [];
+    if (!ficha.product) errors.push('O nome do produto e obrigatorio.');
+    if (WF.config.colorKeys.indexOf(ficha.color) === -1) errors.push('Cor de ficha invalida.');
+    if (ficha.price < 0) errors.push('O preco nao pode ser negativo.');
+    if (ficha.quantity < 0) errors.push('A quantidade nao pode ser negativa.');
+    return errors;
+  };
+
+  /**
+   * Sugere a proxima referencia de design para uma cor.
+   * Formato: WF26-VER-03_vinho-tinto-75cl
+   */
+  model.suggestDesign = function (color, product, existing) {
+    var cfg = WF.config.color(color);
+    var prefix = WF.config.edition + '-' + cfg.slug + '-';
+    var max = 0;
+    (existing || []).forEach(function (f) {
+      var m = String(f.design || '').match(new RegExp('^' + prefix + '(\\d+)'));
+      if (m) max = Math.max(max, parseInt(m[1], 10));
+    });
+    var num = String(max + 1);
+    while (num.length < 2) num = '0' + num;
+    var slug = model.slugify(product) || 'ficha';
+    return prefix + num + '_' + slug;
+  };
+
+  model.slugify = function (text) {
+    var s = String(text == null ? '' : text);
+    if (s.normalize) s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  };
+
+  WF.model = model;
+})(window.WF = window.WF || {});
+
+/* ===== js/core/seed.js ===== */
+/**
+ * seed.js — Catalogo inicial das fichas da Winzerfest.
+ *
+ * Precos e quantidades ficam a zero de proposito: sao preenchidos pela
+ * organizacao. As referencias de design seguem o formato WF26-COR-NN_produto.
+ * O amarelo fica preparado (sem produtos) para adicionar mais tarde.
+ */
+(function (WF) {
+  'use strict';
+
+  WF.seed = function () {
+    var rows = [
+      // ---- BRANCO: bebidas sem alcool + cerveja -------------------------
+      ['branco', 'Cerveja'],
+      ['branco', 'Refrigerantes / Sumos'],
+      ['branco', 'Agua'],
+
+      // ---- VERDE: vinhos ------------------------------------------------
+      ['verde', 'Vinho tinto 75cl'],
+      ['verde', 'Vinho tinto 50cl'],
+      ['verde', 'Vinho tinto 1dl (copo)'],
+      ['verde', 'Vinho branco 75cl'],
+      ['verde', 'Vinho branco 50cl'],
+      ['verde', 'Vinho branco 1dl (copo)'],
+      ['verde', 'Vinho branco portugues 75cl'],
+      ['verde', 'Vinho branco portugues 1dl (copo)'],
+      ['verde', 'Vinho tinto portugues 75cl'],
+      ['verde', 'Vinho tinto portugues 1dl (copo)'],
+
+      // ---- LARANJA: comida ----------------------------------------------
+      ['laranja', 'Sandes de porco no espeto'],
+      ['laranja', 'Frango no churrasco'],
+      ['laranja', 'Sardinha na brasa'],
+      ['laranja', 'Tapas'],
+
+      // ---- AZUL: drinks e cafe -------------------------------------------
+      ['azul', 'Drinks'],
+      ['azul', 'Caipirinha'],
+      ['azul', 'Cafe']
+
+      // ---- AMARELO: reservado para novos produtos -------------------------
+    ];
+
+    var counters = {};
+    return rows.map(function (row) {
+      var color = row[0];
+      var product = row[1];
+      counters[color] = (counters[color] || 0) + 1;
+      var num = String(counters[color]);
+      while (num.length < 2) num = '0' + num;
+      var design = WF.config.edition + '-' + WF.config.color(color).slug + '-' + num + '_' + WF.model.slugify(product);
+      return WF.model.normalize({
+        color: color,
+        product: product,
+        price: 0,
+        quantity: 0,
+        design: design,
+        code: '',
+        notes: ''
+      });
+    });
+  };
+
+})(window.WF = window.WF || {});
+
+/* ===== js/core/store.js ===== */
+/**
+ * store.js — Estado da aplicacao, persistencia e regras de leitura.
+ *
+ * Padrao simples de "single source of truth" + subscritores:
+ * qualquer modulo altera os dados atraves do store e a interface
+ * volta a desenhar-se sozinha. Facilita trocar o localStorage por uma
+ * API/base de dados no futuro (basta reescrever load/save).
+ */
+(function (WF) {
+  'use strict';
+
+  var listeners = [];
+  var state = {
+    fichas: [],
+    view: { search: '', color: 'todas', sort: 'color', dir: 'asc' },
+    storageOk: true,
+    lastDeleted: null
+  };
+
+  var store = {};
+
+  // ---------------------------------------------------------------- persistencia
+  function save() {
+    try {
+      localStorage.setItem(WF.config.storageKey, JSON.stringify(state.fichas));
+      localStorage.setItem(WF.config.storageMetaKey, JSON.stringify({ savedAt: new Date().toISOString() }));
+      state.storageOk = true;
+    } catch (e) {
+      state.storageOk = false;
+    }
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(WF.config.storageKey);
+      if (raw === null) return null;
+      var parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return null;
+      return parsed.map(WF.model.normalize);
+    } catch (e) {
+      state.storageOk = false;
+      return null;
+    }
+  }
+
+  store.lastSavedAt = function () {
+    try {
+      var meta = JSON.parse(localStorage.getItem(WF.config.storageMetaKey) || '{}');
+      return meta.savedAt || null;
+    } catch (e) { return null; }
+  };
+
+  store.storageOk = function () { return state.storageOk; };
+
+  // ---------------------------------------------------------------- ciclo de vida
+  store.init = function () {
+    var loaded = load();
+    state.fichas = loaded && loaded.length ? loaded : WF.seed();
+    if (!loaded) save();
+    emit();
+  };
+
+  // ---------------------------------------------------------------- subscritores
+  function emit() { listeners.forEach(function (fn) { fn(state); }); }
+  store.subscribe = function (fn) { listeners.push(fn); return function () {
+    listeners = listeners.filter(function (l) { return l !== fn; });
+  }; };
+  store.emit = emit;
+
+  // ---------------------------------------------------------------- CRUD
+  store.all = function () { return state.fichas.slice(); };
+  store.get = function (id) {
+    return state.fichas.filter(function (f) { return f.id === id; })[0] || null;
+  };
+
+  store.add = function (data) {
+    var ficha = WF.model.normalize(data);
+    state.fichas.push(ficha);
+    save(); emit();
+    return ficha;
+  };
+
+  store.update = function (id, patch) {
+    var found = null;
+    state.fichas = state.fichas.map(function (f) {
+      if (f.id !== id) return f;
+      var merged = WF.model.normalize(Object.assign({}, f, patch, { id: f.id, createdAt: f.createdAt }));
+      merged.updatedAt = new Date().toISOString();
+      found = merged;
+      return merged;
+    });
+    save(); emit();
+    return found;
+  };
+
+  store.remove = function (id) {
+    var index = -1;
+    state.fichas.forEach(function (f, i) { if (f.id === id) index = i; });
+    if (index === -1) return null;
+    var removed = state.fichas[index];
+    state.lastDeleted = { ficha: removed, index: index };
+    state.fichas.splice(index, 1);
+    save(); emit();
+    return removed;
+  };
+
+  store.undoRemove = function () {
+    if (!state.lastDeleted) return null;
+    var entry = state.lastDeleted;
+    state.lastDeleted = null;
+    state.fichas.splice(Math.min(entry.index, state.fichas.length), 0, entry.ficha);
+    save(); emit();
+    return entry.ficha;
+  };
+
+  store.replaceAll = function (list) {
+    state.fichas = (list || []).map(WF.model.normalize);
+    save(); emit();
+  };
+
+  store.resetToSeed = function () {
+    state.fichas = WF.seed();
+    save(); emit();
+  };
+
+  // ---------------------------------------------------------------- vista (pesquisa/filtro/ordenacao)
+  store.view = function () { return Object.assign({}, state.view); };
+  store.setView = function (patch) {
+    Object.assign(state.view, patch || {});
+    emit();
+  };
+
+  function matches(ficha, term) {
+    if (!term) return true;
+    var haystack = [ficha.product, ficha.design, ficha.code, ficha.notes, WF.config.color(ficha.color).label]
+      .join(' ');
+    return WF.model.slugify(haystack).indexOf(WF.model.slugify(term)) !== -1;
+  }
+
+  /** Lista ja filtrada, pesquisada e ordenada — o que a tabela mostra. */
+  store.visible = function () {
+    var v = state.view;
+    var list = state.fichas.filter(function (f) {
+      if (v.color !== 'todas' && f.color !== v.color) return false;
+      return matches(f, v.search);
+    });
+
+    var dir = v.dir === 'desc' ? -1 : 1;
+    var order = WF.config.colorKeys;
+    list.sort(function (a, b) {
+      var r = 0;
+      switch (v.sort) {
+        case 'product': r = a.product.localeCompare(b.product, 'pt'); break;
+        case 'price': r = a.price - b.price; break;
+        case 'quantity': r = a.quantity - b.quantity; break;
+        case 'design': r = a.design.localeCompare(b.design, 'pt'); break;
+        case 'total': r = (a.price * a.quantity) - (b.price * b.quantity); break;
+        default: r = order.indexOf(a.color) - order.indexOf(b.color);
+      }
+      if (r === 0) r = order.indexOf(a.color) - order.indexOf(b.color);
+      if (r === 0) r = a.product.localeCompare(b.product, 'pt');
+      return r * dir;
+    });
+    return list;
+  };
+
+  /** Resumo automatico: produtos, fichas por cor, total de fichas e valor previsto. */
+  store.summary = function (list) {
+    list = list || state.fichas;
+    var byColor = {};
+    WF.config.colorKeys.forEach(function (key) {
+      byColor[key] = { products: 0, quantity: 0, value: 0 };
+    });
+    var total = { products: list.length, quantity: 0, value: 0 };
+
+    list.forEach(function (f) {
+      var bucket = byColor[f.color];
+      var value = f.price * f.quantity;
+      bucket.products += 1;
+      bucket.quantity += f.quantity;
+      bucket.value += value;
+      total.quantity += f.quantity;
+      total.value += value;
+    });
+
+    return { byColor: byColor, total: total };
+  };
+
+  WF.store = store;
+})(window.WF = window.WF || {});
+
+/* ===== js/core/utils.js ===== */
+/**
+ * utils.js — Formatacao e pequenos ajudantes de DOM.
+ */
+(function (WF) {
+  'use strict';
+
+  var nf = new Intl.NumberFormat('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  var nfInt = new Intl.NumberFormat('de-CH', { maximumFractionDigits: 0 });
+
+  var utils = {
+    /** 12.5 -> "12.50" */
+    money: function (n) { return nf.format(Number(n) || 0); },
+    /** 12.5 -> "CHF 12.50" */
+    moneyLabel: function (n) { return WF.config.currency + ' ' + nf.format(Number(n) || 0); },
+    int: function (n) { return nfInt.format(Number(n) || 0); },
+
+    date: function (iso) {
+      if (!iso) return '—';
+      var d = new Date(iso);
+      if (isNaN(d.getTime())) return '—';
+      return d.toLocaleDateString('pt-PT') + ' ' + d.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
+    },
+
+    /** Carimbo para nomes de ficheiro: 2026-08-23_1432 */
+    stamp: function () {
+      var d = new Date();
+      function p(n) { return (n < 10 ? '0' : '') + n; }
+      return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + '_' + p(d.getHours()) + p(d.getMinutes());
+    },
+
+    escapeHtml: function (text) {
+      return String(text == null ? '' : text)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    },
+
+    $: function (selector, root) { return (root || document).querySelector(selector); },
+    $$: function (selector, root) {
+      return Array.prototype.slice.call((root || document).querySelectorAll(selector));
+    },
+
+    /** Descarrega um Blob com o nome indicado. */
+    download: function (blob, filename) {
+      // Quando a app corre dentro de uma pagina publicada (link partilhado),
+      // o browser bloqueia downloads directos: pede-se ao anfitriao.
+      if (window.claude && typeof window.claude.use === 'function') {
+        utils.saveViaHost(blob, filename);
+        return;
+      }
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    },
+
+    /** Guarda o ficheiro atraves do anfitriao (versao publicada online). */
+    saveViaHost: function (blob, filename) {
+      var ext = (filename.split('.').pop() || '').toUpperCase();
+      Promise.resolve(window.claude.use('downloads')).then(function (downloads) {
+        if (!downloads) return Promise.reject({ code: 'unavailable' });
+        return blob.arrayBuffer().then(function (buffer) {
+          return downloads.save({ filename: filename, data: buffer });
+        });
+      }).catch(function (error) {
+        var code = error && error.code;
+        if (code === 'declined') return;
+        if (code === 'rejected_extension' || code === 'extension_not_enabled') {
+          WF.ui.toast('Neste link nao e possivel guardar ficheiros ' + ext +
+            '. Abra a aplicacao no computador (winzerfest/index.html) para exportar em ' + ext + '.', { type: 'error' });
+        } else {
+          WF.ui.toast('Nao foi possivel guardar o ficheiro neste ambiente. Use a aplicacao no computador.', { type: 'error' });
+        }
+      });
+    },
+
+    /** Nome de ficheiro para exportacoes. */
+    exportName: function (ext) {
+      return 'winzerfest_fichas_' + utils.stamp() + '.' + ext;
+    }
+  };
+
+  WF.utils = utils;
+})(window.WF = window.WF || {});
+
+/* ===== js/core/ui.js ===== */
+/**
+ * ui.js — Avisos (toasts) e caixa de confirmacao.
+ * Substitui alert()/confirm() do browser por elementos com o estilo da app.
+ */
+(function (WF) {
+  'use strict';
+
+  var ui = {};
+  var timer = null;
+
+  /**
+   * Mostra um aviso no canto inferior.
+   * @param {string} message
+   * @param {{type?:'info'|'success'|'error', action?:{label:string, onClick:Function}}} [options]
+   */
+  ui.toast = function (message, options) {
+    options = options || {};
+    var host = document.getElementById('toast');
+    if (!host) return;
+
+    host.className = 'toast toast--' + (options.type || 'info') + ' is-visible';
+    host.innerHTML = '<span class="toast__text"></span>';
+    host.querySelector('.toast__text').textContent = message;
+
+    if (options.action) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'toast__action';
+      btn.textContent = options.action.label;
+      btn.addEventListener('click', function () {
+        host.classList.remove('is-visible');
+        options.action.onClick();
+      });
+      host.appendChild(btn);
+    }
+
+    clearTimeout(timer);
+    timer = setTimeout(function () { host.classList.remove('is-visible'); }, options.action ? 9000 : 4000);
+  };
+
+  /**
+   * Confirmacao modal. Devolve uma Promise<boolean>.
+   */
+  ui.confirm = function (title, message, confirmLabel) {
+    return new Promise(function (resolve) {
+      var dialog = document.getElementById('confirm-dialog');
+      dialog.querySelector('[data-confirm-title]').textContent = title;
+      dialog.querySelector('[data-confirm-message]').textContent = message;
+      var ok = dialog.querySelector('[data-confirm-ok]');
+      ok.textContent = confirmLabel || 'Confirmar';
+
+      function close(result) {
+        dialog.removeEventListener('close', onClose);
+        ok.removeEventListener('click', onOk);
+        dialog.close();
+        resolve(result);
+      }
+      function onOk() { close(true); }
+      function onClose() { resolve(false); }
+
+      ok.addEventListener('click', onOk);
+      dialog.addEventListener('close', onClose, { once: true });
+      dialog.showModal();
+    });
+  };
+
+  WF.ui = ui;
+})(window.WF = window.WF || {});
+
+/* ===== js/export/zip.js ===== */
+/**
+ * zip.js — Escritor ZIP minimo (metodo "store", sem compressao).
+ *
+ * Serve para gerar ficheiros .xlsx reais sem depender de bibliotecas
+ * externas — a aplicacao continua a funcionar offline, sem internet.
+ */
+(function (WF) {
+  'use strict';
+
+  var crcTable = (function () {
+    var table = new Uint32Array(256);
+    for (var n = 0; n < 256; n++) {
+      var c = n;
+      for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      table[n] = c >>> 0;
+    }
+    return table;
+  })();
+
+  function crc32(bytes) {
+    var c = 0xFFFFFFFF;
+    for (var i = 0; i < bytes.length; i++) {
+      c = crcTable[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+    }
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+
+  function encode(text) { return new TextEncoder().encode(text); }
+
+  function dosDateTime(date) {
+    var time = (date.getHours() << 11) | (date.getMinutes() << 5) | (Math.floor(date.getSeconds() / 2));
+    var day = ((date.getFullYear() - 1980) << 9) | ((date.getMonth() + 1) << 5) | date.getDate();
+    return { time: time & 0xFFFF, date: day & 0xFFFF };
+  }
+
+  function writer(size) {
+    var buffer = new Uint8Array(size);
+    var offset = 0;
+    return {
+      buffer: buffer,
+      u16: function (v) { buffer[offset++] = v & 0xFF; buffer[offset++] = (v >>> 8) & 0xFF; },
+      u32: function (v) {
+        buffer[offset++] = v & 0xFF; buffer[offset++] = (v >>> 8) & 0xFF;
+        buffer[offset++] = (v >>> 16) & 0xFF; buffer[offset++] = (v >>> 24) & 0xFF;
+      },
+      bytes: function (b) { buffer.set(b, offset); offset += b.length; },
+      get offset() { return offset; }
+    };
+  }
+
+  /**
+   * @param {Array<{name:string, content:string}>} files
+   * @returns {Blob} ficheiro ZIP pronto a descarregar
+   */
+  WF.zip = function (files) {
+    var stamp = dosDateTime(new Date());
+    var entries = files.map(function (file) {
+      var nameBytes = encode(file.name);
+      var dataBytes = encode(file.content);
+      return { nameBytes: nameBytes, dataBytes: dataBytes, crc: crc32(dataBytes) };
+    });
+
+    var localSize = entries.reduce(function (sum, e) { return sum + 30 + e.nameBytes.length + e.dataBytes.length; }, 0);
+    var centralSize = entries.reduce(function (sum, e) { return sum + 46 + e.nameBytes.length; }, 0);
+    var out = writer(localSize + centralSize + 22);
+
+    entries.forEach(function (entry) {
+      entry.offset = out.offset;
+      out.u32(0x04034b50);        // assinatura do cabecalho local
+      out.u16(20);                // versao necessaria
+      out.u16(0x0800);            // flags: nomes em UTF-8
+      out.u16(0);                 // metodo: store
+      out.u16(stamp.time);
+      out.u16(stamp.date);
+      out.u32(entry.crc);
+      out.u32(entry.dataBytes.length);
+      out.u32(entry.dataBytes.length);
+      out.u16(entry.nameBytes.length);
+      out.u16(0);
+      out.bytes(entry.nameBytes);
+      out.bytes(entry.dataBytes);
+    });
+
+    var centralStart = out.offset;
+    entries.forEach(function (entry) {
+      out.u32(0x02014b50);        // assinatura do directorio central
+      out.u16(20); out.u16(20);
+      out.u16(0x0800);
+      out.u16(0);
+      out.u16(stamp.time);
+      out.u16(stamp.date);
+      out.u32(entry.crc);
+      out.u32(entry.dataBytes.length);
+      out.u32(entry.dataBytes.length);
+      out.u16(entry.nameBytes.length);
+      out.u16(0); out.u16(0); out.u16(0); out.u16(0);
+      out.u32(0);
+      out.u32(entry.offset);
+      out.bytes(entry.nameBytes);
+    });
+
+    var centralEnd = out.offset;
+    out.u32(0x06054b50);          // fim do directorio central
+    out.u16(0); out.u16(0);
+    out.u16(entries.length);
+    out.u16(entries.length);
+    out.u32(centralEnd - centralStart);
+    out.u32(centralStart);
+    out.u16(0);
+
+    return new Blob([out.buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  };
+
+})(window.WF = window.WF || {});
+
+/* ===== js/export/xlsx.js ===== */
+/**
+ * xlsx.js — Exportacao para Excel (.xlsx real, sem bibliotecas externas).
+ *
+ * Gera as partes XML minimas de um livro OOXML e empacota-as com WF.zip.
+ * As linhas ficam coloridas conforme a cor da ficha e o valor total e
+ * escrito como formula, para poder ser recalculado dentro do Excel.
+ */
+(function (WF) {
+  'use strict';
+
+  var HEADERS = [
+    'Cor da ficha', 'Produto', 'Preco (CHF)', 'Quantidade a imprimir',
+    'Design (ficheiro grafico)', 'Codigo interno', 'Observacoes', 'Valor total (CHF)'
+  ];
+
+  var WIDTHS = [16, 34, 14, 22, 34, 18, 40, 18];
+
+  function esc(text) {
+    return String(text == null ? '' : text)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function colLetter(index) {
+    var letter = '';
+    index += 1;
+    while (index > 0) {
+      var rest = (index - 1) % 26;
+      letter = String.fromCharCode(65 + rest) + letter;
+      index = Math.floor((index - 1) / 26);
+    }
+    return letter;
+  }
+
+  function cellText(ref, style, value) {
+    return '<c r="' + ref + '" s="' + style + '" t="inlineStr"><is><t xml:space="preserve">' + esc(value) + '</t></is></c>';
+  }
+  function cellNumber(ref, style, value) {
+    return '<c r="' + ref + '" s="' + style + '"><v>' + (Number(value) || 0) + '</v></c>';
+  }
+  function cellFormula(ref, style, formula, cached) {
+    return '<c r="' + ref + '" s="' + style + '"><f>' + formula + '</f><v>' + (Number(cached) || 0) + '</v></c>';
+  }
+
+  /**
+   * Indices de estilo:
+   *  0 normal | 1 cabecalho | 2 negrito | 3 dinheiro negrito | 4 inteiro negrito
+   *  por cor (i de 0..4): 5+i*3 texto, 6+i*3 dinheiro, 7+i*3 inteiro
+   */
+  function styleFor(colorKey, kind) {
+    var i = WF.config.colorKeys.indexOf(colorKey);
+    if (i === -1) i = 0;
+    var base = 5 + i * 3;
+    return kind === 'money' ? base + 1 : (kind === 'int' ? base + 2 : base);
+  }
+
+  function stylesXml() {
+    var fills = [
+      '<fill><patternFill patternType="none"/></fill>',
+      '<fill><patternFill patternType="gray125"/></fill>',
+      '<fill><patternFill patternType="solid"><fgColor rgb="FF1F2A44"/><bgColor indexed="64"/></patternFill></fill>'
+    ];
+    WF.config.colors.forEach(function (c) {
+      fills.push('<fill><patternFill patternType="solid"><fgColor rgb="FF' +
+        c.tint.replace('#', '').toUpperCase() + '"/><bgColor indexed="64"/></patternFill></fill>');
+    });
+
+    var xfs = [
+      '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>',
+      '<xf numFmtId="0" fontId="2" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>',
+      '<xf numFmtId="0" fontId="1" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1"/>',
+      '<xf numFmtId="4" fontId="1" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1" applyNumberFormat="1"/>',
+      '<xf numFmtId="3" fontId="1" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1" applyNumberFormat="1"/>'
+    ];
+    WF.config.colors.forEach(function (c, i) {
+      var fillId = 3 + i;
+      xfs.push('<xf numFmtId="0" fontId="0" fillId="' + fillId + '" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>');
+      xfs.push('<xf numFmtId="4" fontId="0" fillId="' + fillId + '" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyNumberFormat="1"/>');
+      xfs.push('<xf numFmtId="3" fontId="0" fillId="' + fillId + '" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyNumberFormat="1"/>');
+    });
+
+    return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+      '<fonts count="3">' +
+        '<font><sz val="11"/><name val="Calibri"/></font>' +
+        '<font><b/><sz val="11"/><name val="Calibri"/></font>' +
+        '<font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>' +
+      '</fonts>' +
+      '<fills count="' + fills.length + '">' + fills.join('') + '</fills>' +
+      '<borders count="2">' +
+        '<border><left/><right/><top/><bottom/><diagonal/></border>' +
+        '<border><left style="thin"><color rgb="FFD8DEE9"/></left><right style="thin"><color rgb="FFD8DEE9"/></right>' +
+        '<top style="thin"><color rgb="FFD8DEE9"/></top><bottom style="thin"><color rgb="FFD8DEE9"/></bottom><diagonal/></border>' +
+      '</borders>' +
+      '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>' +
+      '<cellXfs count="' + xfs.length + '">' + xfs.join('') + '</cellXfs>' +
+      '<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>' +
+      '</styleSheet>';
+  }
+
+  function sheetXml(list) {
+    var rows = [];
+    var r = 1;
+
+    rows.push('<row r="' + r + '" ht="28" customHeight="1">' + HEADERS.map(function (h, i) {
+      return cellText(colLetter(i) + r, 1, h);
+    }).join('') + '</row>');
+
+    list.forEach(function (f) {
+      r += 1;
+      var cfg = WF.config.color(f.color);
+      var text = styleFor(f.color, 'text');
+      rows.push('<row r="' + r + '">' +
+        cellText('A' + r, text, cfg.label) +
+        cellText('B' + r, text, f.product) +
+        cellNumber('C' + r, styleFor(f.color, 'money'), f.price) +
+        cellNumber('D' + r, styleFor(f.color, 'int'), f.quantity) +
+        cellText('E' + r, text, f.design) +
+        cellText('F' + r, text, f.code) +
+        cellText('G' + r, text, f.notes) +
+        cellFormula('H' + r, styleFor(f.color, 'money'), 'C' + r + '*D' + r, f.price * f.quantity) +
+      '</row>');
+    });
+
+    var data = WF.store.summary(list);
+    r += 2;
+    rows.push('<row r="' + r + '">' + cellText('A' + r, 2, 'RESUMO') + '</row>');
+    r += 1;
+    rows.push('<row r="' + r + '">' +
+      cellText('A' + r, 2, 'Cor') + cellText('B' + r, 2, 'Produtos') +
+      cellText('C' + r, 2, '') + cellText('D' + r, 2, 'Fichas a imprimir') +
+      cellText('E' + r, 2, '') + cellText('F' + r, 2, '') + cellText('G' + r, 2, '') +
+      cellText('H' + r, 2, 'Valor previsto (CHF)') + '</row>');
+
+    WF.config.colors.forEach(function (c) {
+      var bucket = data.byColor[c.key];
+      r += 1;
+      rows.push('<row r="' + r + '">' +
+        cellText('A' + r, styleFor(c.key, 'text'), c.label) +
+        cellNumber('B' + r, styleFor(c.key, 'int'), bucket.products) +
+        cellText('C' + r, styleFor(c.key, 'text'), '') +
+        cellNumber('D' + r, styleFor(c.key, 'int'), bucket.quantity) +
+        cellText('E' + r, styleFor(c.key, 'text'), '') +
+        cellText('F' + r, styleFor(c.key, 'text'), '') +
+        cellText('G' + r, styleFor(c.key, 'text'), '') +
+        cellNumber('H' + r, styleFor(c.key, 'money'), Math.round(bucket.value * 100) / 100) +
+      '</row>');
+    });
+
+    r += 1;
+    rows.push('<row r="' + r + '">' +
+      cellText('A' + r, 2, 'TOTAL') +
+      cellNumber('B' + r, 4, data.total.products) +
+      cellText('C' + r, 2, '') +
+      cellNumber('D' + r, 4, data.total.quantity) +
+      cellText('E' + r, 2, '') + cellText('F' + r, 2, '') + cellText('G' + r, 2, '') +
+      cellNumber('H' + r, 3, Math.round(data.total.value * 100) / 100) +
+    '</row>');
+
+    var cols = WIDTHS.map(function (w, i) {
+      return '<col min="' + (i + 1) + '" max="' + (i + 1) + '" width="' + w + '" customWidth="1"/>';
+    }).join('');
+
+    return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+      '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>' +
+      '<cols>' + cols + '</cols>' +
+      '<sheetData>' + rows.join('') + '</sheetData>' +
+      '</worksheet>';
+  }
+
+  /** Exporta a lista indicada (ou a vista actual) para .xlsx. */
+  WF.exportXlsx = function (list) {
+    list = list || WF.store.visible();
+
+    var files = [
+      {
+        name: '[Content_Types].xml',
+        content: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+          '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+          '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+          '<Default Extension="xml" ContentType="application/xml"/>' +
+          '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>' +
+          '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>' +
+          '<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>' +
+          '</Types>'
+      },
+      {
+        name: '_rels/.rels',
+        content: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+          '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+          '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>' +
+          '</Relationships>'
+      },
+      {
+        name: 'xl/workbook.xml',
+        content: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+          '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" ' +
+          'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">' +
+          '<sheets><sheet name="Fichas Winzerfest" sheetId="1" r:id="rId1"/></sheets></workbook>'
+      },
+      {
+        name: 'xl/_rels/workbook.xml.rels',
+        content: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+          '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+          '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>' +
+          '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' +
+          '</Relationships>'
+      },
+      { name: 'xl/styles.xml', content: stylesXml() },
+      { name: 'xl/worksheets/sheet1.xml', content: sheetXml(list) }
+    ];
+
+    WF.utils.download(WF.zip(files), WF.utils.exportName('xlsx'));
+  };
+
+})(window.WF = window.WF || {});
+
+/* ===== js/export/csv.js ===== */
+/**
+ * csv.js — Exportacao e importacao CSV.
+ *
+ * Separador ";" e BOM UTF-8: e o formato que o Excel em portugues/alemao
+ * abre correctamente com dois cliques.
+ */
+(function (WF) {
+  'use strict';
+
+  var HEADERS = ['Cor', 'Produto', 'Preco (CHF)', 'Quantidade', 'Design', 'Codigo interno', 'Observacoes', 'Valor total (CHF)'];
+  var SEP = ';';
+
+  function quote(value) {
+    var text = String(value == null ? '' : value);
+    return '"' + text.replace(/"/g, '""') + '"';
+  }
+
+  WF.exportCsv = function (list) {
+    list = list || WF.store.visible();
+    var lines = [HEADERS.map(quote).join(SEP)];
+
+    list.forEach(function (f) {
+      lines.push([
+        WF.config.color(f.color).label,
+        f.product,
+        f.price.toFixed(2),
+        f.quantity,
+        f.design,
+        f.code,
+        f.notes,
+        (f.price * f.quantity).toFixed(2)
+      ].map(quote).join(SEP));
+    });
+
+    var blob = new Blob(['﻿' + lines.join('\r\n') + '\r\n'], { type: 'text/csv;charset=utf-8' });
+    WF.utils.download(blob, WF.utils.exportName('csv'));
+  };
+
+  /** Le um CSV exportado por esta app (ou compativel) e devolve fichas. */
+  WF.parseCsv = function (text) {
+    var rows = [];
+    var row = [];
+    var field = '';
+    var inQuotes = false;
+    text = String(text).replace(/^﻿/, '');
+
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (inQuotes) {
+        if (ch === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; }
+          else inQuotes = false;
+        } else field += ch;
+      } else if (ch === '"') {
+        inQuotes = true;
+      } else if (ch === SEP || ch === ',') {
+        row.push(field); field = '';
+      } else if (ch === '\n') {
+        row.push(field); field = '';
+        rows.push(row); row = [];
+      } else if (ch !== '\r') {
+        field += ch;
+      }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+
+    rows = rows.filter(function (r) { return r.join('').trim() !== ''; });
+    if (!rows.length) return [];
+    rows.shift(); // cabecalho
+
+    var byLabel = {};
+    WF.config.colors.forEach(function (c) { byLabel[WF.model.slugify(c.label)] = c.key; });
+
+    return rows.map(function (r) {
+      return WF.model.normalize({
+        color: byLabel[WF.model.slugify(r[0])] || WF.config.colorKeys[0],
+        product: r[1], price: r[2], quantity: r[3],
+        design: r[4], code: r[5], notes: r[6]
+      });
+    }).filter(function (f) { return f.product; });
+  };
+
+})(window.WF = window.WF || {});
+
+/* ===== js/export/print.js ===== */
+/**
+ * print.js — Lista final para a grafica + exportacao PDF.
+ *
+ * O PDF e gerado pela propria impressao do browser ("Guardar como PDF"),
+ * o que mantem a app sem dependencias externas e com qualidade vectorial.
+ */
+(function (WF) {
+  'use strict';
+
+  var overlay, root;
+
+  function ensureRefs() {
+    overlay = overlay || document.getElementById('print-view');
+    root = root || document.getElementById('print-root');
+  }
+
+  function sectionHtml(color, list) {
+    var e = WF.utils.escapeHtml;
+    var rows = list.map(function (f) {
+      return '<tr>' +
+        '<td>' + e(f.product) + '</td>' +
+        '<td class="num">' + WF.utils.money(f.price) + '</td>' +
+        '<td class="num">' + WF.utils.int(f.quantity) + '</td>' +
+        '<td class="mono">' + e(f.design) + '</td>' +
+        '<td class="mono">' + (e(f.code) || '—') + '</td>' +
+        '<td>' + (e(f.notes) || '—') + '</td>' +
+      '</tr>';
+    }).join('');
+
+    var qty = list.reduce(function (sum, f) { return sum + f.quantity; }, 0);
+    var value = list.reduce(function (sum, f) { return sum + f.price * f.quantity; }, 0);
+
+    return '<section class="print-section">' +
+      '<h2 class="print-section__title">' +
+        '<span class="print-swatch" style="background:' + color.hex + '"></span>' +
+        'Ficha ' + e(color.label) +
+        '<small>' + e(color.scope) + '</small>' +
+      '</h2>' +
+      '<table class="print-table">' +
+        '<thead><tr>' +
+          '<th>Produto</th><th class="num">Preco (CHF)</th><th class="num">Qtd. a imprimir</th>' +
+          '<th>Design</th><th>Codigo</th><th>Observacoes</th>' +
+        '</tr></thead>' +
+        '<tbody>' + rows + '</tbody>' +
+        '<tfoot><tr>' +
+          '<th>' + list.length + ' produto(s)</th><th class="num">—</th>' +
+          '<th class="num">' + WF.utils.int(qty) + '</th>' +
+          '<th colspan="2">Valor previsto</th><th class="num">' + WF.utils.moneyLabel(value) + '</th>' +
+        '</tr></tfoot>' +
+      '</table>' +
+    '</section>';
+  }
+
+  function render(list) {
+    ensureRefs();
+    var data = WF.store.summary(list);
+    var e = WF.utils.escapeHtml;
+
+    var sections = WF.config.colors.map(function (c) {
+      var subset = list.filter(function (f) { return f.color === c.key; });
+      if (!subset.length) return '';
+      subset.sort(function (a, b) { return a.product.localeCompare(b.product, 'pt'); });
+      return sectionHtml(c, subset);
+    }).join('');
+
+    var summaryRows = WF.config.colors.map(function (c) {
+      var b = data.byColor[c.key];
+      return '<tr>' +
+        '<td><span class="print-swatch print-swatch--sm" style="background:' + c.hex + '"></span>' + e(c.label) + '</td>' +
+        '<td class="num">' + WF.utils.int(b.products) + '</td>' +
+        '<td class="num">' + WF.utils.int(b.quantity) + '</td>' +
+        '<td class="num">' + WF.utils.money(b.value) + '</td>' +
+      '</tr>';
+    }).join('');
+
+    root.innerHTML =
+      '<header class="print-head">' +
+        '<div>' +
+          '<h1>Winzerfest — Lista de fichas para a grafica</h1>' +
+          '<p class="print-meta">Edicao ' + e(WF.config.edition) + ' &middot; Gerado a ' + e(WF.utils.date(new Date().toISOString())) + '</p>' +
+        '</div>' +
+        '<div class="print-head__totals">' +
+          '<p><strong>' + WF.utils.int(data.total.products) + '</strong> produtos</p>' +
+          '<p><strong>' + WF.utils.int(data.total.quantity) + '</strong> fichas a imprimir</p>' +
+          '<p><strong>' + WF.utils.moneyLabel(data.total.value) + '</strong> valor previsto</p>' +
+        '</div>' +
+      '</header>' +
+      (sections || '<p class="print-empty">Nao ha fichas para listar.</p>') +
+      '<section class="print-section print-section--summary">' +
+        '<h2 class="print-section__title">Resumo por cor</h2>' +
+        '<table class="print-table">' +
+          '<thead><tr><th>Cor da ficha</th><th class="num">Produtos</th><th class="num">Fichas</th><th class="num">Valor previsto (CHF)</th></tr></thead>' +
+          '<tbody>' + summaryRows + '</tbody>' +
+          '<tfoot><tr><th>Total</th><th class="num">' + WF.utils.int(data.total.products) + '</th>' +
+          '<th class="num">' + WF.utils.int(data.total.quantity) + '</th>' +
+          '<th class="num">' + WF.utils.money(data.total.value) + '</th></tr></tfoot>' +
+        '</table>' +
+      '</section>' +
+      '<footer class="print-foot">' +
+        '<div class="print-sign"><span></span>Responsavel Winzerfest</div>' +
+        '<div class="print-sign"><span></span>Grafica — recebido em</div>' +
+      '</footer>';
+  }
+
+  /** Abre a pre-visualizacao da lista final para a grafica. */
+  WF.printView = {
+    open: function (list) {
+      ensureRefs();
+      render(list || WF.store.visible());
+      overlay.hidden = false;
+      document.body.classList.add('is-previewing');
+      overlay.querySelector('[data-print-close]').focus();
+    },
+    close: function () {
+      ensureRefs();
+      overlay.hidden = true;
+      document.body.classList.remove('is-previewing');
+    },
+    init: function () {
+      ensureRefs();
+      overlay.querySelector('[data-print-close]').addEventListener('click', WF.printView.close);
+      overlay.querySelector('[data-print-now]').addEventListener('click', function () { window.print(); });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !overlay.hidden) WF.printView.close();
+      });
+    }
+  };
+
+  /** Exporta para PDF: prepara a lista e abre a caixa de impressao. */
+  WF.exportPdf = function (list) {
+    render(list || WF.store.visible());
+    ensureRefs();
+    overlay.hidden = false;
+    document.body.classList.add('is-previewing');
+    setTimeout(function () { window.print(); }, 120);
+  };
+
+})(window.WF = window.WF || {});
+
+/* ===== js/export/backup.js ===== */
+/**
+ * backup.js — Copia de seguranca em JSON e importacao (JSON ou CSV).
+ *
+ * Os dados vivem no browser (localStorage). A copia JSON permite
+ * transportar a lista para outro computador ou guardar no Drive/GitHub.
+ */
+(function (WF) {
+  'use strict';
+
+  WF.exportJson = function () {
+    var payload = {
+      app: 'winzerfest-fichas',
+      version: 1,
+      edition: WF.config.edition,
+      exportedAt: new Date().toISOString(),
+      fichas: WF.store.all()
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    WF.utils.download(blob, 'winzerfest_backup_' + WF.utils.stamp() + '.json');
+  };
+
+  /** Le um ficheiro escolhido pelo utilizador e substitui a lista actual. */
+  WF.importFile = function (file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var text = String(reader.result || '');
+      var fichas;
+      try {
+        if (/\.json$/i.test(file.name)) {
+          var parsed = JSON.parse(text);
+          fichas = Array.isArray(parsed) ? parsed : parsed.fichas;
+        } else {
+          fichas = WF.parseCsv(text);
+        }
+      } catch (e) {
+        WF.ui.toast('Nao foi possivel ler o ficheiro: ' + e.message, { type: 'error' });
+        return;
+      }
+
+      if (!Array.isArray(fichas) || !fichas.length) {
+        WF.ui.toast('O ficheiro nao continha fichas validas.', { type: 'error' });
+        return;
+      }
+
+      WF.ui.confirm(
+        'Importar fichas',
+        'Vao ser importadas ' + fichas.length + ' fichas. A lista actual sera substituida.',
+        'Importar'
+      ).then(function (ok) {
+        if (!ok) return;
+        WF.store.replaceAll(fichas);
+        WF.ui.toast(fichas.length + ' fichas importadas.', { type: 'success' });
+      });
+    };
+    reader.onerror = function () {
+      WF.ui.toast('Erro ao abrir o ficheiro.', { type: 'error' });
+    };
+    reader.readAsText(file, 'utf-8');
+  };
+
+})(window.WF = window.WF || {});
+
+/* ===== js/features/table.js ===== */
+/**
+ * table.js — Desenha a tabela de fichas com edicao rapida na propria linha.
+ *
+ * Edicao rapida: preco, quantidade, cor e design sao editaveis directamente.
+ * Tudo o resto (observacoes, codigo interno) tambem, atraves do formulario.
+ */
+(function (WF) {
+  'use strict';
+
+  var table = {};
+  var tbody, foot, headRow, emptyState;
+
+  var COLUMNS = [
+    { key: 'color', label: 'Cor da ficha', sortable: true, className: 'col-color' },
+    { key: 'product', label: 'Produto', sortable: true, className: 'col-product' },
+    { key: 'price', label: 'Preco (CHF)', sortable: true, className: 'col-num' },
+    { key: 'quantity', label: 'Qtd. a imprimir', sortable: true, className: 'col-num' },
+    { key: 'design', label: 'Design (ficheiro grafico)', sortable: true, className: 'col-design' },
+    { key: 'code', label: 'Codigo interno', sortable: false, className: 'col-code' },
+    { key: 'notes', label: 'Observacoes', sortable: false, className: 'col-notes' },
+    { key: 'total', label: 'Valor total', sortable: true, className: 'col-num' },
+    { key: 'actions', label: 'Accoes', sortable: false, className: 'col-actions' }
+  ];
+
+  table.init = function () {
+    tbody = document.getElementById('fichas-body');
+    foot = document.getElementById('fichas-foot');
+    headRow = document.getElementById('fichas-head-row');
+    emptyState = document.getElementById('empty-state');
+
+    renderHead();
+    bindEvents();
+    WF.store.subscribe(table.render);
+  };
+
+  // ------------------------------------------------------------------ cabecalho
+  function renderHead() {
+    headRow.innerHTML = COLUMNS.map(function (col) {
+      if (!col.sortable) {
+        return '<th class="' + col.className + '">' + WF.utils.escapeHtml(col.label) + '</th>';
+      }
+      return '<th class="' + col.className + '">' +
+        '<button type="button" class="th-sort" data-sort="' + col.key + '">' +
+        WF.utils.escapeHtml(col.label) + '<span class="th-sort__icon" aria-hidden="true"></span>' +
+        '</button></th>';
+    }).join('');
+  }
+
+  // ------------------------------------------------------------------ linhas
+  function colorSelect(ficha) {
+    var options = WF.config.colors.map(function (c) {
+      return '<option value="' + c.key + '"' + (c.key === ficha.color ? ' selected' : '') + '>' +
+        WF.utils.escapeHtml(c.label) + '</option>';
+    }).join('');
+    return '<label class="color-picker" style="--dot:' + WF.config.color(ficha.color).hex + '">' +
+      '<span class="color-dot" aria-hidden="true"></span>' +
+      '<select class="cell-input cell-input--color" data-field="color" aria-label="Cor da ficha de ' +
+      WF.utils.escapeHtml(ficha.product) + '">' + options + '</select></label>';
+  }
+
+  function rowHtml(ficha) {
+    var cfg = WF.config.color(ficha.color);
+    var total = ficha.price * ficha.quantity;
+    var e = WF.utils.escapeHtml;
+
+    return '<tr class="ficha-row" data-id="' + ficha.id + '" data-color="' + ficha.color + '">' +
+      '<td class="col-color" data-label="Cor">' + colorSelect(ficha) + '</td>' +
+
+      '<td class="col-product" data-label="Produto">' +
+        '<span class="product-name" title="' + e(cfg.label) + ' — ' + e(cfg.scope) + '">' + e(ficha.product) + '</span>' +
+      '</td>' +
+
+      '<td class="col-num" data-label="Preco (CHF)">' +
+        '<input class="cell-input cell-input--num" type="number" min="0" step="0.05" inputmode="decimal" ' +
+        'data-field="price" value="' + ficha.price.toFixed(2) + '" aria-label="Preco de ' + e(ficha.product) + '">' +
+      '</td>' +
+
+      '<td class="col-num" data-label="Qtd. a imprimir">' +
+        '<input class="cell-input cell-input--num" type="number" min="0" step="10" inputmode="numeric" ' +
+        'data-field="quantity" value="' + ficha.quantity + '" aria-label="Quantidade de ' + e(ficha.product) + '">' +
+      '</td>' +
+
+      '<td class="col-design" data-label="Design">' +
+        '<input class="cell-input cell-input--text" type="text" data-field="design" ' +
+        'value="' + e(ficha.design) + '" placeholder="ex. ' + WF.config.edition + '-' + cfg.slug + '-01_produto" ' +
+        'aria-label="Design de ' + e(ficha.product) + '">' +
+      '</td>' +
+
+      '<td class="col-code" data-label="Codigo interno">' +
+        '<input class="cell-input cell-input--text" type="text" data-field="code" ' +
+        'value="' + e(ficha.code) + '" placeholder="—" aria-label="Codigo interno de ' + e(ficha.product) + '">' +
+      '</td>' +
+
+      '<td class="col-notes" data-label="Observacoes">' +
+        '<input class="cell-input cell-input--text" type="text" data-field="notes" ' +
+        'value="' + e(ficha.notes) + '" placeholder="—" aria-label="Observacoes de ' + e(ficha.product) + '">' +
+      '</td>' +
+
+      '<td class="col-num col-total" data-label="Valor total">' + WF.utils.money(total) + '</td>' +
+
+      '<td class="col-actions" data-label="Accoes">' +
+        '<div class="row-actions">' +
+          '<button type="button" class="icon-btn" data-action="edit" title="Editar ficha" aria-label="Editar ' + e(ficha.product) + '">&#9998;</button>' +
+          '<button type="button" class="icon-btn" data-action="duplicate" title="Duplicar ficha" aria-label="Duplicar ' + e(ficha.product) + '">&#10697;</button>' +
+          '<button type="button" class="icon-btn icon-btn--danger" data-action="delete" title="Eliminar ficha" aria-label="Eliminar ' + e(ficha.product) + '">&#128465;</button>' +
+        '</div>' +
+      '</td>' +
+    '</tr>';
+  }
+
+  // ------------------------------------------------------------------ rodape
+  function footHtml(list) {
+    var s = WF.store.summary(list);
+    return '<tr class="foot-row">' +
+      '<th class="col-color">Totais</th>' +
+      '<th class="col-product">' + WF.utils.int(s.total.products) + ' produto(s)</th>' +
+      '<th class="col-num">—</th>' +
+      '<th class="col-num">' + WF.utils.int(s.total.quantity) + '</th>' +
+      '<th class="col-design">—</th>' +
+      '<th class="col-code"></th>' +
+      '<th class="col-notes"></th>' +
+      '<th class="col-num col-total">' + WF.utils.moneyLabel(s.total.value) + '</th>' +
+      '<th class="col-actions"></th>' +
+    '</tr>';
+  }
+
+  // ------------------------------------------------------------------ render
+  table.render = function () {
+    var list = WF.store.visible();
+    var view = WF.store.view();
+
+    tbody.innerHTML = list.map(rowHtml).join('');
+    foot.innerHTML = list.length ? footHtml(list) : '';
+    emptyState.hidden = list.length > 0;
+
+    if (!list.length) {
+      var hasFilters = view.search || view.color !== 'todas';
+      emptyState.querySelector('[data-empty-text]').textContent = hasFilters
+        ? 'Nenhuma ficha corresponde a pesquisa ou ao filtro seleccionado.'
+        : 'Ainda nao existem fichas. Comece por adicionar o primeiro produto.';
+    }
+
+    WF.utils.$$('.th-sort', headRow).forEach(function (btn) {
+      var active = btn.getAttribute('data-sort') === view.sort;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('data-dir', active ? view.dir : '');
+    });
+
+    document.getElementById('result-count').textContent =
+      list.length === WF.store.all().length
+        ? WF.utils.int(list.length) + ' fichas'
+        : WF.utils.int(list.length) + ' de ' + WF.utils.int(WF.store.all().length) + ' fichas';
+  };
+
+  // ------------------------------------------------------------------ eventos
+  function bindEvents() {
+    // Edicao rapida na celula (dispara ao sair do campo ou ao carregar Enter).
+    tbody.addEventListener('change', function (event) {
+      var input = event.target.closest('[data-field]');
+      if (!input) return;
+      var row = input.closest('.ficha-row');
+      var patch = {};
+      patch[input.getAttribute('data-field')] = input.value;
+      WF.store.update(row.getAttribute('data-id'), patch);
+    });
+
+    tbody.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' && event.target.matches('.cell-input')) {
+        event.preventDefault();
+        event.target.blur();
+      }
+    });
+
+    tbody.addEventListener('click', function (event) {
+      var btn = event.target.closest('[data-action]');
+      if (!btn) return;
+      var id = btn.closest('.ficha-row').getAttribute('data-id');
+      var ficha = WF.store.get(id);
+      if (!ficha) return;
+
+      var action = btn.getAttribute('data-action');
+      if (action === 'edit') {
+        WF.form.open(ficha);
+      } else if (action === 'duplicate') {
+        var copy = Object.assign({}, ficha);
+        delete copy.id; delete copy.createdAt; delete copy.updatedAt;
+        copy.product = ficha.product + ' (copia)';
+        copy.design = WF.model.suggestDesign(ficha.color, copy.product, WF.store.all());
+        WF.store.add(copy);
+        WF.ui.toast('Ficha duplicada.', { type: 'success' });
+      } else if (action === 'delete') {
+        WF.ui.confirm(
+          'Eliminar ficha',
+          'Quer mesmo eliminar a ficha "' + ficha.product + '"?',
+          'Eliminar'
+        ).then(function (ok) {
+          if (!ok) return;
+          WF.store.remove(id);
+          WF.ui.toast('Ficha eliminada.', {
+            type: 'info',
+            action: { label: 'Anular', onClick: function () { WF.store.undoRemove(); } }
+          });
+        });
+      }
+    });
+
+    headRow.addEventListener('click', function (event) {
+      var btn = event.target.closest('[data-sort]');
+      if (!btn) return;
+      var key = btn.getAttribute('data-sort');
+      var view = WF.store.view();
+      WF.store.setView({
+        sort: key,
+        dir: view.sort === key && view.dir === 'asc' ? 'desc' : 'asc'
+      });
+    });
+  }
+
+  WF.table = table;
+})(window.WF = window.WF || {});
+
+/* ===== js/features/summary.js ===== */
+/**
+ * summary.js — Resumo automatico no final da tabela.
+ * Total de produtos, fichas por cor, total de fichas e valor previsto.
+ */
+(function (WF) {
+  'use strict';
+
+  var summary = {};
+  var host, cards;
+
+  summary.init = function () {
+    host = document.getElementById('summary');
+    cards = document.getElementById('summary-colors');
+    WF.store.subscribe(summary.render);
+  };
+
+  summary.render = function () {
+    var all = WF.store.all();
+    var visible = WF.store.visible();
+    var view = WF.store.view();
+    var filtering = view.color !== 'todas' || !!view.search;
+    var data = WF.store.summary(filtering ? visible : all);
+
+    host.querySelector('[data-total-products]').textContent = WF.utils.int(data.total.products);
+    host.querySelector('[data-total-quantity]').textContent = WF.utils.int(data.total.quantity);
+    host.querySelector('[data-total-value]').textContent = WF.utils.moneyLabel(data.total.value);
+    host.querySelector('[data-summary-scope]').textContent = filtering
+      ? 'Valores da selecao actual'
+      : 'Valores de todas as fichas';
+
+    cards.innerHTML = WF.config.colors.map(function (c) {
+      var bucket = data.byColor[c.key];
+      return '<article class="color-card" data-color="' + c.key + '">' +
+        '<header class="color-card__head">' +
+          '<span class="color-chip" style="--chip:' + c.hex + '"></span>' +
+          '<h3>' + WF.utils.escapeHtml(c.label) + '</h3>' +
+        '</header>' +
+        '<p class="color-card__scope">' + WF.utils.escapeHtml(c.scope) + '</p>' +
+        '<dl class="color-card__stats">' +
+          '<div><dt>Produtos</dt><dd>' + WF.utils.int(bucket.products) + '</dd></div>' +
+          '<div><dt>Fichas</dt><dd>' + WF.utils.int(bucket.quantity) + '</dd></div>' +
+          '<div><dt>Valor</dt><dd>' + WF.utils.money(bucket.value) + '</dd></div>' +
+        '</dl>' +
+      '</article>';
+    }).join('');
+  };
+
+  WF.summary = summary;
+})(window.WF = window.WF || {});
+
+/* ===== js/features/toolbar.js ===== */
+/**
+ * toolbar.js — Pesquisa, filtro por cor e ordenacao.
+ */
+(function (WF) {
+  'use strict';
+
+  var toolbar = {};
+  var searchInput, chipsHost, sortSelect, dirButton;
+
+  toolbar.init = function () {
+    searchInput = document.getElementById('search');
+    chipsHost = document.getElementById('color-filters');
+    sortSelect = document.getElementById('sort-select');
+    dirButton = document.getElementById('sort-dir');
+
+    renderChips();
+
+    searchInput.addEventListener('input', debounce(function () {
+      WF.store.setView({ search: searchInput.value });
+    }, 120));
+
+    document.getElementById('search-clear').addEventListener('click', function () {
+      searchInput.value = '';
+      WF.store.setView({ search: '' });
+      searchInput.focus();
+    });
+
+    chipsHost.addEventListener('click', function (event) {
+      var chip = event.target.closest('[data-color-filter]');
+      if (!chip) return;
+      WF.store.setView({ color: chip.getAttribute('data-color-filter') });
+    });
+
+    sortSelect.addEventListener('change', function () {
+      WF.store.setView({ sort: sortSelect.value });
+    });
+
+    dirButton.addEventListener('click', function () {
+      WF.store.setView({ dir: WF.store.view().dir === 'asc' ? 'desc' : 'asc' });
+    });
+
+    // Atalho: "/" foca a pesquisa.
+    document.addEventListener('keydown', function (event) {
+      if (event.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    WF.store.subscribe(toolbar.render);
+  };
+
+  function renderChips() {
+    var chips = [{ key: 'todas', label: 'Todas', hex: 'transparent' }].concat(
+      WF.config.colors.map(function (c) { return { key: c.key, label: c.label, hex: c.hex }; })
+    );
+    chipsHost.innerHTML = chips.map(function (c) {
+      return '<button type="button" class="chip" data-color-filter="' + c.key + '" style="--chip:' + c.hex + '">' +
+        (c.key === 'todas' ? '' : '<span class="color-chip" style="--chip:' + c.hex + '"></span>') +
+        '<span>' + WF.utils.escapeHtml(c.label) + '</span>' +
+        '<span class="chip__count" data-chip-count="' + c.key + '"></span>' +
+      '</button>';
+    }).join('');
+  }
+
+  toolbar.render = function () {
+    var view = WF.store.view();
+    var all = WF.store.all();
+
+    WF.utils.$$('[data-color-filter]', chipsHost).forEach(function (chip) {
+      var key = chip.getAttribute('data-color-filter');
+      var active = key === view.color;
+      chip.classList.toggle('is-active', active);
+      chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+      var count = key === 'todas'
+        ? all.length
+        : all.filter(function (f) { return f.color === key; }).length;
+      chip.querySelector('[data-chip-count]').textContent = count;
+    });
+
+    if (sortSelect.value !== view.sort) sortSelect.value = view.sort;
+    dirButton.setAttribute('data-dir', view.dir);
+    dirButton.title = view.dir === 'asc' ? 'Ordem crescente' : 'Ordem decrescente';
+    dirButton.textContent = view.dir === 'asc' ? '↑' : '↓';
+    document.getElementById('search-clear').hidden = !view.search;
+  };
+
+  function debounce(fn, wait) {
+    var t;
+    return function () {
+      clearTimeout(t);
+      t = setTimeout(fn, wait);
+    };
+  }
+
+  WF.toolbar = toolbar;
+})(window.WF = window.WF || {});
+
+/* ===== js/features/form.js ===== */
+/**
+ * form.js — Formulario (modal) para adicionar e editar fichas.
+ */
+(function (WF) {
+  'use strict';
+
+  var form = {};
+  var dialog, el, editingId = null;
+
+  form.init = function () {
+    dialog = document.getElementById('ficha-dialog');
+    el = dialog.querySelector('form');
+
+    fillColorOptions();
+
+    el.addEventListener('submit', function (event) {
+      event.preventDefault();
+      submit();
+    });
+
+    dialog.querySelector('[data-suggest-design]').addEventListener('click', function () {
+      el.design.value = WF.model.suggestDesign(el.color.value, el.product.value, WF.store.all());
+    });
+
+    dialog.querySelector('[data-cancel]').addEventListener('click', function () { dialog.close(); });
+
+    el.color.addEventListener('change', function () {
+      dialog.setAttribute('data-color', el.color.value);
+      updateScopeHint();
+    });
+  };
+
+  function fillColorOptions() {
+    el.color.innerHTML = WF.config.colors.map(function (c) {
+      return '<option value="' + c.key + '">' + WF.utils.escapeHtml(c.label) + '</option>';
+    }).join('');
+  }
+
+  function updateScopeHint() {
+    dialog.querySelector('[data-color-scope]').textContent = WF.config.color(el.color.value).scope;
+  }
+
+  /** Abre o formulario. Sem argumento = nova ficha. */
+  form.open = function (ficha) {
+    editingId = ficha ? ficha.id : null;
+    dialog.querySelector('[data-dialog-title]').textContent = ficha ? 'Editar ficha' : 'Nova ficha';
+    dialog.querySelector('[data-submit-label]').textContent = ficha ? 'Guardar alteracoes' : 'Adicionar ficha';
+
+    var view = WF.store.view();
+    var defaults = {
+      color: view.color !== 'todas' ? view.color : WF.config.colorKeys[0],
+      product: '', price: '', quantity: '', design: '', code: '', notes: ''
+    };
+    var data = ficha || defaults;
+
+    el.color.value = data.color;
+    el.product.value = data.product;
+    el.price.value = ficha ? data.price.toFixed(2) : '';
+    el.quantity.value = ficha ? data.quantity : '';
+    el.design.value = data.design;
+    el.code.value = data.code;
+    el.notes.value = data.notes;
+
+    dialog.setAttribute('data-color', el.color.value);
+    updateScopeHint();
+    showErrors([]);
+
+    dialog.showModal();
+    setTimeout(function () { el.product.focus(); }, 30);
+  };
+
+  function submit() {
+    var data = {
+      color: el.color.value,
+      product: el.product.value,
+      price: el.price.value,
+      quantity: el.quantity.value,
+      design: el.design.value,
+      code: el.code.value,
+      notes: el.notes.value
+    };
+
+    var candidate = WF.model.normalize(data);
+    var errors = WF.model.validate(candidate);
+    if (errors.length) { showErrors(errors); return; }
+
+    if (!candidate.design) {
+      candidate.design = WF.model.suggestDesign(candidate.color, candidate.product, WF.store.all());
+    }
+
+    if (editingId) {
+      WF.store.update(editingId, candidate);
+      WF.ui.toast('Ficha actualizada.', { type: 'success' });
+    } else {
+      WF.store.add(candidate);
+      WF.ui.toast('Ficha adicionada.', { type: 'success' });
+    }
+    dialog.close();
+  }
+
+  function showErrors(errors) {
+    var box = dialog.querySelector('[data-form-errors]');
+    box.hidden = !errors.length;
+    box.innerHTML = errors.map(function (e) {
+      return '<li>' + WF.utils.escapeHtml(e) + '</li>';
+    }).join('');
+  }
+
+  WF.form = form;
+})(window.WF = window.WF || {});
+
+/* ===== js/app.js ===== */
+/**
+ * app.js — Arranque da aplicacao e ligacao dos botoes principais.
+ *
+ * Ordem: config -> model -> seed -> store -> utils/ui -> features -> app.
+ */
+(function (WF) {
+  'use strict';
+
+  var THEME_KEY = 'winzerfest.theme';
+
+  function boot() {
+    WF.form.init();
+    WF.table.init();
+    WF.summary.init();
+    WF.toolbar.init();
+    WF.printView.init();
+
+    bindActions();
+    initTheme();
+
+    WF.store.subscribe(renderStatus);
+    WF.store.init();
+
+    document.getElementById('app-edition').textContent = WF.config.edition;
+  }
+
+  function bindActions() {
+    document.getElementById('btn-new').addEventListener('click', function () { WF.form.open(); });
+
+    // Menu de exportacao (abre/fecha com clique fora).
+    var menu = document.getElementById('export-menu');
+    var menuBtn = document.getElementById('btn-export');
+    menuBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      var open = menu.hasAttribute('hidden');
+      menu.hidden = !open;
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (event) {
+      if (!menu.hidden && !menu.contains(event.target)) {
+        menu.hidden = true;
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    menu.addEventListener('click', function (event) {
+      var btn = event.target.closest('[data-export]');
+      if (!btn) return;
+      menu.hidden = true;
+      menuBtn.setAttribute('aria-expanded', 'false');
+
+      var list = WF.store.visible();
+      switch (btn.getAttribute('data-export')) {
+        case 'xlsx': WF.exportXlsx(list); WF.ui.toast('Ficheiro Excel gerado.', { type: 'success' }); break;
+        case 'csv': WF.exportCsv(list); WF.ui.toast('Ficheiro CSV gerado.', { type: 'success' }); break;
+        case 'pdf': WF.exportPdf(list); break;
+        case 'json': WF.exportJson(); WF.ui.toast('Copia de seguranca guardada.', { type: 'success' }); break;
+      }
+    });
+
+    document.getElementById('btn-print-view').addEventListener('click', function () {
+      WF.printView.open(WF.store.visible());
+    });
+
+    var fileInput = document.getElementById('import-file');
+    document.getElementById('btn-import').addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files[0]) WF.importFile(fileInput.files[0]);
+      fileInput.value = '';
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', function () {
+      WF.ui.confirm(
+        'Repor catalogo inicial',
+        'Todas as fichas actuais serao substituidas pelo catalogo base da Winzerfest. Esta accao nao pode ser anulada.',
+        'Repor'
+      ).then(function (ok) {
+        if (!ok) return;
+        WF.store.resetToSeed();
+        WF.ui.toast('Catalogo inicial reposto.', { type: 'success' });
+      });
+    });
+
+    document.getElementById('btn-theme').addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* sem persistencia */ }
+    });
+
+    // Atalhos de teclado
+    document.addEventListener('keydown', function (event) {
+      if (event.key.toLowerCase() === 'n' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        WF.form.open();
+      }
+    });
+  }
+
+  function initTheme() {
+    var saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignorado */ }
+    if (!saved) {
+      saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyTheme(saved);
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    var btn = document.getElementById('btn-theme');
+    btn.textContent = theme === 'dark' ? '☀' : '☾';
+    btn.title = theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro';
+  }
+
+  function renderStatus() {
+    var saved = WF.store.lastSavedAt();
+    var status = document.getElementById('save-status');
+    if (!WF.store.storageOk()) {
+      status.textContent = 'Atencao: este browser nao esta a guardar os dados. Faca copia de seguranca (JSON).';
+      status.className = 'save-status save-status--error';
+      return;
+    }
+    status.textContent = saved ? 'Guardado automaticamente · ' + WF.utils.date(saved) : 'Guardado automaticamente';
+    status.className = 'save-status';
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+
+})(window.WF = window.WF || {});
+
+</script>
+</body>
+</html>
