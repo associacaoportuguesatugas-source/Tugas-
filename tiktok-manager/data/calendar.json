@@ -1,0 +1,105 @@
+[
+  {
+    "id": "2026-08-29-p1",
+    "date": "2026-08-29",
+    "suggested_time_local": "07:30",
+    "timezone": "Europe/Zurich",
+    "status": "pending_approval",
+    "category": "Curiosidades sobre Portugal",
+    "language": "PT",
+    "theme": "A livraria mais antiga do mundo é portuguesa (Livraria Bertrand)",
+    "objective": "Entretenimento/curiosidade para gerar partilhas e alcance fora dos seguidores atuais; reforçar orgulho na identidade portuguesa.",
+    "hook": "Sabias que a livraria mais antiga do MUNDO é portuguesa?",
+    "script": [
+      "(0-2s) Hook direto à câmara ou com texto no ecrã.",
+      "(2-10s) A Livraria Bertrand, no Chiado, em Lisboa, está aberta desde 1732 e é reconhecida pelo Guinness World Records como a livraria mais antiga do mundo em funcionamento contínuo.",
+      "(10-18s) Sobreviveu ao terramoto de 1755 e foi reconstruída no mesmo local, onde continua aberta até hoje.",
+      "(18-25s) Fecho: mais uma razão para teres orgulho de seres português.",
+      "(25-30s) CTA: seguir para mais curiosidades."
+    ],
+    "on_screen_text": [
+      "A livraria mais antiga do MUNDO 🌍",
+      "É portuguesa 🇵🇹",
+      "Livraria Bertrand, desde 1732",
+      "Segue para mais curiosidades sobre Portugal"
+    ],
+    "description": "Sabias disto? 🤯 A Livraria Bertrand, em Lisboa, é reconhecida pelo Guinness World Records como a livraria mais antiga do mundo ainda em funcionamento — aberta desde 1732! Partilha com quem tem orgulho em ser português. 🇵🇹",
+    "cta": "Segue a Associação Tuga para mais curiosidades sobre Portugal.",
+    "hashtags": ["#Portugal", "#CuriosidadesDePortugal", "#PortuguesesNaSuica", "#TUGA", "#OrgulhoPortugues"],
+    "music_suggestion": "Som de 'descoberta/reveal' em alta no TikTok no momento da publicação — confirmar o trending sound atual na app antes de publicar (não temos acesso a dados de tendências em tempo real).",
+    "visual_suggestion": "Imagens/vídeo da Livraria Bertrand (fachada e interior), com o texto animado a aparecer por cima. Pode usar imagens de arquivo próprio se alguém da equipa tiver estado lá, ou material de imprensa/turismo de uso livre.",
+    "media_asset": null,
+    "media_needed": true,
+    "media_source": "a_confirmar",
+    "requires_mandatory_approval": false,
+    "notes": "Conteúdo evergreen, sem informação sobre a Associação ou parceiros — baixo risco."
+  },
+  {
+    "id": "2026-08-29-p2",
+    "date": "2026-08-29",
+    "suggested_time_local": "13:00",
+    "timezone": "Europe/Zurich",
+    "status": "pending_approval",
+    "category": "Preparação da Winzerfest Döttingen",
+    "language": "PT",
+    "theme": "Contagem decrescente inicial para o 73º Winzerfest Döttingen (faltam ~5 semanas)",
+    "objective": "Gerar antecipação e engagement; anunciar início dos preparativos sem repetir um anúncio já feito.",
+    "hook": "Faltam só 5 semanas para o maior fim de semana do ano da Tuga 👀",
+    "script": [
+      "(0-3s) Hook com imagem da tenda/terreno do ano anterior.",
+      "(3-12s) De 2 a 4 de outubro voltamos ao Winzerfest Döttingen — a maior festa do vinho da Suíça alemã, com mais de 50 mil visitantes.",
+      "(12-20s) A nossa tenda vai ter cerca de 350 m², juntando a cozinha portuguesa ao vinho de Döttingen.",
+      "(20-27s) Os preparativos já começaram — nas próximas semanas vamos mostrar bastidores, equipa e muito mais.",
+      "(27-30s) CTA para seguir e não perder os bastidores."
+    ],
+    "on_screen_text": [
+      "5 SEMANAS PARA O WINZERFEST 🍷🇵🇹",
+      "2–4 outubro · Döttingen",
+      "350m² de festa portuguesa"
+    ],
+    "description": "A contagem decrescente começou! 🎉 De 2 a 4 de outubro estamos de volta ao Winzerfest Döttingen, a maior festa do vinho da Suíça alemã. Prepara-te para bastidores, equipa e muita festa nas próximas semanas 🇵🇹🍷",
+    "cta": "Marca na agenda e segue para acompanhares os preparativos.",
+    "hashtags": ["#Winzerfest", "#Döttingen", "#TUGA", "#PortuguesesNaSuica", "#Aargau"],
+    "music_suggestion": "Som animado/festivo em alta no momento — confirmar trending sound atual na app.",
+    "visual_suggestion": "Clipes de arquivo do Winzerfest do ano anterior (tenda, movimento, comida) ou imagens do terreno ainda vazio, com texto de contagem decrescente sobreposto.",
+    "media_asset": null,
+    "media_needed": true,
+    "media_source": "filmagem_real_arquivo",
+    "requires_mandatory_approval": false,
+    "notes": "Ângulo 'contagem decrescente inicial' — evitar repetir literalmente em publicações futuras; variar o ângulo (comida, bebidas, equipa, patrocinadores) nas próximas semanas conforme o guia de eventos."
+  },
+  {
+    "id": "2026-08-29-p3",
+    "date": "2026-08-29",
+    "suggested_time_local": "19:30",
+    "timezone": "Europe/Zurich",
+    "status": "pending_approval",
+    "category": "Divulgação de patrocinadores e parceiros",
+    "language": "PT",
+    "theme": "Agradecimento e apresentação da Zurzibiet Glanz Reinigung (Carla Fernandes)",
+    "objective": "Valorizar o parceiro, gerar reconhecimento e incentivar a comunidade a conhecer/contactar a empresa.",
+    "hook": "Sabias que há uma empresa de limpeza no Zurzibiet gerida por uma portuguesa? 🧼🇵🇹",
+    "script": [
+      "(0-3s) Hook.",
+      "(3-12s) Apresentar a Zurzibiet Glanz Reinigung, de Carla Fernandes: presta serviços de limpeza profissional a particulares e empresas na região do Zurzibiet (distrito de Zurzach).",
+      "(12-20s) Valorizar: gerida com o cuidado e a proximidade de um negócio próprio, por uma portuguesa da nossa comunidade — obrigado pelo apoio à Tuga.",
+      "(20-27s) CTA para conhecer/contactar a empresa."
+    ],
+    "on_screen_text": [
+      "ZURZIBIET GLANZ REINIGUNG",
+      "Limpeza profissional · Zurzibiet",
+      "Por Carla Fernandes 🇵🇹",
+      "Obrigado pelo apoio à TUGA 💙"
+    ],
+    "description": "Um orgulho para a nossa comunidade! 💙 A Zurzibiet Glanz Reinigung, de Carla Fernandes, presta serviços de limpeza profissional a particulares e empresas na região do Zurzibiet — com todo o cuidado de um negócio próprio, por uma portuguesa daqui. Obrigado pelo apoio à Tuga! 🙏",
+    "cta": "Precisas de limpeza profissional na zona? Contacta a Zurzibiet Glanz Reinigung (link na bio/comentários).",
+    "hashtags": ["#ComunidadePortuguesa", "#Zurzibiet", "#PortuguesesNaSuica", "#TUGA", "#Empreendedorismo"],
+    "music_suggestion": "Som calmo/positivo ('feel good') em alta — confirmar trending sound atual na app.",
+    "visual_suggestion": "Fotos/vídeo do trabalho da Carla (já existem assets no site: assets/parceiros/zurzibiet-reinigung.png, IMG_4197.jpeg) ou um clipe curto novo gravado pela própria Carla.",
+    "media_asset": null,
+    "media_needed": true,
+    "media_source": "filmagem_real_ou_fotos_existentes",
+    "requires_mandatory_approval": true,
+    "notes": "Conteúdo sobre parceiro real — usa apenas os factos já confirmados e publicados no site tugas.ch. Aprovação obrigatória por envolver um parceiro (política de segurança do sistema)."
+  }
+]
