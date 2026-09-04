@@ -76,22 +76,22 @@
     "status": "pending_approval",
     "category": "Divulgação de patrocinadores e parceiros",
     "language": "PT",
-    "theme": "Agradecimento e apresentação da Zurzibiet Glanz Reinigung (Carla Brera)",
+    "theme": "Agradecimento e apresentação da Zurzibiet Glanz Reinigung (Carla Pereira)",
     "objective": "Valorizar o parceiro, gerar reconhecimento e incentivar a comunidade a conhecer/contactar a empresa.",
     "hook": "Sabias que há uma empresa de limpeza no Zurzibiet gerida por uma portuguesa? 🧼🇵🇹",
     "script": [
       "(0-3s) Hook.",
-      "(3-12s) Apresentar a Zurzibiet Glanz Reinigung, de Carla Brera: presta serviços de limpeza profissional a particulares e empresas na região do Zurzibiet (distrito de Zurzach).",
+      "(3-12s) Apresentar a Zurzibiet Glanz Reinigung, de Carla Pereira: presta serviços de limpeza profissional a particulares e empresas na região do Zurzibiet (distrito de Zurzach).",
       "(12-20s) Valorizar: gerida com o cuidado e a proximidade de um negócio próprio, por uma portuguesa da nossa comunidade — obrigado pelo apoio à Tuga.",
       "(20-27s) CTA para conhecer/contactar a empresa."
     ],
     "on_screen_text": [
       "ZURZIBIET GLANZ REINIGUNG",
       "Limpeza profissional · Zurzibiet",
-      "Por Carla Brera 🇵🇹",
+      "Por Carla Pereira 🇵🇹",
       "Obrigado pelo apoio à TUGA 💙"
     ],
-    "description": "Um orgulho para a nossa comunidade! 💙 A Zurzibiet Glanz Reinigung, de Carla Brera, presta serviços de limpeza profissional a particulares e empresas na região do Zurzibiet — com todo o cuidado de um negócio próprio, por uma portuguesa daqui. Obrigado pelo apoio à Tuga! 🙏",
+    "description": "Um orgulho para a nossa comunidade! 💙 A Zurzibiet Glanz Reinigung, de Carla Pereira, presta serviços de limpeza profissional a particulares e empresas na região do Zurzibiet — com todo o cuidado de um negócio próprio, por uma portuguesa daqui. Obrigado pelo apoio à Tuga! 🙏",
     "cta": "Precisas de limpeza profissional na zona? Contacta a Zurzibiet Glanz Reinigung (link na bio/comentários).",
     "hashtags": ["#ComunidadePortuguesa", "#Zurzibiet", "#PortuguesesNaSuica", "#TUGA", "#Empreendedorismo"],
     "music_suggestion": "Som calmo/positivo ('feel good') em alta — confirmar trending sound atual na app.",
