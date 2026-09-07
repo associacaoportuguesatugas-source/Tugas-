@@ -1,0 +1,155 @@
+<title>Quadro da Direção Tuga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#eceae4; --surface:#fbfaf7; --surface-2:#f3f1eb;
+  --ink:#16151a; --ink-2:#585460; --ink-3:#8a8590;
+  --line:#dbd7cf; --line-2:#c6c1b6;
+  --gold:#9c6d1f; --gold-soft:#f1e4c7;
+  --green:#2b6349; --green-soft:#d9e9df;
+  --red:#a2372e; --red-soft:#f5dcd8;
+  --slate:#4a5560; --slate-soft:#e0e4e8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0b0b0c; --surface:#151417; --surface-2:#1c1a1f;
+    --ink:#f2ede3; --ink-2:#a7a29a; --ink-3:#7a756f;
+    --line:#272328; --line-2:#39343b;
+    --gold:#f2c96a; --gold-soft:#3a2e14;
+    --green:#7cc9a1; --green-soft:#16301f;
+    --red:#e4796d; --red-soft:#3a1c19;
+    --slate:#9fb0bf; --slate-soft:#222a31;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0b0b0c; --surface:#151417; --surface-2:#1c1a1f;
+  --ink:#f2ede3; --ink-2:#a7a29a; --ink-3:#7a756f;
+  --line:#272328; --line-2:#39343b;
+  --gold:#f2c96a; --gold-soft:#3a2e14;
+  --green:#7cc9a1; --green-soft:#16301f;
+  --red:#e4796d; --red-soft:#3a1c19;
+  --slate:#9fb0bf; --slate-soft:#222a31;
+}
+*{ box-sizing:border-box; }
+body{ background:var(--paper); color:var(--ink); font-family:'Work Sans',Helvetica,Arial,sans-serif;
+      font-size:15.5px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+h1,h2,h3{ margin:0; font-family:'Fraunces',Georgia,serif; font-weight:700; letter-spacing:-.01em; text-wrap:balance; }
+.mono{ font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums; }
+.wrap{ max-width:760px; margin:0 auto; padding:0 20px 72px; }
+
+header.top{ border-bottom:1px solid var(--line); background:var(--surface); }
+.top-in{ max-width:760px; margin:0 auto; padding:26px 20px 22px; }
+.eyebrow{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); }
+.top h1{ font-size:30px; margin:6px 0 4px; }
+.top .upd{ font-size:12.5px; color:var(--ink-2); }
+
+.countdown{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  margin:24px 0 30px; padding:16px 20px; border-radius:10px;
+  background:var(--gold-soft); border:1px solid var(--line);
+}
+.countdown .n{ font-family:'IBM Plex Mono',monospace; font-size:30px; font-weight:600; color:var(--gold); line-height:1; }
+.countdown .t{ font-size:14px; color:var(--ink-2); }
+.countdown strong{ color:var(--ink); font-weight:600; }
+
+h2.sec{ font-size:19px; margin:38px 0 4px; }
+.sec-sub{ font-size:13px; color:var(--ink-3); margin:0 0 16px; }
+
+.dia{ margin-top:22px; }
+.dia-h{ display:flex; align-items:center; gap:10px; padding-bottom:8px; border-bottom:1px solid var(--line-2); }
+.dia-h .mono{ font-size:12.5px; letter-spacing:.1em; color:var(--ink-2); }
+.hoje{ font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:600;
+       color:var(--gold); border:1px solid var(--gold); border-radius:4px; padding:1.5px 7px; }
+.itens{ display:flex; flex-direction:column; }
+.item{ display:grid; grid-template-columns:58px 1fr; gap:14px; padding:14px 2px; border-bottom:1px solid var(--line); }
+.item:last-child{ border-bottom:0; }
+.item.feito{ opacity:.5; }
+.item.feito h3{ text-decoration:line-through; }
+.hora{ font-size:13px; color:var(--ink); padding-top:3px; }
+.item h3{ font-family:'Work Sans',sans-serif; font-size:16px; font-weight:600; margin:5px 0 0; letter-spacing:-.005em; }
+.tag{ display:inline-block; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:600; padding:2.5px 8px; border-radius:4px; }
+.t-reuniao{ background:var(--gold-soft); color:var(--gold); }
+.t-tarefa{ background:var(--green-soft); color:var(--green); }
+.t-evento{ background:var(--red-soft); color:var(--red); }
+.t-lembrete{ background:var(--slate-soft); color:var(--slate); }
+.local{ font-size:13px; color:var(--ink-2); margin-top:2px; }
+.notas{ font-size:13.5px; color:var(--ink-2); margin:6px 0 0; max-width:62ch; }
+.vazio{ color:var(--ink-3); }
+
+footer.pe{ margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-3); }
+@media (max-width:520px){
+  .item{ grid-template-columns:48px 1fr; gap:10px; }
+  .top h1{ font-size:25px; }
+}
+@media print{
+  body{ background:#fff; color:#000; } .countdown{ background:#f4f4f4; }
+}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="eyebrow">Associação Portuguesa Tuga</div>
+    <h1>Quadro da Direção</h1>
+    <div class="upd">Atualizado em segunda, 7 de setembro de 2026 · página só de leitura</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="countdown">
+    <span class="n mono" id="faltam">25</span>
+    <span class="t">dias para a <strong>Winzerfest</strong> — 2 a 4 de outubro, Döttingen</span>
+  </div>
+
+  <h2 class="sec">Esta semana</h2>
+  <p class="sec-sub">De seg 7 set a dom 13 set</p>
+  <section class="dia"><div class="dia-h"><span class="mono">TER 8 set</span></div><div class="itens">
+<article class="item"><span class="hora mono">09:00</span><div><span class="tag t-tarefa">Tarefa</span><h3>Ligar ao homem das luzes — encomendar luzes para a Winzerfest</h3><div class="local">Telefonema</div><p class="notas">Iluminação para a presença da Tuga na Winzerfest (2 a 4 de outubro, Döttingen). Confirmar: quantidade, preço, data de entrega e quem monta.</p></div></article>
+<article class="item"><span class="hora mono">09:30</span><div><span class="tag t-tarefa">Tarefa</span><h3>Ligar ao fornecedor de bebidas — fazer encomenda</h3><div class="local">Telefonema</div><p class="notas">Confirmar quantidades, preços, data de entrega e condições de devolução do que sobrar.</p></div></article>
+<article class="item"><span class="hora mono">10:00</span><div><span class="tag t-tarefa">Tarefa</span><h3>Ligar ao homem da arca congeladora — comprar arca</h3><div class="local">Telefonema</div><p class="notas">Confirmar modelo, preço, transporte e quando pode ser entregue.</p></div></article>
+<article class="item"><span class="hora mono">10:00</span><div><span class="tag t-tarefa">Tarefa</span><h3>Ligar à cabeleireira sobre possível patrocínio</h3><div class="local">Telefonema</div><p class="notas">Apresentar as opções de patrocínio da Tuga (logo no site, presença nos eventos). Combinar reunião se houver interesse.</p></div></article>
+<article class="item"><span class="hora mono">10:30</span><div><span class="tag t-tarefa">Tarefa</span><h3>Confirmar com o Nuno as mesas e bancos para a festa</h3><div class="local">Telefonema</div><p class="notas">Quantas mesas e bancos, quem transporta e quando ficam no local.</p></div></article>
+<article class="item"><span class="hora mono">10:45</span><div><span class="tag t-tarefa">Tarefa</span><h3>Saber com o Nuno quando chega o vinho de Portugal</h3><div class="local">Telefonema</div><p class="notas">Data de chegada, quantidade e onde fica guardado até à festa.</p></div></article>
+<article class="item"><span class="hora mono">11:00</span><div><span class="tag t-tarefa">Tarefa</span><h3>Falar com o Nuno sobre as placas e o verniz para o carro alegórico</h3><div class="local">Telefonema</div><p class="notas">Placas para a cobertura do carro alegórico do cortejo, mais o verniz: medidas e quantidade, tipo de verniz, preço, quando chegam e quem trata do corte e da pintura.</p></div></article>
+<article class="item"><span class="hora mono">11:15</span><div><span class="tag t-tarefa">Tarefa</span><h3>Contactar o Roland — até quando não precisa do reboque</h3><div class="local">Telefonema</div><p class="notas">Saber até que data não precisa do reboque (para o carro alegórico), quando o podemos ir buscar e quando tem de estar devolvido.</p></div></article>
+<article class="item"><span class="hora mono">18:00</span><div><span class="tag t-lembrete">Lembrete</span><h3>Manter o contacto com a equipa da festa</h3><p class="notas">André Silva, Rui Vieira, Sílvia, Emanuel e restantes que trabalham na festa — saber como estão, o que falta e se precisam de alguma coisa.</p></div></article>
+</div></section>
+<section class="dia"><div class="dia-h"><span class="mono">QUA 9 set</span></div><div class="itens">
+<article class="item"><span class="hora mono">09:00</span><div><span class="tag t-tarefa">Tarefa</span><h3>Encomendar frangos</h3><div class="local">Telefonema</div><p class="notas">Frangos para a Winzerfest: quantidade, preço e data de entrega. Reservar já, entrega perto do evento.</p></div></article>
+<article class="item"><span class="hora mono">18:00</span><div><span class="tag t-lembrete">Lembrete</span><h3>Manter o contacto com a equipa da festa</h3><p class="notas">André Silva, Rui Vieira, Sílvia, Emanuel e restantes que trabalham na festa.</p></div></article>
+</div></section>
+<section class="dia"><div class="dia-h"><span class="mono">QUI 10 set</span></div><div class="itens">
+<article class="item"><span class="hora mono">18:00</span><div><span class="tag t-lembrete">Lembrete</span><h3>Manter o contacto com a equipa da festa</h3><p class="notas">André Silva, Rui Vieira, Sílvia, Emanuel e restantes que trabalham na festa.</p></div></article>
+</div></section>
+<section class="dia"><div class="dia-h"><span class="mono">SEX 11 set</span></div><div class="itens">
+<article class="item"><span class="hora mono">18:00</span><div><span class="tag t-lembrete">Lembrete</span><h3>Manter o contacto com a equipa da festa</h3><p class="notas">André Silva, Rui Vieira, Sílvia, Emanuel e restantes que trabalham na festa.</p></div></article>
+</div></section>
+
+  <h2 class="sec">A seguir</h2>
+  <p class="sec-sub">Eventos e preparativos com data marcada</p>
+  <section class="dia"><div class="dia-h"><span class="mono">SEX 2 out</span></div><div class="itens">
+<article class="item"><span class="hora mono">—</span><div><span class="tag t-evento">Evento</span><h3>Tapas &amp; Petiscos — Sabores Unidos</h3><div class="local">Winzerfest, Döttingen</div><p class="notas">Presença da Tuga na Winzerfest, de 2 a 4 de outubro.</p></div></article>
+</div></section>
+<section class="dia"><div class="dia-h"><span class="mono">SEG 12 out</span></div><div class="itens">
+<article class="item"><span class="hora mono">—</span><div><span class="tag t-lembrete">Lembrete</span><h3>Placa de madeira dos patrocinadores para o bar</h3><div class="local">Bar / futuras festas</div><p class="notas">Painel de madeira no bar com os logos de todos os patrocinadores que apoiam a Tuga desde o início. A tratar: quem faz a madeira, medidas, como fixar os logos e orçamento.</p></div></article>
+</div></section>
+<section class="dia"><div class="dia-h"><span class="mono">SÁB 5 dez</span></div><div class="itens">
+<article class="item"><span class="hora mono">—</span><div><span class="tag t-evento">Evento</span><h3>Festa de Natal da Associação</h3><div class="local">Klingnau</div><p class="notas">Festa de Natal para sócios e amigos.</p></div></article>
+</div></section>
+
+  <footer class="pe">
+    Esta página é um resumo da agenda interna da direção e é atualizada manualmente.
+    Para acrescentar ou alterar alguma coisa, fala com quem trata da agenda.
+  </footer>
+</div>
+
+<script>
+(function(){
+  var alvo = new Date(2026, 9, 2);
+  var hoje = new Date(); hoje.setHours(0,0,0,0);
+  var d = Math.round((alvo - hoje) / 86400000);
+  var el = document.getElementById("faltam");
+  if (el && d >= 0) el.textContent = d;
+})();
+</script>

@@ -37,3 +37,12 @@ Editar `agenda.html` e voltar a publicar no mesmo URL do artifact acima
 A app é publicada com a regra `db: { rules: [{ path: "", read: "interact", write: "admin" }] }`:
 quem recebe a partilha com "pode ver" lê a agenda mas não a altera; só o dono e quem
 receber "pode editar" é que cria, altera ou apaga entradas.
+
+## Quadro da Direção (só leitura)
+
+Página estática para quem não tem conta Claude: `quadro.html`, gerada por
+`gerar_quadro.py` a partir de `entradas.json` (exportado da base de dados da app).
+Publicada em https://claude.ai/code/artifact/7b9732bd-ace8-4247-9e9d-852f6dc9c38e
+
+Para atualizar: exportar as entradas da agenda para `entradas.json`, correr
+`python3 gerar_quadro.py` e voltar a publicar `quadro.html` no mesmo URL.
