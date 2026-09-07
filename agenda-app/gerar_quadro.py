@@ -2,6 +2,9 @@
 """Gera a pagina de acompanhamento (so leitura) a partir das entradas da agenda."""
 import json, datetime, html, sys
 
+# Quadro publico: sem as notas internas (nomes, precos, detalhes de fornecedores).
+SEM_NOTAS = True
+
 HOJE = datetime.date(2026, 9, 7)
 WINZERFEST = datetime.date(2026, 10, 2)
 
@@ -31,7 +34,7 @@ def cartao(e):
     linhas = []
     if e.get("local"): linhas.append(esc(e["local"]))
     meta = '<div class="local">%s</div>' % " · ".join(linhas) if linhas else ""
-    notas = '<p class="notas">%s</p>' % esc(e.get("notas")) if e.get("notas") else ""
+    notas = "" if SEM_NOTAS else ('<p class="notas">%s</p>' % esc(e.get("notas")) if e.get("notas") else "")
     feito = " feito" if e.get("feito") else ""
     return ('<article class="item%s">'
             '<span class="hora mono">%s</span>'
@@ -168,8 +171,9 @@ footer.pe{ margin-top:44px; padding-top:18px; border-top:1px solid var(--line); 
   __DEPOIS__
 
   <footer class="pe">
-    Esta página é um resumo da agenda interna da direção e é atualizada manualmente.
-    Para acrescentar ou alterar alguma coisa, fala com quem trata da agenda.
+    Resumo da agenda interna da direção, atualizado manualmente. Só mostra o que está marcado —
+    os detalhes de cada ponto ficam na agenda interna. Para acrescentar ou alterar alguma coisa,
+    fala com quem trata da agenda.
   </footer>
 </div>
 
