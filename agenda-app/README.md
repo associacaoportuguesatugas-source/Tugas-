@@ -31,3 +31,9 @@ for para uso privado.
 
 Editar `agenda.html` e voltar a publicar no mesmo URL do artifact acima
 (o Claude publica com `url` = link do artifact para manter o mesmo endereço).
+
+## Permissões de partilha
+
+A app é publicada com a regra `db: { rules: [{ path: "", read: "interact", write: "admin" }] }`:
+quem recebe a partilha com "pode ver" lê a agenda mas não a altera; só o dono e quem
+receber "pode editar" é que cria, altera ou apaga entradas.

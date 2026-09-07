@@ -494,7 +494,7 @@ dialog::backdrop{ background:rgba(16,15,12,.55); }
         mode = "db";
         setSync("db","sincronizado");
         document.getElementById("railNote").textContent =
-          "As entradas ficam guardadas no servidor desta app — abres no telemóvel ou no computador e vês sempre o mesmo.";
+          "As entradas ficam guardadas no servidor desta app — abres no telemóvel ou no computador e vês sempre o mesmo. Quem receber a partilha vê a agenda; só quem tiver permissão de edição pode alterá-la.";
         unsub = dbColl.onSnapshot(function(snap){
           entries = snap.docs.map(function(d){ return normalize(d.id, d.data()); });
           render();
@@ -515,10 +515,21 @@ dialog::backdrop{ background:rgba(16,15,12,.55); }
     render();
   }
 
+  function erroEscrita(err, verbo){
+    var code = (err && err.code) || "";
+    if (code === "invalid_argument"){
+      toast("Só quem tem permissão de edição pode alterar esta agenda.");
+    } else if (code === "quota_exceeded"){
+      toast("A agenda está cheia. Apaga entradas antigas para criar novas.");
+    } else {
+      toast("Não foi possível " + verbo + ". Verifica a ligação e tenta outra vez.");
+    }
+  }
+
   function persist(e){
     if (mode === "db" && dbColl){
-      return dbColl.doc(e.id).set(body(e)).catch(function(){
-        toast("Não foi possível guardar. Verifica a ligação e tenta outra vez.");
+      return dbColl.doc(e.id).set(body(e)).catch(function(err){
+        erroEscrita(err, "guardar");
       });
     }
     var i = indexOf(e.id);
@@ -528,8 +539,8 @@ dialog::backdrop{ background:rgba(16,15,12,.55); }
   }
   function remove(id){
     if (mode === "db" && dbColl){
-      return dbColl.doc(id).delete().catch(function(){
-        toast("Não foi possível apagar. Tenta outra vez.");
+      return dbColl.doc(id).delete().catch(function(err){
+        erroEscrita(err, "apagar");
       });
     }
     var i = indexOf(id);
