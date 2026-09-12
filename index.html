@@ -889,6 +889,48 @@
   }
   .star-partner-card{cursor:pointer;transition:transform 0.2s, box-shadow 0.2s;}
 .star-partner-card:hover{transform:translateY(-4px);box-shadow:0 0 0 3px rgba(224,168,59,0.28), 0 14px 30px rgba(0,0,0,0.25);}
+.partner-feature-card{
+  background:#fff;
+  border-radius:16px;
+  border:2px solid var(--gold);
+  box-shadow:0 0 0 3px rgba(224,168,59,0.18);
+  padding:28px 26px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  max-width:640px;
+  margin:28px auto 0;
+  text-align:left;
+}
+.partner-feature-card img{
+  width:100px;
+  height:100px;
+  object-fit:contain;
+  flex-shrink:0;
+}
+.partner-feature-card h3{
+  font-family:'Fraunces', serif;
+  font-size:17px;
+  color:#1a1408;
+  margin-bottom:4px;
+}
+.partner-feature-card .partner-feature-tag{
+  font-size:12px;
+  color: var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:8px;
+  font-weight:700;
+}
+.partner-feature-card p{
+  color:#4a4030;
+  font-size:14px;
+  line-height:1.6;
+  margin:0;
+}
+@media (max-width:600px){
+  .partner-feature-card{flex-direction:column;text-align:center;}
+}
 </style>
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "659edc73817449a6bc6827870a8a6459"}'></script>
@@ -1173,6 +1215,14 @@
       <a class="partner-logo" href="https://gemeinde-schweiz.ch/kanton-aargau/klingnau/#vereine" target="_blank" rel="noopener"><img src="https://gemeinde-schweiz.ch/template/images/gemeindefinder-logo-icon.png" alt="Gemeinde-Infoseite Klingnau" loading="lazy"></a>
       <a class="partner-logo" href="https://www.klingnau.ch/gesellschaft/vereine-kultur/tuga-portugiesischer-verein" target="_blank" rel="noopener" style="flex-direction:column;gap:6px;"><img src="https://www.klingnau.ch/apple-touch-icon.png" alt="Gemeinde Klingnau" loading="lazy" style="max-height:78px;"><small style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:11px;color:#1a1408;letter-spacing:0.02em;">Gemeinde Klingnau (offiziell)</small></a>
         <a class="partner-logo" href="https://www.integrationaargau.ch/" target="_blank" rel="noopener"><img src="assets/parceiros/integration-aargau.svg" alt="Integration Aargau" loading="lazy"></a>
+    </div>
+    <div class="partner-feature-card">
+      <img src="assets/parceiros/lucito-producoes.png" alt="Lucito Produções" loading="lazy">
+      <div>
+        <h3>Lucito Produções</h3>
+        <div class="partner-feature-tag">L.P. Agenciamento de Shows e Festas</div>
+        <p data-i18n="lucito_p">Lucito é um artista e músico carioca, com largos anos de experiência, fundador, vocalista e músico da banda <strong>Grupo Odara</strong>. Já alegrou inúmeras festas brasileiras na Suíça ao som de pagode e samba, levando a verdadeira energia brasileira a cada evento. Através da L.P. Agenciamento de Shows e Festas, representa <strong>o Brasil no seu expoente máximo na Suíça</strong>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1619,6 +1669,7 @@ const translations = {
     star_zurzibiet_p: "A Tuga agradece à <strong>Zurzibiet Glanz Reinigung</strong>, de Carla Pereira, pelo apoio à nossa associação. Sediada na região do Zurzibiet (distrito de Zurzach), presta serviços de limpeza profissional a particulares e empresas, com o cuidado e a proximidade de um negócio próprio gerido por uma portuguesa da nossa comunidade.",
     star_finex_p: "A Tuga agradece à <strong>Finex GmbH Haushaltgeräte</strong>, sob a liderança de Sven Sennhauser, pelo apoio à nossa associação. Sediada em Gippingen, a Finex conta com mais de 30 anos de experiência profissional de Sven Sennhauser, destacando-se pelo aconselhamento competente, venda, manutenção e reparação, bem como pela gestão de eletrodomésticos em imóveis arrendados — sempre independente de marca e com um serviço próximo e pessoal para particulares, proprietários e empresas da região.",
     star_senn_p: "A Tuga agradece à <strong>Senn Baumanagement GmbH</strong> pelo generoso apoio à nossa associação. Sediada em Baden, esta jovem empresa de gestão e direção de obra, liderada por Dominik Senn, tem construído um percurso de excelência na região do Aargau — sempre com rigor, proximidade e responsabilidade.", star_buerli_p: "A Tuga agradece à <strong>Bürli AG</strong> pelo generoso apoio à nossa associação e por nos acolher no seu terreno durante o Winzerfest Döttingen. Há décadas ao serviço de Döttingen e da região, a Bürli AG é uma peça fundamental da vida associativa e cultural local.", parceiros_restantes_eyebrow: "Parceiros que Apoiam o Nosso Caminho",
+    lucito_p: "Lucito é um artista e músico carioca, com largos anos de experiência, fundador, vocalista e músico da banda <strong>Grupo Odara</strong>. Já alegrou inúmeras festas brasileiras na Suíça ao som de pagode e samba, levando a verdadeira energia brasileira a cada evento. Através da L.P. Agenciamento de Shows e Festas, representa <strong>o Brasil no seu expoente máximo na Suíça</strong>.",
     juridico_eyebrow: "Parceria Jurídica",
     juridico_h2: "Uma parceria de que muito nos orgulhamos",
     juridico_p1: 'O apoio jurídico é um dos pilares mais importantes do nosso trabalho — e também uma das parcerias de que mais nos orgulhamos. Ela assenta na <strong>Dra. Fernanda Pontes</strong>, da Advocacia AG, uma advogada que partilha os mesmos valores e princípios que nos definem: proximidade, confiança e compromisso genuíno com a comunidade portuguesa.',
@@ -1785,6 +1836,7 @@ const translations = {
     star_finex_p: "Die Tuga dankt der <strong>Finex GmbH Haushaltgeräte</strong>, unter der Leitung von Sven Sennhauser, für die Unterstützung unseres Vereins. Mit Sitz in Gippingen bringt Sven Sennhauser über 30 Jahre Berufserfahrung mit und steht für kompetente Beratung, Verkauf, Wartung und Reparatur sowie die Betreuung von Haushaltsgeräten in Liegenschaften – markenunabhängig und mit persönlichem Service für Privatpersonen, Liegenschaftsbesitzer und Gewerbetreibende in der Region.",
     star_rmr_p: "Die Tuga bedankt sich bei <strong>RMR Meier</strong> fur die Freundschaft, Grosszugigkeit und die volle Unterstutzung unserer Sache, vom Sponsoring bis zur Logistik des Umzugs am Winzerfest. Wenn es einen Namen gibt, der fur Hilfsbereitschaft, Freundschaft, Vereinsgeist und echten Respekt vor allem und allen steht, dann ist es <strong>RMR</strong>, von Roland Meier. Hier vereinen sich die Werte und Prinzipien eines vorbildlichen Menschen mit der Professionalitat eines erstklassigen Maurerbetriebs. Wer diese Art von Dienstleistung sucht, findet hier zweifellos den richtigen Betrieb: Professionalitat, eingehaltene Termine und garantierter Erfolg. Wer eine gute und faire Firma sucht, sollte nicht zogern.",
     star_senn_p: "Die Tuga bedankt sich bei der <strong>Senn Baumanagement GmbH</strong> für die grosszügige Unterstützung unseres Vereins. Das junge, in Baden ansässige Bauleitungs- und Projektmanagement-Unternehmen unter der Leitung von Dominik Senn hat sich in der Region Aargau durch Präzision, Nähe und Verlässlichkeit einen ausgezeichneten Ruf erarbeitet.", star_buerli_p: "Die Tuga bedankt sich bei der <strong>Bürli AG</strong> für die grosszügige Unterstützung unseres Vereins und dafür, dass wir während des Winzerfests Döttingen ihr Gelände nutzen dürfen. Seit Jahrzehnten prägt die Bürli AG das Vereinsleben und die regionale Kultur in Döttingen.", parceiros_restantes_eyebrow: "Partner, die uns unterstützen",
+    lucito_p: "Lucito ist ein Künstler und Musiker aus Rio de Janeiro (Carioca) mit langjähriger Erfahrung, Gründer, Sänger und Musiker der Band <strong>Grupo Odara</strong>. Er hat bereits zahlreiche brasilianische Feste in der Schweiz mit Pagode und Samba zum Leben erweckt und bringt die echte brasilianische Energie in jede Veranstaltung. Mit L.P. Agenciamento de Shows e Festas vertritt er <strong>Brasilien in seiner besten Form in der Schweiz</strong>.",
     juridico_eyebrow: "Rechtspartnerschaft",
     juridico_h2: "Eine Partnerschaft, auf die wir sehr stolz sind",
     juridico_p1: 'Die rechtliche Unterstützung ist eine der wichtigsten Säulen unserer Arbeit — und zugleich eine der Partnerschaften, auf die wir am stolzesten sind. Sie beruht auf <strong>Dra. Fernanda Pontes</strong> von der Advocacia AG, einer Anwältin, die dieselben Werte und Grundsätze teilt, die uns ausmachen: Nähe, Vertrauen und echtes Engagement für die portugiesische Gemeinschaft.',
