@@ -316,35 +316,6 @@
     height: 100%;
     border: 0;
   }
-  #hino-unmute-btn{
-    position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--gold-light);
-    color: #1a1408;
-    font-weight: 700;
-    font-size: 14px;
-    border: none;
-    border-radius: 999px;
-    padding: 10px 20px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    transition: background 0.2s, transform 0.2s;
-    animation: hino-pulse 1.8s ease-in-out infinite;
-  }
-  #hino-unmute-btn:hover{
-    background: var(--gold);
-    transform: translateX(-50%) translateY(-2px);
-  }
-  @keyframes hino-pulse{
-    0%, 100% { box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 0 0 rgba(224,168,59,0.5); }
-    50% { box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 0 10px rgba(224,168,59,0); }
-  }
   @media (max-width: 760px){
     .video-frame{ padding: 12px; border-radius: 16px; }
   }
@@ -1125,8 +1096,7 @@
     </div>
     <div class="video-frame">
       <div class="video-embed">
-        <iframe id="hino-iframe" src="https://www.youtube.com/embed/CUHGGKSl2yo?autoplay=1&mute=1&enablejsapi=1&playsinline=1" title="Hino da Associação Portuguesa Tuga" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-origin" allowfullscreen></iframe>
-        <button id="hino-unmute-btn" type="button" onclick="var f=document.getElementById('hino-iframe');f.contentWindow.postMessage('{\"event\":\"command\",\"func\":\"unMute\",\"args\":\"\"}','*');f.contentWindow.postMessage('{\"event\":\"command\",\"func\":\"playVideo\",\"args\":\"\"}','*');this.style.display='none';" data-i18n="hino_unmute_btn">🔊 Ativar som do Hino</button>
+        <iframe src="https://www.youtube.com/embed/CUHGGKSl2yo" title="Hino da Associação Portuguesa Tuga" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-origin" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -1766,7 +1736,6 @@ const translations = {
     musica_eyebrow: "A Nossa Música",
     musica_h2: "O Hino da Associação Tuga",
     musica_p: "Orgulho, comunidade e tradição portuguesa na Suíça — ouve o hino que nos representa.",
-    hino_unmute_btn: "🔊 Ativar som do Hino",
     eventos_eyebrow: "Vida de Associação",
     eventos_h2: "Eventos",
     eventos_p: "Do que já vivemos juntos ao que está para vir — estes são os momentos que unem a nossa comunidade.",
@@ -1952,7 +1921,6 @@ const translations = {
     musica_eyebrow: "Unser Lied",
     musica_h2: "Die Hymne des Vereins Tuga",
     musica_p: "Stolz, Gemeinschaft und portugiesische Tradition in der Schweiz — hör dir unsere Hymne an.",
-    hino_unmute_btn: "🔊 Ton der Hymne aktivieren",
     eventos_eyebrow: "Vereinsleben",
     eventos_h2: "Veranstaltungen",
     eventos_p: "Von dem, was wir bereits gemeinsam erlebt haben, bis zu dem, was noch kommt — das sind die Momente, die unsere Gemeinschaft verbinden.",
