@@ -40,7 +40,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -73,7 +73,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -106,7 +106,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -139,7 +139,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -172,7 +172,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -205,7 +205,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -238,7 +238,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -271,7 +271,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -304,7 +304,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -337,7 +337,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -370,7 +370,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -403,7 +403,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -436,7 +436,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -469,7 +469,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -502,7 +502,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -535,7 +535,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -568,7 +568,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -601,7 +601,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
@@ -634,7 +634,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 Dürfen wir Sie bitten, diese Anfrage an Ihre Mitglieder weiterzuleiten, zum Beispiel im nächsten Newsletter? Wir würden uns sehr freuen, lokale Betriebe aus dem Aaretal und dem Kirchspiel als Partner vorzustellen.
 
@@ -669,7 +669,7 @@ Kurz zu uns: Die **Associação Portuguesa TUGA** ist ein gemeinnütziger Verein
 
 Anfang Oktober waren wir mit unserer **«Taberna Tuga»** am **Winzerfest Döttingen 2026** dabei, dem grössten Weinfest der Deutschschweiz. Mit portugiesischer Küche, Musik und Tanz haben wir viele Besucherinnen und Besucher begeistert. Dieser Erfolg zeigt, wie viele Menschen wir erreichen und wie gross der Zusammenhalt in unserer Gemeinschaft ist.
 
-Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Konzert, einer Überraschung und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
+Am **Samstag, 5. Dezember 2026**, feiern wir unser **Weihnachtsessen im Schloss Klingnau**: mit Live-Musik von Rui Vieira, Überraschungen und zum Abschluss der grossen **Weihnachtsverlosung**. Ihr Preis wäre der Höhepunkt des Abends.
 
 **Was Sie dafür von uns bekommen:**
 - Vorstellung Ihres Geschäfts auf unseren **Social-Media-Kanälen** (TikTok, Instagram, Facebook)
