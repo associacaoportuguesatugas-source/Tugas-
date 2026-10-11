@@ -259,6 +259,16 @@
   .culture-item p{ font-size: 13px; color: var(--muted); line-height:1.5; margin:0; }
 
   /* WINZERFEST */
+  .xmas-grid{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items:center; }
+  .xmas-info p{ color: var(--muted); line-height: 1.75; font-size: 16px; margin: 0 0 16px; }
+  .xmas-info strong{ color: var(--cream); }
+  .xmas-list{ list-style:none; padding:0; margin: 0 0 22px; display:grid; gap:10px; }
+  .xmas-list li{ color: var(--cream); font-size: 16px; line-height:1.5; }
+  .xmas-contact a{ color: var(--gold-light); text-decoration:none; font-weight:700; }
+  .xmas-flyer img{ width:100%; height:auto; border-radius:18px; box-shadow: 0 18px 50px rgba(0,0,0,.45); display:block; }
+  .xmas-flyer .flyer-de{ display:none; }
+  html[lang="de"] .xmas-flyer .flyer-pt{ display:none; }
+  html[lang="de"] .xmas-flyer .flyer-de{ display:block; }
   .wz-badge{ margin-top: 26px; }
   .wz-badge a{
     display:inline-flex; align-items:center; gap:20px;
@@ -734,6 +744,7 @@
     .legal-grid{ grid-template-columns: 1fr; }
     .testimonial-grid{ grid-template-columns: 1fr; margin-top: 32px; }
     .wz-features{ grid-template-columns: 1fr; }
+    .xmas-grid{ grid-template-columns: 1fr; gap: 32px; }
     .wz-badge a{ flex-direction:column; text-align:center; gap:12px; }
     .wz-badge img{ width:100px; height:100px; }
     .culture-grid{ grid-template-columns: repeat(2, 1fr); }
@@ -1473,12 +1484,34 @@
   </div>
 </section>
 
+<section id="natal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="xmas_eyebrow">Próximo evento</div>
+      <h2 data-i18n="xmas_h2">🎄 Jantar de Natal da Associação Portuguesa Tuga</h2>
+    </div>
+    <div class="xmas-grid">
+      <div class="xmas-info">
+        <p data-i18n="xmas_intro">A <strong>Associação Portuguesa Tuga</strong> vai estar presente com a <strong>Taberna Tuga</strong> no nosso <strong>Jantar de Natal</strong>: uma festa especial para <strong>sócios, famílias, amigos</strong> e todos os que queiram estar presentes.</p>
+        <ul class="xmas-list" data-i18n-html="xmas_list"><li>📅 <strong>Sábado, 5 de dezembro de 2026</strong></li><li>📍 <strong>Castelo de Klingnau</strong> (Schloss Klingnau)</li><li>🥂 Aperitivo a partir das <strong>16:00</strong></li><li>🍽️ Jantar às <strong>20:00</strong></li><li>🎶 Música ao vivo com <strong>Rui Vieira</strong></li><li>🎁 Grande <strong>rifa de Natal</strong></li></ul>
+        <p data-i18n="xmas_limited">⚠️ <strong>Reservas limitadas.</strong> Mais informações serão apresentadas brevemente.</p>
+        <p class="xmas-contact" data-i18n-html="xmas_contact">Reservas e informações: <a href="tel:+41764025480">076 402 54 80</a> · <a href="mailto:associacaoportuguesatugas@gmail.com">associacaoportuguesatugas@gmail.com</a></p>
+        <p data-i18n="xmas_outro">Haverá <strong>surpresas</strong> e a certeza de que, juntos, faremos uma festa bonita!</p>
+      </div>
+      <div class="xmas-flyer">
+        <img class="flyer-pt" src="assets/eventos/jantar-natal-2026-pt.jpg" alt="Flyer do Jantar de Natal da Associação Portuguesa Tuga, 5 de dezembro de 2026, Castelo de Klingnau" loading="lazy">
+        <img class="flyer-de" src="assets/eventos/jantar-natal-2026-de.jpg" alt="Flyer Weihnachtsessen der Associação Portuguesa Tuga, 5. Dezember 2026, Schloss Klingnau" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="winzerfest">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow" data-i18n="wz_eyebrow">Evento 2026</div>
-      <h2 data-i18n="wz_h2">Estaremos na Winzerfest de Döttingen 2026</h2>
-      <p data-i18n="wz_p_intro">A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, que reuniu mais de 52 mil visitantes em 2025. Em 2026, na sua 73.ª edição (2 a 4 de outubro), a Associação Portuguesa Tuga vai marcar presença.</p>
+      <div class="eyebrow" data-i18n="wz_eyebrow">Evento realizado · 2 a 4 de outubro de 2026</div>
+      <h2 data-i18n="wz_h2">Taberna Tuga na Winzerfest de Döttingen: um sucesso!</h2>
+      <p data-i18n="wz_p_intro">A presença da <strong>Associação Portuguesa Tuga</strong> na 73.ª Winzerfest de Döttingen, com a nossa <strong>Taberna Tuga</strong>, foi um sucesso e um êxito conseguido. Um resultado que só foi possível graças à <strong>união e ao trabalho de todos</strong>.</p>
       <div class="wz-badge">
         <a href="https://www.winzerfest.ch/" target="_blank" rel="noopener">
           <img src="assets/parceiros/winzerfest-logo.svg" alt="Winzerfest Döttingen" loading="lazy">
@@ -1487,8 +1520,9 @@
       </div>
     </div>
     <div class="wz-intro">
-      <p data-i18n="wz_p1">A nossa participação tem um objetivo claro: construir uma ponte de integração entre a gastronomia portuguesa e os vinhos suíços — verdadeiras joias, muitas vezes desconhecidas e pouco reconhecidas a nível europeu, apesar do seu valor e qualidade surpreendentes. Gastronomia portuguesa e vinicultura suíça: uma junção perfeita.</p>
-      <p data-i18n="wz_p2">Vamos estar presentes com um espaço gastronómico e um espaço/bar de dança, para marcar a diferença e mostrar a presença da nossa comunidade — com um objetivo maior que tudo: a integração e a partilha dos valores da nossa cultura portuguesa, sempre agradecidos pela amabilidade, hospitalidade e recetividade deste país especial que é a Suíça.</p>
+      <p data-i18n="wz_p1">O nosso muito obrigado a todos: em especial aos <strong>trabalhadores e voluntários</strong> que estiveram do nosso lado e que tornaram tudo isto possível, aos nossos <strong>parceiros e patrocinadores</strong> e, por último, aos nossos <strong>clientes e amigos</strong>, que nos visitaram e fizeram desta festa um momento inesquecível.</p>
+      <p data-i18n="wz_p2">No próximo ano cá estaremos novamente, <strong>mais fortes e melhores</strong>. Aprendemos muito com esta experiência e todos os erros que cometemos serão corrigidos. O nosso objetivo é fazer crescer a nossa marca <strong>Taberna Tuga</strong> e, com ela, angariar fundos para que a nossa associação se possa manter <strong>ativa, positiva e funcional</strong>.</p>
+      <p data-i18n="wz_p3"><strong>O nosso muito obrigado a todos!</strong></p>
     </div>
     <div class="wz-features">
       <div class="wz-feature">
@@ -1502,26 +1536,8 @@
         <p data-i18n="wz_f2_p">Música, animação e boa disposição à portuguesa.</p>
       </div>
     </div>
-    <div style="margin-top:56px;">
-      <div class="eyebrow" data-i18n="wz_artist_eyebrow">Anúncio especial</div>
-      <h3 style="font-size:26px; color:var(--cream); margin-bottom:18px;" data-i18n="wz_artist_h">🎤 Concerto confirmado na nossa festa!</h3>
-      <p data-i18n-html="wz_artist_p" style="color:var(--muted); line-height:1.75; font-size:16px; max-width:760px;">Temos o prazer e a satisfação de anunciar que, no nosso espaço na Winzerfest de Döttingen 2026, teremos o concerto de <strong>Rui Vieira</strong> — cantor e compositor minhoto, uma das grandes referências da música popular portuguesa!</p>
-    </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-photo">
-        <img src="assets/parceiros/rui-vieira-photo.png" alt="Rui Vieira" loading="lazy">
-      </div>
-      <div class="testimonial-text">
-        <p data-i18n="wz_artist_quote">"A nossa música, as nossas raízes." Rui Vieira é uma referência da música popular portuguesa junto da comunidade emigrante, levando a nossa cultura, tradição e alegria a inúmeros eventos na Suíça e no estrangeiro. Vem cantar e dançar connosco na Winzerfest 2026!</p>
-        <div class="signature">Rui Vieira</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
-          <a href="https://www.facebook.com/share/1Bam6Kc5aF/?mibextid=wwXIfr" target="_blank" rel="noopener" style="display:inline-block;font-size:13px;font-weight:700;color:#1a1408;background:var(--gold-light);padding:8px 16px;border-radius:999px;text-decoration:none;">Facebook</a>
-          <a href="https://wa.me/41762511024" target="_blank" rel="noopener" data-i18n="rui_vieira_whatsapp" style="display:inline-block;font-size:13px;font-weight:700;color:#1a1408;background:var(--gold-light);padding:8px 16px;border-radius:999px;text-decoration:none;">📱 Contactar no WhatsApp</a>
-        </div>
-      </div>
-    </div>
     <div class="quote-block" data-i18n="wz_transparency">
-      Somos uma associação sem fins lucrativos e transparente, com órgãos administrativos e fiscais, estatutos e objetivos bem definidos. Todo o valor angariado neste evento será integralmente canalizado para a compra de material necessário para a nossa sede.
+      Somos uma associação sem fins lucrativos e transparente, com órgãos administrativos e fiscais, estatutos e objetivos bem definidos. Todo o valor angariado neste evento foi integralmente canalizado para a compra de material necessário para a nossa sede.
     </div>
   </div>
 </section>
@@ -1712,17 +1728,25 @@ const translations = {
     c2_h: "Tradições", c2_p: "Mantemos vivas as tradições que nos unem.",
     c3_h: "Gastronomia", c3_p: "Sabores que representam o que somos.",
     c4_h: "Convívio", c4_p: "Momentos que fortalecem laços e criam memórias.",
-    wz_eyebrow: "Evento 2026",
-    wz_h2: "Estaremos na Winzerfest de Döttingen 2026",
-    wz_p_intro: "A Winzerfest de Döttingen é a maior festa do vinho da Suíça alemã — uma festa única, que reuniu mais de 52 mil visitantes em 2025. Em 2026, na sua 73.ª edição (2 a 4 de outubro), a Associação Portuguesa Tuga vai marcar presença.",
+    xmas_eyebrow: "Próximo evento",
+    xmas_h2: "🎄 Jantar de Natal da Associação Portuguesa Tuga",
+    xmas_intro: "A <strong>Associação Portuguesa Tuga</strong> vai estar presente com a <strong>Taberna Tuga</strong> no nosso <strong>Jantar de Natal</strong>: uma festa especial para <strong>sócios, famílias, amigos</strong> e todos os que queiram estar presentes.",
+    xmas_list: "<li>📅 <strong>Sábado, 5 de dezembro de 2026</strong></li><li>📍 <strong>Castelo de Klingnau</strong> (Schloss Klingnau)</li><li>🥂 Aperitivo a partir das <strong>16:00</strong></li><li>🍽️ Jantar às <strong>20:00</strong></li><li>🎶 Música ao vivo com <strong>Rui Vieira</strong></li><li>🎁 Grande <strong>rifa de Natal</strong></li>",
+    xmas_limited: "⚠️ <strong>Reservas limitadas.</strong> Mais informações serão apresentadas brevemente.",
+    xmas_contact: "Reservas e informações: <a href=\"tel:+41764025480\">076 402 54 80</a> · <a href=\"mailto:associacaoportuguesatugas@gmail.com\">associacaoportuguesatugas@gmail.com</a>",
+    xmas_outro: "Haverá <strong>surpresas</strong> e a certeza de que, juntos, faremos uma festa bonita!",
+    wz_eyebrow: "Evento realizado · 2 a 4 de outubro de 2026",
+    wz_h2: "Taberna Tuga na Winzerfest de Döttingen: um sucesso!",
+    wz_p_intro: "A presença da <strong>Associação Portuguesa Tuga</strong> na 73.ª Winzerfest de Döttingen, com a nossa <strong>Taberna Tuga</strong>, foi um sucesso e um êxito conseguido. Um resultado que só foi possível graças à <strong>união e ao trabalho de todos</strong>.",
     wz_official_site: "Site oficial da Winzerfest Döttingen",
-    wz_p1: "A nossa participação tem um objetivo claro: construir uma ponte de integração entre a gastronomia portuguesa e os vinhos suíços — verdadeiras joias, muitas vezes desconhecidas e pouco reconhecidas a nível europeu, apesar do seu valor e qualidade surpreendentes. Gastronomia portuguesa e vinicultura suíça: uma junção perfeita.",
-    wz_p2: "Vamos estar presentes com um espaço gastronómico e um espaço/bar de dança, para marcar a diferença e mostrar a presença da nossa comunidade — com um objetivo maior que tudo: a integração e a partilha dos valores da nossa cultura portuguesa, sempre agradecidos pela amabilidade, hospitalidade e recetividade deste país especial que é a Suíça.",
+    wz_p1: "O nosso muito obrigado a todos: em especial aos <strong>trabalhadores e voluntários</strong> que estiveram do nosso lado e que tornaram tudo isto possível, aos nossos <strong>parceiros e patrocinadores</strong> e, por último, aos nossos <strong>clientes e amigos</strong>, que nos visitaram e fizeram desta festa um momento inesquecível.",
+    wz_p2: "No próximo ano cá estaremos novamente, <strong>mais fortes e melhores</strong>. Aprendemos muito com esta experiência e todos os erros que cometemos serão corrigidos. O nosso objetivo é fazer crescer a nossa marca <strong>Taberna Tuga</strong> e, com ela, angariar fundos para que a nossa associação se possa manter <strong>ativa, positiva e funcional</strong>.",
+    wz_p3: "<strong>O nosso muito obrigado a todos!</strong>",
     wz_f1_h: "Espaço Gastronómico",
     wz_f1_p: "Sabores autênticos de Portugal para descobrir e partilhar.",
     wz_f2_h: "Espaço & Bar de Dança",
     wz_f2_p: "Música, animação e boa disposição à portuguesa.",
-    wz_transparency: "Somos uma associação sem fins lucrativos e transparente, com órgãos administrativos e fiscais, estatutos e objetivos bem definidos. Todo o valor angariado neste evento será integralmente canalizado para a compra de material necessário para a nossa sede.",
+    wz_transparency: "Somos uma associação sem fins lucrativos e transparente, com órgãos administrativos e fiscais, estatutos e objetivos bem definidos. Todo o valor angariado neste evento foi integralmente canalizado para a compra de material necessário para a nossa sede.",
     wz_artist_eyebrow: "Anúncio especial",
     wz_artist_h: "🎤 Concerto confirmado na nossa festa!",
     wz_artist_p: 'Temos o prazer e a satisfação de anunciar que, no nosso espaço na Winzerfest de Döttingen 2026, teremos o concerto de <strong>Rui Vieira</strong> — cantor e compositor minhoto, uma das grandes referências da música popular portuguesa!',
@@ -1899,17 +1923,25 @@ const translations = {
     c2_h: "Traditionen", c2_p: "Wir halten die Traditionen lebendig, die uns verbinden.",
     c3_h: "Gastronomie", c3_p: "Geschmäcker, die zeigen, wer wir sind.",
     c4_h: "Geselligkeit", c4_p: "Momente, die Bande stärken und Erinnerungen schaffen.",
-    wz_eyebrow: "Veranstaltung 2026",
-    wz_h2: "Wir sind an der Winzerfest Döttingen 2026 dabei",
-    wz_p_intro: "Die Winzerfest Döttingen ist das grösste Weinfest der Deutschschweiz — ein einzigartiges Fest, das 2025 über 52'000 Besucherinnen und Besucher zählte. 2026 wird die Associação Portuguesa TUGA bei der 73. Ausgabe (2. bis 4. Oktober) dabei sein.",
+    xmas_eyebrow: "Nächster Anlass",
+    xmas_h2: "🎄 Weihnachtsessen der Associação Portuguesa Tuga",
+    xmas_intro: "Die <strong>Associação Portuguesa Tuga</strong> lädt mit der <strong>Taberna Tuga</strong> zu ihrem <strong>Weihnachtsessen</strong> ein: ein besonderes Weihnachtsfest für <strong>Mitglieder, Familien, Freunde</strong> und alle, die dabei sein möchten.",
+    xmas_list: "<li>📅 <strong>Samstag, 5. Dezember 2026</strong></li><li>📍 <strong>Schloss Klingnau</strong></li><li>🥂 Apéro ab <strong>16:00 Uhr</strong></li><li>🍽️ Abendessen ab <strong>20:00 Uhr</strong></li><li>🎶 Live-Musik mit <strong>Rui Vieira</strong></li><li>🎁 Grosse <strong>Weihnachtsverlosung</strong></li>",
+    xmas_limited: "⚠️ <strong>Reservierungen begrenzt.</strong> Weitere Informationen werden zu einem späteren Zeitpunkt bekannt gegeben.",
+    xmas_contact: "Reservierungen und Informationen: <a href=\"tel:+41764025480\">076 402 54 80</a> · <a href=\"mailto:associacaoportuguesatugas@gmail.com\">associacaoportuguesatugas@gmail.com</a>",
+    xmas_outro: "Es wird <strong>Überraschungen</strong> geben, und wir sind sicher, dass wir gemeinsam ein wunderschönes Fest feiern werden!",
+    wz_eyebrow: "Vergangener Anlass · 2. bis 4. Oktober 2026",
+    wz_h2: "Taberna Tuga am Winzerfest Döttingen: ein voller Erfolg!",
+    wz_p_intro: "Der Auftritt der <strong>Associação Portuguesa Tuga</strong> mit unserer <strong>Taberna Tuga</strong> am 73. Winzerfest Döttingen war ein voller Erfolg. Ein Ergebnis, das nur dank des <strong>Zusammenhalts und der Arbeit aller</strong> möglich war.",
     wz_official_site: "Offizielle Website der Winzerfest Döttingen",
-    wz_p1: "Unsere Teilnahme hat ein klares Ziel: eine Brücke der Integration zwischen der portugiesischen Gastronomie und den Schweizer Weinen zu bauen — wahre Schätze, die trotz ihrer überraschenden Qualität und ihres Wertes auf europäischer Ebene oft unbekannt und wenig anerkannt sind. Portugiesische Gastronomie und Schweizer Weinbau: eine perfekte Verbindung.",
-    wz_p2: "Wir werden mit einem gastronomischen Bereich und einer Tanz-/Barzone präsent sein, um einen Unterschied zu machen und die Präsenz unserer Gemeinschaft zu zeigen — mit einem übergeordneten Ziel: Integration und das Teilen der Werte unserer portugiesischen Kultur, stets dankbar für die Freundlichkeit, Gastfreundschaft und Offenheit dieses besonderen Landes, der Schweiz.",
+    wz_p1: "Unser herzliches Dankeschön an alle: besonders an die <strong>Helferinnen und Helfer</strong>, die an unserer Seite standen und all dies möglich gemacht haben, an unsere <strong>Partner und Sponsoren</strong> und nicht zuletzt an unsere <strong>Gäste und Freunde</strong>, die uns besucht und dieses Fest zu einem unvergesslichen Erlebnis gemacht haben.",
+    wz_p2: "Nächstes Jahr sind wir wieder dabei – <strong>stärker und besser</strong>. Wir haben viel aus dieser Erfahrung gelernt, und alle Fehler, die wir gemacht haben, werden wir korrigieren. Unser Ziel ist es, unsere Marke <strong>Taberna Tuga</strong> weiterzuentwickeln und damit Mittel zu sammeln, damit unser Verein <strong>aktiv, positiv und funktionsfähig</strong> bleibt.",
+    wz_p3: "<strong>Herzlichen Dank an alle!</strong>",
     wz_f1_h: "Gastronomischer Bereich",
     wz_f1_p: "Authentische portugiesische Aromen zum Entdecken und Teilen.",
     wz_f2_h: "Tanzbereich & Bar",
     wz_f2_p: "Musik, Unterhaltung und portugiesische Lebensfreude.",
-    wz_transparency: "Wir sind ein gemeinnütziger und transparenter Verein mit klar definierten Verwaltungs- und Steuerorganen, Statuten und Zielen. Der gesamte bei dieser Veranstaltung gesammelte Erlös fliesst vollständig in die Anschaffung der notwendigen Ausstattung für unser Vereinslokal.",
+    wz_transparency: "Wir sind ein gemeinnütziger und transparenter Verein mit klar definierten Verwaltungs- und Steuerorganen, Statuten und Zielen. Der gesamte bei dieser Veranstaltung gesammelte Erlös floss vollständig in die Anschaffung der notwendigen Ausstattung für unser Vereinslokal.",
     wz_artist_eyebrow: "Besondere Ankündigung",
     wz_artist_h: "🎤 Konzert an unserem Fest bestätigt!",
     wz_artist_p: 'Wir freuen uns, bekannt zu geben, dass an unserem Stand an der Winzerfest Döttingen 2026 <strong>Rui Vieira</strong> auftreten wird — Sänger und Komponist aus dem Minho, eine der grossen Referenzen der portugiesischen Volksmusik!',
