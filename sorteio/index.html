@@ -40,6 +40,11 @@ section{margin-top:48px;scroll-margin-top:80px}
 .prize{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
 .prize .rank{font-family:'Fraunces',serif;color:var(--gold);font-size:22px}
 .prize.top{border-color:var(--gold)}
+.pimg{height:120px;border-radius:8px;margin-bottom:10px;background:#2a1a1d;display:flex;align-items:center;justify-content:center;font-size:54px;overflow:hidden}
+.pimg{position:relative}.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.prize.surprise{border-style:dashed}
+.prize.surprise .pimg{font-size:64px;color:var(--gold)}
+
 .note{margin-top:16px;background:#1d1a12;border:1px solid #5a4620;border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px;color:var(--cream);font-size:15px}
 table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:12px;overflow:hidden}
 th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left}
@@ -86,13 +91,13 @@ footer{border-top:1px solid var(--line);padding:24px 16px;text-align:center;colo
 <section id="preise">
   <h2><span class="pt">Prémios</span><span class="de">Preise</span></h2>
   <div class="prizes">
-    <div class="prize top"><div class="rank">1.</div><span class="pt">Cabaz Tuga: vinhos, produtos portugueses e artesanato de barro</span><span class="de">Tuga-Korb: Weine, portugiesische Spezialitäten und Tonhandwerk</span></div>
-    <div class="prize top"><div class="rank">2.</div><span class="pt">Trotinete nova</span><span class="de">Neues Trottinett</span></div>
-    <div class="prize top"><div class="rank">3.</div><span class="pt">Presunto</span><span class="de">Portugiesischer Rohschinken (Presunto)</span></div>
-    <div class="prize"><div class="rank">4.</div><span class="pt">Cesto de produtos de beleza · MiMi Beauty Lounge</span><span class="de">Korb mit Beauty-Produkten · MiMi Beauty Lounge</span></div>
-    <div class="prize"><div class="rank">5.</div><span class="pt">2 caixas de vinho Tuga</span><span class="de">2 Kisten Tuga-Wein</span></div>
-    <div class="prize"><div class="rank">6.</div><span class="pt">Cabaz de doces · Brito's Sabores</span><span class="de">Süssigkeitenkorb · Brito's Sabores</span></div>
-    <div class="prize"><div class="rank">7.–10.</div><span class="pt">Prémios surpresa, anunciados em breve</span><span class="de">Überraschungspreise, folgen in Kürze</span></div>
+    <div class="prize top"><div class="pimg"><img src="img/premio-1.jpg" alt="" onerror="this.remove()" loading="lazy"><span class="ph">🧺</span></div><div class="rank">1.</div><span class="pt">Cabaz Tuga: vinhos, produtos portugueses e artesanato de barro</span><span class="de">Tuga-Korb: Weine, portugiesische Spezialitäten und Tonhandwerk</span></div>
+    <div class="prize top"><div class="pimg"><img src="img/premio-2.jpg" alt="" onerror="this.remove()" loading="lazy"><span class="ph">🛴</span></div><div class="rank">2.</div><span class="pt">Trotinete nova</span><span class="de">Neues Trottinett</span></div>
+    <div class="prize top"><div class="pimg"><img src="img/premio-3.jpg" alt="" onerror="this.remove()" loading="lazy"><span class="ph">🍖</span></div><div class="rank">3.</div><span class="pt">Presunto</span><span class="de">Portugiesischer Rohschinken (Presunto)</span></div>
+    <div class="prize"><div class="pimg"><img src="img/premio-4.jpg" alt="" onerror="this.remove()" loading="lazy"><span class="ph">💄</span></div><div class="rank">4.</div><span class="pt">Cesto de produtos de beleza · MiMi Beauty Lounge</span><span class="de">Korb mit Beauty-Produkten · MiMi Beauty Lounge</span></div>
+    <div class="prize"><div class="pimg"><img src="img/premio-5.jpg" alt="" onerror="this.remove()" loading="lazy"><span class="ph">🍷</span></div><div class="rank">5.</div><span class="pt">2 caixas de vinho Tuga</span><span class="de">2 Kisten Tuga-Wein</span></div>
+    <div class="prize"><div class="pimg"><img src="img/premio-6.jpg" alt="" onerror="this.remove()" loading="lazy"><span class="ph">🍬</span></div><div class="rank">6.</div><span class="pt">Cabaz de doces · Brito's Sabores</span><span class="de">Süssigkeitenkorb · Brito's Sabores</span></div>
+    <div class="prize surprise"><div class="pimg">🎁</div><div class="rank">7.–10.</div><span class="pt">4 prémios surpresa: serão revelados em breve!</span><span class="de">4 Überraschungspreise: werden bald verraten!</span></div>
   </div>
   <div class="note">
     <span class="pt"><b>Nota legal:</b> segundo as regras do Cantão de Argóvia, o valor de mercado dos prémios tem de ser pelo menos 50 % do valor de todas as rifas em jogo. Por isso, o número de rifas vendidas em cada sorteio respeita sempre o valor dos prémios oferecidos. Neste sorteio estão em jogo, no máximo, as rifas n.º <b>0001 a 0300</b>.</span>
