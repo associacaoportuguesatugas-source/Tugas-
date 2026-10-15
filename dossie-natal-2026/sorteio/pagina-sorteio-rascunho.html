@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorteio Tuga · Verlosung Tuga</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0c;--panel:#151417;--cream:#f4ede0;--gold:#e0a83b;--gold-light:#f2c96a;--green:#2e6b4f;--red:#c23b32;--muted:#a7a29a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:'Work Sans',sans-serif;line-height:1.6}
+a{color:var(--gold-light)}
+nav{position:sticky;top:0;background:rgba(11,11,12,.95);border-bottom:1px solid #2a272c;z-index:5}
+.nav-inner{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{font-family:'Fraunces',serif;font-weight:700;color:var(--cream);text-decoration:none;font-size:20px}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none}
+.nav-links a.active{color:var(--gold-light);font-weight:600}
+.lang button{background:none;border:1px solid #3a363d;color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer}
+.lang button.active{border-color:var(--gold);color:var(--gold-light)}
+header{padding:56px 16px 32px;text-align:center;background:radial-gradient(ellipse at top,#2a1215 0%,var(--bg) 70%)}
+h1{font-family:'Fraunces',serif;font-size:clamp(34px,6vw,56px);margin:0 0 8px}
+h1 span{color:var(--gold)}
+h2{font-family:'Fraunces',serif;font-size:28px;margin:0 0 16px;color:var(--gold-light)}
+.lede{max-width:640px;margin:0 auto;color:var(--muted);font-size:18px}
+main{max-width:1100px;margin:0 auto;padding:0 16px 64px}
+section{margin-top:48px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid #2a272c;border-radius:14px;padding:20px}
+.card b{color:var(--gold-light)}
+.num{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;text-align:center;font-weight:600;margin-bottom:8px}
+.prizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.prize{background:var(--panel);border:1px solid #2a272c;border-radius:12px;padding:16px}
+.prize .rank{font-family:'Fraunces',serif;color:var(--gold);font-size:22px}
+.prize.top{border-color:var(--gold)}
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{padding:12px 14px;border-bottom:1px solid #2a272c;text-align:left}
+th{background:#1d1b20;color:var(--gold-light);font-weight:600}
+td.n{font-family:'Fraunces',serif;font-size:20px;color:var(--gold-light)}
+.status{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 12px;font-size:13px}
+ol li{margin-bottom:8px}
+footer{border-top:1px solid #2a272c;padding:24px 16px;text-align:center;color:var(--muted);font-size:14px}
+[data-lang="de"] .pt{display:none}[data-lang="pt"] .de{display:none}
+</style>
+</head>
+<body data-lang="pt">
+<nav><div class="nav-inner">
+  <a class="brand" href="../">TUGA Suíça</a>
+  <div class="nav-links">
+    <a href="../#sobre"><span class="pt">Sobre nós</span><span class="de">Über uns</span></a>
+    <a href="../#apoio"><span class="pt">O que fazemos</span><span class="de">Was wir tun</span></a>
+    <a href="../#parceiros"><span class="pt">Parceiros</span><span class="de">Partner</span></a>
+    <a href="../#contacto"><span class="pt">Contacto</span><span class="de">Kontakt</span></a>
+    <a class="active" href="./"><span class="pt">Sorteio</span><span class="de">Verlosung</span></a>
+  </div>
+  <div class="lang"><button class="active" onclick="setLang('pt',this)">PT</button> <button onclick="setLang('de',this)">DE</button></div>
+</div></nav>
+
+<header>
+  <h1><span class="pt">Sorteio <span>Tuga</span></span><span class="de">Verlosung <span>Tuga</span></span></h1>
+  <p class="lede"><span class="pt">Ajuda a Associação Portuguesa Tuga e habilita-te a ganhar um dos nossos prémios. Aqui encontras as regras, os prémios e os números vencedores.</span><span class="de">Unterstütze die Associação Portuguesa Tuga und gewinne einen unserer Preise. Hier findest du die Regeln, die Preise und die Gewinnnummern.</span></p>
+  <p style="margin-top:16px"><span class="status"><span class="pt">Próximo sorteio: sábado, 5 de dezembro de 2026 · Castelo de Klingnau</span><span class="de">Nächste Ziehung: Samstag, 5. Dezember 2026 · Schloss Klingnau</span></span></p>
+</header>
+
+<main>
+<section>
+  <h2><span class="pt">Como funciona</span><span class="de">So funktioniert's</span></h2>
+  <div class="steps">
+    <div class="card"><div class="num">1</div><br><b class="pt">Compra a tua rifa</b><b class="de">Los kaufen</b><br><span class="pt">Cada rifa custa CHF 5. Ficas com uma parte, a outra fica com a Tuga para o sorteio.</span><span class="de">Ein Los kostet CHF 5. Du behältst einen Teil, der andere bleibt bei der Tuga für die Ziehung.</span></div>
+    <div class="card"><div class="num">2</div><br><b class="pt">Guarda a rifa</b><b class="de">Los aufbewahren</b><br><span class="pt">A tua parte da rifa é o único comprovativo para levantar o prémio.</span><span class="de">Dein Losteil ist der einzige Nachweis, um einen Preis abzuholen.</span></div>
+    <div class="card"><div class="num">3</div><br><b class="pt">Sorteio público</b><b class="de">Öffentliche Ziehung</b><br><span class="pt">Sorteamos apenas entre as rifas vendidas, à vista de todos, no final do evento.</span><span class="de">Gezogen wird nur unter den verkauften Losen, öffentlich, am Ende des Anlasses.</span></div>
+    <div class="card"><div class="num">4</div><br><b class="pt">Vê se ganhaste</b><b class="de">Gewinn prüfen</b><br><span class="pt">Os números vencedores ficam publicados nesta página. Contacta-nos para levantar o prémio.</span><span class="de">Die Gewinnnummern werden auf dieser Seite veröffentlicht. Kontaktiere uns, um deinen Preis abzuholen.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="pt">Prémios</span><span class="de">Preise</span></h2>
+  <div class="prizes">
+    <div class="prize top"><div class="rank">1.º</div><span class="pt">Trotinete nova</span><span class="de">Neues Trottinett</span></div>
+    <div class="prize top"><div class="rank">2.º</div><span class="pt">Cabaz Tuga (vinhos e artesanato de barro)</span><span class="de">Tuga-Korb (Weine und Tonhandwerk)</span></div>
+    <div class="prize top"><div class="rank">3.º</div><span class="pt">Presunto</span><span class="de">Rohschinken (Presunto)</span></div>
+    <div class="prize"><div class="rank">4.º</div>MiMi Beauty Lounge</div>
+    <div class="prize"><div class="rank">5.º</div><span class="pt">Cabaz Brito's Sabores</span><span class="de">Korb von Brito's Sabores</span></div>
+    <div class="prize"><div class="rank">6.º</div><span class="pt">Caixa de 6 garrafas de vinho Tuga</span><span class="de">Kiste mit 6 Flaschen Tuga-Wein</span></div>
+    <div class="prize"><div class="rank">7.º–10.º</div><span class="pt">Em breve</span><span class="de">Folgt in Kürze</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="pt">Números vencedores</span><span class="de">Gewinnnummern</span></h2>
+  <table>
+    <tr><th><span class="pt">Prémio</span><span class="de">Preis</span></th><th><span class="pt">Número sorteado</span><span class="de">Gezogene Nummer</span></th></tr>
+    <tr><td>10.º</td><td class="n">—</td></tr><tr><td>9.º</td><td class="n">—</td></tr><tr><td>8.º</td><td class="n">—</td></tr><tr><td>7.º</td><td class="n">—</td></tr><tr><td>6.º</td><td class="n">—</td></tr><tr><td>5.º</td><td class="n">—</td></tr><tr><td>4.º</td><td class="n">—</td></tr><tr><td>3.º</td><td class="n">—</td></tr><tr><td>2.º</td><td class="n">—</td></tr><tr><td>1.º</td><td class="n">—</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:14px"><span class="pt">Os números serão publicados aqui após o sorteio de 5 de dezembro de 2026.</span><span class="de">Die Nummern werden hier nach der Ziehung vom 5. Dezember 2026 veröffentlicht.</span></p>
+</section>
+
+<section>
+  <h2><span class="pt">Regras do sorteio</span><span class="de">Teilnahmebedingungen</span></h2>
+  <div class="card">
+  <ol class="pt">
+    <li>O sorteio é organizado pela Associação Portuguesa Tuga, associação sem fins lucrativos com sede em Klingnau. As receitas revertem integralmente para os fins da associação.</li>
+    <li>Cada rifa custa CHF 5. O sorteio realiza-se no âmbito de um evento da associação e é feito apenas entre as rifas vendidas para esse sorteio.</li>
+    <li>O sorteio é público e feito à mão, à vista dos presentes.</li>
+    <li>Os prémios são exclusivamente prémios em espécie. Não podem ser trocados por dinheiro.</li>
+    <li>Os números vencedores são anunciados no evento e publicados nesta página.</li>
+    <li>Para levantar um prémio é obrigatório apresentar a parte da rifa com o número vencedor. Prémios não levantados no prazo de 30 dias revertem para a associação.</li>
+    <li>Membros da Direção podem participar. Não há lugar a recurso judicial.</li>
+  </ol>
+  <ol class="de">
+    <li>Die Verlosung wird von der Associação Portuguesa Tuga, einem gemeinnützigen Verein mit Sitz in Klingnau, durchgeführt. Der Erlös kommt vollumfänglich dem Vereinszweck zugute.</li>
+    <li>Ein Los kostet CHF 5. Die Ziehung findet im Rahmen eines Anlasses des Vereins statt; gezogen wird nur unter den für diese Verlosung verkauften Losen.</li>
+    <li>Die Ziehung ist öffentlich und erfolgt von Hand vor den Anwesenden.</li>
+    <li>Es werden ausschliesslich Sachpreise verlost. Eine Barauszahlung ist ausgeschlossen.</li>
+    <li>Die Gewinnnummern werden am Anlass bekanntgegeben und auf dieser Seite veröffentlicht.</li>
+    <li>Ein Preis wird nur gegen Vorweisen des Losteils mit der Gewinnnummer ausgehändigt. Nicht abgeholte Preise verfallen nach 30 Tagen zugunsten des Vereins.</li>
+    <li>Vorstandsmitglieder dürfen teilnehmen. Der Rechtsweg ist ausgeschlossen.</li>
+  </ol>
+  </div>
+</section>
+
+<section>
+  <h2><span class="pt">Ganhaste? Contacta-nos</span><span class="de">Gewonnen? Kontaktiere uns</span></h2>
+  <div class="card">Associação Portuguesa Tuga · Klingnau<br>📞 076 402 54 80 · ✉️ <a href="mailto:associacaoportuguesatugas@gmail.com">associacaoportuguesatugas@gmail.com</a></div>
+</section>
+</main>
+<footer>© Associação Portuguesa Tuga · www.tugas.ch</footer>
+<script>function setLang(l,b){document.body.dataset.lang=l;document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}</script>
+</body>
+</html>
