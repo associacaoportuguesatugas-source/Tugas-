@@ -981,6 +981,7 @@
       <a href="#cultura" data-i18n="nav_cultura">Cultura</a>
       <a href="#parceiros" data-i18n="nav_parceiros">Parceiros</a>
       <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
+      <a href="sorteio/" id="nav-sorteio" data-i18n="nav_sorteio">Sorteio</a>
       <a href="https://form.jotform.com/260296871277367" target="_blank" rel="noopener" style="color:var(--gold-light); font-weight:600;" data-i18n="nav_socio">Torna-te sócio</a>
     </div>
     <div class="nav-right">
@@ -1693,6 +1694,7 @@ const translations = {
     nav_apoio: "O que fazemos",
     nav_cultura: "Cultura",
     nav_contacto: "Contacto",
+    nav_sorteio: "Sorteio",
     nav_parceiros: "Parceiros",
     nav_socio: "Torna-te sócio",
     hero_eyebrow: "Associação Portuguesa · Suíça",
@@ -1888,6 +1890,7 @@ const translations = {
     nav_apoio: "Was wir tun",
     nav_cultura: "Kultur",
     nav_contacto: "Kontakt",
+    nav_sorteio: "Verlosung",
     nav_parceiros: "Partner",
     nav_socio: "Mitglied werden",
     hero_eyebrow: "Portugiesischer Verein · Schweiz",
@@ -2093,6 +2096,8 @@ function setLanguage(lang){
     if (['sobre_p1','sobre_p2'].includes(key)) el.innerHTML = translations[lang][key];
   });
   document.getElementById('html-root').setAttribute('lang', lang);
+  var navSorteio = document.getElementById('nav-sorteio');
+  if (navSorteio) navSorteio.setAttribute('href', 'sorteio/?lang=' + lang);
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
   });
