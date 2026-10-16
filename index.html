@@ -738,8 +738,11 @@
     font-style: italic;
   }
 
+  .nav-sorteio-m{ display:none; }
   @media (max-width: 760px){
     .nav-links{ display:none; }
+    .nav-sorteio-m{ display:inline-block; background:var(--gold); color:#1B1410 !important; font-weight:700; font-size:13px; padding:7px 14px; border-radius:999px; text-decoration:none; }
+    .nav-right{ gap:10px; }
     .about-grid{ grid-template-columns: 1fr; }
     .legal-grid{ grid-template-columns: 1fr; }
     .testimonial-grid{ grid-template-columns: 1fr; margin-top: 32px; }
@@ -985,6 +988,7 @@
       <a href="https://form.jotform.com/260296871277367" target="_blank" rel="noopener" style="color:var(--gold-light); font-weight:600;" data-i18n="nav_socio">Torna-te sócio</a>
     </div>
     <div class="nav-right">
+      <a href="sorteio/" id="nav-sorteio-m" class="nav-sorteio-m" data-i18n="nav_sorteio">Sorteio</a>
       <div class="lang-switch">
         <button type="button" data-lang-btn="pt" class="active">PT</button>
         <button type="button" data-lang-btn="de">DE</button>
@@ -1003,6 +1007,7 @@
   <div class="cta-row">
     <a href="#contacto" class="btn btn-primary" data-i18n="cta_falar">Fala connosco</a>
     <a href="#sobre" class="btn btn-ghost" data-i18n="cta_conhecer">Conhecer a associação</a>
+    <a href="sorteio/" id="cta-sorteio" class="btn btn-ghost" data-i18n="cta_sorteio">🎁 Sorteio de Natal</a>
   </div>
   </div>
 </div>
@@ -1695,6 +1700,7 @@ const translations = {
     nav_cultura: "Cultura",
     nav_contacto: "Contacto",
     nav_sorteio: "Sorteio",
+    cta_sorteio: "🎁 Sorteio de Natal",
     nav_parceiros: "Parceiros",
     nav_socio: "Torna-te sócio",
     hero_eyebrow: "Associação Portuguesa · Suíça",
@@ -1891,6 +1897,7 @@ const translations = {
     nav_cultura: "Kultur",
     nav_contacto: "Kontakt",
     nav_sorteio: "Verlosung",
+    cta_sorteio: "🎁 Weihnachtsverlosung",
     nav_parceiros: "Partner",
     nav_socio: "Mitglied werden",
     hero_eyebrow: "Portugiesischer Verein · Schweiz",
@@ -2098,6 +2105,7 @@ function setLanguage(lang){
   document.getElementById('html-root').setAttribute('lang', lang);
   var navSorteio = document.getElementById('nav-sorteio');
   if (navSorteio) navSorteio.setAttribute('href', 'sorteio/?lang=' + lang);
+  ['nav-sorteio-m','cta-sorteio'].forEach(function(id){ var e = document.getElementById(id); if (e) e.setAttribute('href', 'sorteio/?lang=' + lang); });
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
   });
