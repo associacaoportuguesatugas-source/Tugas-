@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt" id="html-root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorteio de Natal · Weihnachtsverlosung · TUGA Suíça</title>
+<meta name="description" content="Sorteio de Natal entre os convidados do Jantar de Natal da Associação Portuguesa Tuga, 5 de dezembro de 2026, Castelo de Klingnau. Weihnachtsverlosung unter den Gästen des Weihnachtsessens.">
+<link rel="icon" type="image/png" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3G0ntwd0RKNbdNHeTDMP66CaiIB/67b6e80c-f721-4f64-94f5-8ede70498a81.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0c;--cream:#f4ede0;--gold:#e0a83b;--gold-light:#f2c96a;--red:#b8292f;--green:#1f6b47;--muted:#a7a29a;--ink:#2a2320}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbf4e6;color:var(--ink);font-family:'Work Sans',sans-serif;line-height:1.55}
+a{color:#8b1e2d}
+nav{position:sticky;top:0;background:rgba(11,11,12,.96);border-bottom:1px solid #2a272c;z-index:10}
+.nav-inner{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;color:var(--cream);text-decoration:none;font-size:20px}
+.brand img{width:40px;height:40px}
+.right{display:flex;gap:10px;align-items:center}
+.home{color:var(--muted);text-decoration:none;font-size:14px}
+.lang button{background:none;border:1px solid #3a363d;color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;font:inherit}
+.lang button.active{border-color:var(--gold);color:var(--gold-light)}
+header{padding:44px 16px 36px;text-align:center;color:var(--cream);background:radial-gradient(ellipse at top,#6b1419 0%,#2a0d10 55%,#0b0b0c 100%);position:relative;overflow:hidden}
+header .snow{position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#fff 1.2px,transparent 1.6px),radial-gradient(#fff 1px,transparent 1.4px);background-size:46px 46px,29px 29px;background-position:0 0,14px 20px}
+header img{width:96px;height:96px;position:relative}
+h1{font-family:'Fraunces',serif;font-size:clamp(34px,7vw,58px);margin:8px 0;position:relative}
+h1 em{color:var(--gold);font-style:normal}
+.lede{max-width:660px;margin:0 auto;color:#e6d9c8;font-size:17px;position:relative}
+.badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px;position:relative}
+.badges>span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font-size:14px}
+main{max-width:1000px;margin:0 auto;padding:0 16px 56px}
+section{margin-top:36px}
+h2{font-family:'Fraunces',serif;font-size:28px;margin:0 0 14px;color:var(--red);display:flex;align-items:center;gap:10px}
+h2 .ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--red);font-size:22px;flex:none}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.step{background:#fff;border:1px solid #eadfcb;border-top:6px solid var(--green);border-radius:14px;padding:16px 18px;box-shadow:0 2px 8px rgba(60,40,10,.08)}
+.step .n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-bottom:6px}
+.step b{display:block;margin-bottom:4px;color:#1f1a17}
+.step p{margin:0;font-size:14px;color:#4b433c}
+.prizes{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.prize{background:#fff;border:1px solid #eadfcb;border-top:6px solid var(--gold);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(60,40,10,.1)}
+.prize.first{border-top-color:var(--red)}
+.pimg{height:170px;background:#f3e7d2;display:flex;align-items:center;justify-content:center;font-size:72px;overflow:hidden}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block}
+.pimg.wide img{object-fit:contain;background:#fff}
+.pbody{padding:14px 18px 18px}
+.rank{font-family:'Fraunces',serif;font-size:24px;color:var(--red);line-height:1}
+.prize h3{margin:6px 0 4px;font-size:17px;color:#1f1a17}
+.prize p{margin:0;font-size:14px;color:#4b433c}
+.prize i{color:#8a7f73;font-size:12.5px}
+.note{background:#fff3cf;border:1px solid #e8cf8a;border-left:5px solid var(--gold);border-radius:12px;padding:14px 18px;font-size:15px;color:#3a2f1c}
+.note ul{margin:6px 0 0;padding-left:20px}
+.cta{text-align:center;margin-top:28px}
+.cta a{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:12px 24px}
+footer{background:var(--bg);padding:24px 16px;text-align:center;color:var(--muted);font-size:14px}
+footer a{color:var(--gold-light)}
+[data-lang="de"] .pt{display:none}[data-lang="pt"] .de{display:none}
+@media (max-width:600px){h2{font-size:23px}.home{display:none}}
+</style>
+</head>
+<body data-lang="pt">
+<nav><div class="nav-inner">
+  <a class="brand" href="../"><img src="logo-tuga.png" alt="Logo Associação Portuguesa Tuga">TUGA Suíça</a>
+  <div class="right">
+    <a class="home" href="../#natal"><span class="pt">← Jantar de Natal</span><span class="de">← Weihnachtsessen</span></a>
+    <div class="lang"><button type="button" data-l="pt">PT</button> <button type="button" data-l="de">DE</button></div>
+  </div>
+</div></nav>
+<header>
+  <div class="snow" aria-hidden="true"></div>
+  <img src="logo-tuga.png" alt="">
+  <h1><span class="pt">Sorteio de <em>Natal</em></span><span class="de">Weihnachts<em>verlosung</em></span></h1>
+  <p class="lede pt">Uma surpresa só para os nossos convidados: durante o concerto de Rui Vieira sorteamos prémios entre os presentes, para uma noite ainda mais festiva e natalícia.</p>
+  <p class="lede de">Eine Überraschung nur für unsere Gäste: Während des Konzerts von Rui Vieira verlosen wir Preise unter den Anwesenden, für einen noch festlicheren Weihnachtsabend.</p>
+  <div class="badges">
+    <span>📅 <span class="pt">Sábado, 5 de dezembro de 2026</span><span class="de">Samstag, 5. Dezember 2026</span></span>
+    <span>📍 <span class="pt">Castelo de Klingnau</span><span class="de">Schloss Klingnau</span></span>
+    <span>🎶 Rui Vieira</span>
+  </div>
+</header>
+<main>
+<section>
+  <h2><span class="ic">🎟️</span><span class="pt">Como funciona</span><span class="de">So funktioniert's</span></h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><b class="pt">Só para os convidados</b><b class="de">Nur für die Gäste</b><p class="pt">O sorteio é privado: participam apenas as pessoas presentes no Jantar de Natal.</p><p class="de">Die Verlosung ist privat: Teilnehmen können nur die Gäste am Weihnachtsessen.</p></div>
+    <div class="step"><span class="n">2</span><b class="pt">Rifas no próprio dia</b><b class="de">Lose am Abend selbst</b><p class="pt">Durante a noite, cada convidado pode comprar rifas de valor simbólico.</p><p class="de">Während des Abends kann jeder Gast Lose zu einem symbolischen Preis kaufen.</p></div>
+    <div class="step"><span class="n">3</span><b class="pt">Sorteio no concerto</b><b class="de">Ziehung beim Konzert</b><p class="pt">Na altura do concerto de Rui Vieira, sorteamos os prémios à vista de todos.</p><p class="de">Während des Konzerts von Rui Vieira ziehen wir die Preise vor allen Gästen.</p></div>
+    <div class="step"><span class="n">4</span><b class="pt">Prémios na mesma noite</b><b class="de">Preise am selben Abend</b><p class="pt">Os prémios são entregues logo a seguir ao sorteio, nessa mesma noite.</p><p class="de">Die Preise werden direkt nach der Ziehung am selben Abend übergeben.</p></div>
+  </div>
+</section>
+<section>
+  <h2><span class="ic">🎁</span><span class="pt">Os prémios</span><span class="de">Die Preise</span></h2>
+  <div class="prizes">
+    <div class="prize first"><div class="pimg wide"><img src="img/presunto.jpg" alt="Presunto"></div><div class="pbody"><div class="rank">1.</div><h3 class="pt">Presunto</h3><h3 class="de">Portugiesischer Schinken (Presunto)</h3><p class="pt">Um presunto inteiro, curado, para saborear à moda portuguesa.</p><p class="de">Ein ganzer, luftgetrockneter Schinken, zum Geniessen auf portugiesische Art.</p></div></div>
+    <div class="prize"><div class="pimg"><img src="img/cabaz-natal.jpg" alt="Cabaz de Natal"></div><div class="pbody"><div class="rank">2.</div><h3 class="pt">Cabaz de Natal</h3><h3 class="de">Weihnachtskorb</h3><p class="pt">Um cabaz com produtos portugueses para a mesa de Natal. <i>Imagem ilustrativa.</i></p><p class="de">Ein Korb mit portugiesischen Produkten für den Weihnachtstisch. <i>Symbolbild.</i></p></div></div>
+    <div class="prize"><div class="pimg">🎄</div><div class="pbody"><div class="rank">3.</div><h3 class="pt">Decoração de Natal</h3><h3 class="de">Weihnachtsdekoration</h3><p class="pt">Uma pequena decoração de Natal para a sua casa.</p><p class="de">Eine kleine Weihnachtsdekoration für Ihr Zuhause.</p></div></div>
+    <div class="prize"><div class="pimg wide"><img src="img/spa.jpg" alt="Gutschein Therme Zurzach"></div><div class="pbody"><div class="rank">4.</div><h3 class="pt">2 Gutscheine · Therme Zurzach</h3><h3 class="de">2 Gutscheine · Therme Zurzach</h3><p class="pt">Dois Gutscheine das termas, para um momento de relax e bem-estar.</p><p class="de">Zwei Gutscheine der Therme, für einen Moment der Entspannung und des Wohlbefindens.</p></div></div>
+    <div class="prize"><div class="pimg"><img src="img/britos.jpg" alt="Cabaz de doces Brito's"></div><div class="pbody"><div class="rank">5.</div><h3 class="pt">Cabaz de doces · Brito's Sabores</h3><h3 class="de">Süssigkeitenkorb · Brito's Sabores</h3><p class="pt">Um pequeno cabaz de doces e pastelaria portuguesa. <i>Imagem ilustrativa.</i></p><p class="de">Ein kleiner Korb mit portugiesischen Süssigkeiten und Backwaren. <i>Symbolbild.</i></p></div></div>
+  </div>
+</section>
+<section>
+  <div class="note">
+    <b class="pt">Bom saber</b><b class="de">Gut zu wissen</b>
+    <ul class="pt">
+      <li>As rifas são vendidas só no próprio jantar, aos convidados presentes. Não há venda antecipada nem fora do evento.</li>
+      <li>Sorteamos de 3 a 5 prémios, conforme a noite.</li>
+      <li>Os prémios são em espécie e não podem ser trocados por dinheiro.</li>
+      <li>O dinheiro das rifas ajuda a cobrir as despesas do evento da associação.</li>
+    </ul>
+    <ul class="de">
+      <li>Die Lose werden nur am Weihnachtsessen selbst an die anwesenden Gäste verkauft. Es gibt keinen Vorverkauf und keinen Verkauf ausserhalb des Anlasses.</li>
+      <li>Wir verlosen je nach Abend 3 bis 5 Preise.</li>
+      <li>Es handelt sich um Sachpreise; eine Auszahlung in Geld ist nicht möglich.</li>
+      <li>Der Erlös aus den Losen hilft, die Kosten des Vereinsanlasses zu decken.</li>
+    </ul>
+  </div>
+  <div class="cta"><a href="../#natal"><span class="pt">Reservar o Jantar de Natal</span><span class="de">Weihnachtsessen reservieren</span></a></div>
+</section>
+</main>
+<footer>© Associação Portuguesa Tuga · Sonnengasse 40 · 5313 Klingnau · <a href="../">www.tugas.ch</a></footer>
+<script>
+(function(){
+  function setLang(l){
+    document.body.dataset.lang=l;
+    document.getElementById('html-root').setAttribute('lang',l);
+    document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.dataset.l===l);});
+    try{localStorage.setItem('tuga-lang',l);}catch(e){}
+  }
+  var p=new URLSearchParams(location.search).get('lang'), s=null;
+  try{s=localStorage.getItem('tuga-lang');}catch(e){}
+  var nav=(navigator.language||'').toLowerCase().indexOf('pt')===0?'pt':'de';
+  setLang(p==='pt'||p==='de'?p:(s==='pt'||s==='de'?s:nav));
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l);});});
+})();
+</script>
+</body>
+</html>
