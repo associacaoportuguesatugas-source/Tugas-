@@ -738,6 +738,9 @@
     font-style: italic;
   }
 
+  .xmas-banner{ display:block; background:linear-gradient(90deg,#8b1e2d,#c23b32,#8b1e2d); color:#fff !important; text-align:center; padding:10px 16px; font-size:15px; text-decoration:none; position:relative; z-index:4; }
+  .xmas-banner strong{ color:#ffe08a; }
+  .xmas-banner:hover{ filter:brightness(1.1); }
   .nav-guia-m{ display:none; }
   @media (max-width: 760px){
     .nav-links{ display:none; }
@@ -997,6 +1000,7 @@
     </div>
   </div>
 </nav>
+<a href="sorteio/" id="xmas-banner" class="xmas-banner" data-i18n-html="xmas_banner">🎄 <strong>Sorteio de Natal</strong> no Jantar de 5 de dezembro · ver os prémios →</a>
 
 <div id="top" class="hero">
   <div class="hero-sponsor-bg" aria-hidden="true"><div class="hero-sponsor-slide is-active"><img src="assets/parceiros/birchmeier.svg" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/haefeli-bruegger.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/lukasz-wcislo.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/zurzibiet-reinigung-logo.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/advocacia-ag.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/knecht-weinbau.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/dyabohr.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/dangees-event.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/ticktack-atelier.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/britos-sabores.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/rui-vieira.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/sublimart-amfm.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/mimi-beauty-lounge.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/lucia-ribeiro.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/consulado-portugal.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/integration-aargau.svg" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/winzerfest-logo.svg" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/fernanda-pontes-logo.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/senn-baumanagement.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="https://www.buerliag.ch/images/Logos/Logo-Buerli.svg" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="https://image.jimcdn.com/app/cms/image/transf/dimension=280x10000:format=png/path/s167582ef21839283/image/ie23f6ee3c0839eb5/version/1624534030/image.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="https://www.webaria.ch/wp-content/uploads/2025/10/cropped-quad-webaria-logo-1-270x270.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/paula-fonseca-coiffure.png" alt="" loading="lazy"></div><div class="hero-sponsor-slide"><img src="assets/parceiros/reltas.png" alt="" loading="lazy"></div></div>
@@ -1711,6 +1715,7 @@ const translations = {
     nav_contacto: "Contacto",
     nav_guia: "Guia Útil",
     nav_sorteio: "Sorteio de Natal",
+    xmas_banner: "🎄 <strong>Sorteio de Natal</strong> no Jantar de 5 de dezembro · ver os prémios →",
     cta_sorteio: "🎁 Sorteio de Natal",
     nav_parceiros: "Parceiros",
     nav_socio: "Torna-te sócio",
@@ -1914,6 +1919,7 @@ const translations = {
     nav_contacto: "Kontakt",
     nav_guia: "Nützliche Infos",
     nav_sorteio: "Weihnachtsverlosung",
+    xmas_banner: "🎄 <strong>Weihnachtsverlosung</strong> am Essen vom 5. Dezember · Preise ansehen →",
     cta_sorteio: "🎁 Weihnachtsverlosung",
     nav_parceiros: "Partner",
     nav_socio: "Mitglied werden",
@@ -2125,7 +2131,7 @@ function setLanguage(lang){
     if (['sobre_p1','sobre_p2'].includes(key)) el.innerHTML = translations[lang][key];
   });
   document.getElementById('html-root').setAttribute('lang', lang);
-  ['nav-sorteio','cta-sorteio'].forEach(function(id){ var e = document.getElementById(id); if (e) e.setAttribute('href', 'sorteio/?lang=' + lang); });
+  ['nav-sorteio','cta-sorteio','xmas-banner'].forEach(function(id){ var e = document.getElementById(id); if (e) e.setAttribute('href', 'sorteio/?lang=' + lang); });
   ['nav-guia','nav-guia-m'].forEach(function(id){ var e = document.getElementById(id); if (e) e.setAttribute('href', 'guia/?lang=' + lang); });
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
