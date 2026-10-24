@@ -738,11 +738,8 @@
     font-style: italic;
   }
 
-  .nav-sorteio-m{ display:none; }
   @media (max-width: 760px){
     .nav-links{ display:none; }
-    .nav-sorteio-m{ display:inline-block; background:var(--gold); color:#1B1410 !important; font-weight:700; font-size:13px; padding:7px 14px; border-radius:999px; text-decoration:none; }
-    .nav-right{ gap:10px; }
     .about-grid{ grid-template-columns: 1fr; }
     .legal-grid{ grid-template-columns: 1fr; }
     .testimonial-grid{ grid-template-columns: 1fr; margin-top: 32px; }
@@ -984,11 +981,9 @@
       <a href="#cultura" data-i18n="nav_cultura">Cultura</a>
       <a href="#parceiros" data-i18n="nav_parceiros">Parceiros</a>
       <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
-      <a href="sorteio/" id="nav-sorteio" data-i18n="nav_sorteio">Sorteio</a>
       <a href="https://form.jotform.com/260296871277367" target="_blank" rel="noopener" style="color:var(--gold-light); font-weight:600;" data-i18n="nav_socio">Torna-te sócio</a>
     </div>
     <div class="nav-right">
-      <a href="sorteio/" id="nav-sorteio-m" class="nav-sorteio-m" data-i18n="nav_sorteio">Sorteio</a>
       <div class="lang-switch">
         <button type="button" data-lang-btn="pt" class="active">PT</button>
         <button type="button" data-lang-btn="de">DE</button>
@@ -1007,7 +1002,6 @@
   <div class="cta-row">
     <a href="#contacto" class="btn btn-primary" data-i18n="cta_falar">Fala connosco</a>
     <a href="#sobre" class="btn btn-ghost" data-i18n="cta_conhecer">Conhecer a associação</a>
-    <a href="sorteio/" id="cta-sorteio" class="btn btn-ghost" data-i18n="cta_sorteio">🎁 Sorteio de Natal</a>
   </div>
   </div>
 </div>
@@ -1169,7 +1163,7 @@
             </div>
             <h3 data-i18n="eventos_f2_titulo">Jantar de Natal da Associação Portuguesa Tuga</h3>
             <div class="event-loc" data-i18n="eventos_f2_local">Castelo de Klingnau</div>
-            <p data-i18n="eventos_f2_desc">Aperitivo às 16:00 e jantar às 20:00, com música ao vivo de Rui Vieira, surpresas e a grande rifa de Natal. Reservas limitadas.</p>
+            <p data-i18n="eventos_f2_desc">Aperitivo às 16:00 e jantar às 20:00, com música ao vivo de Rui Vieira, e surpresas. Reservas limitadas.</p>
           </div>
           <div class="event-card is-upcoming">
             <div class="event-card-top">
@@ -1508,7 +1502,7 @@
     <div class="xmas-grid">
       <div class="xmas-info">
         <p data-i18n="xmas_intro">A <strong>Associação Portuguesa Tuga</strong> vai estar presente com a <strong>Taberna Tuga</strong> no nosso <strong>Jantar de Natal</strong>: uma festa especial para <strong>sócios, famílias, amigos</strong> e todos os que queiram estar presentes.</p>
-        <ul class="xmas-list" data-i18n-html="xmas_list"><li>📅 <strong>Sábado, 5 de dezembro de 2026</strong></li><li>📍 <strong>Castelo de Klingnau</strong> (Schloss Klingnau)</li><li>🥂 Aperitivo a partir das <strong>16:00</strong></li><li>🍽️ Jantar às <strong>20:00</strong></li><li>🎶 Música ao vivo com <strong>Rui Vieira</strong></li><li>🎁 Grande <strong>rifa de Natal</strong></li></ul>
+        <ul class="xmas-list" data-i18n-html="xmas_list"><li>📅 <strong>Sábado, 5 de dezembro de 2026</strong></li><li>📍 <strong>Castelo de Klingnau</strong> (Schloss Klingnau)</li><li>🥂 Aperitivo a partir das <strong>16:00</strong></li><li>🍽️ Jantar às <strong>20:00</strong></li><li>🎶 Música ao vivo com <strong>Rui Vieira</strong></li></ul>
         <p data-i18n="xmas_limited">⚠️ <strong>Reservas limitadas.</strong> Mais informações serão apresentadas brevemente.</p>
         <p class="xmas-contact" data-i18n-html="xmas_contact">Reservas e informações: <a href="tel:+41764025480">076 402 54 80</a> · <a href="mailto:associacaoportuguesatugas@gmail.com">associacaoportuguesatugas@gmail.com</a></p>
         <p data-i18n="xmas_outro">Haverá <strong>surpresas</strong> e a certeza de que, juntos, faremos uma festa bonita!</p>
@@ -1708,8 +1702,6 @@ const translations = {
     nav_apoio: "O que fazemos",
     nav_cultura: "Cultura",
     nav_contacto: "Contacto",
-    nav_sorteio: "Sorteio",
-    cta_sorteio: "🎁 Sorteio de Natal",
     nav_parceiros: "Parceiros",
     nav_socio: "Torna-te sócio",
     hero_eyebrow: "Associação Portuguesa · Suíça",
@@ -1748,7 +1740,7 @@ const translations = {
     xmas_eyebrow: "Próximo evento",
     xmas_h2: "🎄 Jantar de Natal da Associação Portuguesa Tuga",
     xmas_intro: "A <strong>Associação Portuguesa Tuga</strong> vai estar presente com a <strong>Taberna Tuga</strong> no nosso <strong>Jantar de Natal</strong>: uma festa especial para <strong>sócios, famílias, amigos</strong> e todos os que queiram estar presentes.",
-    xmas_list: "<li>📅 <strong>Sábado, 5 de dezembro de 2026</strong></li><li>📍 <strong>Castelo de Klingnau</strong> (Schloss Klingnau)</li><li>🥂 Aperitivo a partir das <strong>16:00</strong></li><li>🍽️ Jantar às <strong>20:00</strong></li><li>🎶 Música ao vivo com <strong>Rui Vieira</strong></li><li>🎁 Grande <strong>rifa de Natal</strong></li>",
+    xmas_list: "<li>📅 <strong>Sábado, 5 de dezembro de 2026</strong></li><li>📍 <strong>Castelo de Klingnau</strong> (Schloss Klingnau)</li><li>🥂 Aperitivo a partir das <strong>16:00</strong></li><li>🍽️ Jantar às <strong>20:00</strong></li><li>🎶 Música ao vivo com <strong>Rui Vieira</strong></li>",
     xmas_limited: "⚠️ <strong>Reservas limitadas.</strong> Mais informações serão apresentadas brevemente.",
     xmas_contact: "Reservas e informações: <a href=\"tel:+41764025480\">076 402 54 80</a> · <a href=\"mailto:associacaoportuguesatugas@gmail.com\">associacaoportuguesatugas@gmail.com</a>",
     xmas_outro: "Haverá <strong>surpresas</strong> e a certeza de que, juntos, faremos uma festa bonita!",
@@ -1805,7 +1797,7 @@ const translations = {
     eventos_f2_tag: "Brevemente",
     eventos_f2_titulo: "Jantar de Natal da Associação Portuguesa Tuga",
     eventos_f2_local: "Castelo de Klingnau",
-    eventos_f2_desc: "Aperitivo às 16:00 e jantar às 20:00, com música ao vivo de Rui Vieira, surpresas e a grande rifa de Natal. Reservas limitadas.",
+    eventos_f2_desc: "Aperitivo às 16:00 e jantar às 20:00, com música ao vivo de Rui Vieira, e surpresas. Reservas limitadas.",
     eventos_f3_data: "Sexta, 11 de dezembro de 2026",
     eventos_f3_tag: "Brevemente",
     eventos_f3_titulo: "Reunião Anual de Prestação de Contas aos Sócios",
@@ -1910,8 +1902,6 @@ const translations = {
     nav_apoio: "Was wir tun",
     nav_cultura: "Kultur",
     nav_contacto: "Kontakt",
-    nav_sorteio: "Verlosung",
-    cta_sorteio: "🎁 Weihnachtsverlosung",
     nav_parceiros: "Partner",
     nav_socio: "Mitglied werden",
     hero_eyebrow: "Portugiesischer Verein · Schweiz",
@@ -1950,7 +1940,7 @@ const translations = {
     xmas_eyebrow: "Nächster Anlass",
     xmas_h2: "🎄 Weihnachtsessen der Associação Portuguesa Tuga",
     xmas_intro: "Die <strong>Associação Portuguesa Tuga</strong> lädt mit der <strong>Taberna Tuga</strong> zu ihrem <strong>Weihnachtsessen</strong> ein: ein besonderes Weihnachtsfest für <strong>Mitglieder, Familien, Freunde</strong> und alle, die dabei sein möchten.",
-    xmas_list: "<li>📅 <strong>Samstag, 5. Dezember 2026</strong></li><li>📍 <strong>Schloss Klingnau</strong></li><li>🥂 Apéro ab <strong>16:00 Uhr</strong></li><li>🍽️ Abendessen ab <strong>20:00 Uhr</strong></li><li>🎶 Live-Musik mit <strong>Rui Vieira</strong></li><li>🎁 Grosse <strong>Weihnachtsverlosung</strong></li>",
+    xmas_list: "<li>📅 <strong>Samstag, 5. Dezember 2026</strong></li><li>📍 <strong>Schloss Klingnau</strong></li><li>🥂 Apéro ab <strong>16:00 Uhr</strong></li><li>🍽️ Abendessen ab <strong>20:00 Uhr</strong></li><li>🎶 Live-Musik mit <strong>Rui Vieira</strong></li>",
     xmas_limited: "⚠️ <strong>Reservierungen begrenzt.</strong> Weitere Informationen werden zu einem späteren Zeitpunkt bekannt gegeben.",
     xmas_contact: "Reservierungen und Informationen: <a href=\"tel:+41764025480\">076 402 54 80</a> · <a href=\"mailto:associacaoportuguesatugas@gmail.com\">associacaoportuguesatugas@gmail.com</a>",
     xmas_outro: "Es wird <strong>Überraschungen</strong> geben, und wir sind sicher, dass wir gemeinsam ein wunderschönes Fest feiern werden!",
@@ -2007,7 +1997,7 @@ const translations = {
     eventos_f2_tag: "Demnächst",
     eventos_f2_titulo: "Weihnachtsessen der Associação Portuguesa Tuga",
     eventos_f2_local: "Schloss Klingnau",
-    eventos_f2_desc: "Apéro ab 16:00 Uhr und Abendessen ab 20:00 Uhr, mit Live-Musik von Rui Vieira, Überraschungen und der grossen Weihnachtsverlosung. Reservierungen begrenzt.",
+    eventos_f2_desc: "Apéro ab 16:00 Uhr und Abendessen ab 20:00 Uhr, mit Live-Musik von Rui Vieira, und Überraschungen. Reservierungen begrenzt.",
     eventos_f3_data: "Freitag, 11. Dezember 2026",
     eventos_f3_tag: "Demnächst",
     eventos_f3_titulo: "Jahresversammlung mit Rechenschaftsbericht an die Mitglieder",
@@ -2122,9 +2112,6 @@ function setLanguage(lang){
     if (['sobre_p1','sobre_p2'].includes(key)) el.innerHTML = translations[lang][key];
   });
   document.getElementById('html-root').setAttribute('lang', lang);
-  var navSorteio = document.getElementById('nav-sorteio');
-  if (navSorteio) navSorteio.setAttribute('href', 'sorteio/?lang=' + lang);
-  ['nav-sorteio-m','cta-sorteio'].forEach(function(id){ var e = document.getElementById(id); if (e) e.setAttribute('href', 'sorteio/?lang=' + lang); });
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
   });
