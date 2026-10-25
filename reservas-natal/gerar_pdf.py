@@ -15,18 +15,21 @@ VERDE = colors.HexColor("#1E5B3A")
 LINHAS_EM_BRANCO = 10
 
 with open(AQUI / "reservas.csv", encoding="utf-8") as f:
-    reservas = [(r["nome"].strip(), int(r["pessoas"])) for r in csv.DictReader(f, delimiter=";")]
-total = sum(p for _, p in reservas)
+    reservas = [(r["nome"].strip(), r["adultos"].strip(), r["criancas"].strip(), int(r["pessoas"]))
+                for r in csv.DictReader(f, delimiter=";")]
+total = sum(r[3] for r in reservas)
+total_adultos = sum(int(r[1]) for r in reservas if r[1])
+total_criancas = sum(int(r[2]) for r in reservas if r[2])
 
 titulo = ParagraphStyle("t", fontName="Helvetica-Bold", fontSize=22, textColor=VERMELHO, alignment=1, leading=26)
 sub = ParagraphStyle("s", fontName="Helvetica", fontSize=12, textColor=VERDE, alignment=1, leading=16)
 
-dados = [["Nº", "Nome da reserva", "Nº de pessoas"]]
-dados += [[str(i), nome, str(p)] for i, (nome, p) in enumerate(reservas, 1)]
-dados += [[str(len(reservas) + i), "", ""] for i in range(1, LINHAS_EM_BRANCO + 1)]
-dados.append(["", "TOTAL", str(total)])
+dados = [["Nº", "Nome da reserva", "Adultos", "Crianças", "Total"]]
+dados += [[str(i), nome, a, c, str(p)] for i, (nome, a, c, p) in enumerate(reservas, 1)]
+dados += [[str(len(reservas) + i), "", "", "", ""] for i in range(1, LINHAS_EM_BRANCO + 1)]
+dados.append(["", "TOTAL", str(total_adultos), str(total_criancas), str(total)])
 
-tabela = Table(dados, colWidths=[15 * mm, 115 * mm, 35 * mm], rowHeights=9 * mm, repeatRows=1)
+tabela = Table(dados, colWidths=[13 * mm, 95 * mm, 20 * mm, 20 * mm, 20 * mm], rowHeights=9 * mm, repeatRows=1)
 tabela.setStyle(TableStyle([
     ("BACKGROUND", (0, 0), (-1, 0), VERDE),
     ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
@@ -34,7 +37,7 @@ tabela.setStyle(TableStyle([
     ("FONTSIZE", (0, 0), (-1, -1), 11),
     ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
     ("ALIGN", (0, 0), (0, -1), "CENTER"),
-    ("ALIGN", (2, 0), (2, -1), "CENTER"),
+    ("ALIGN", (2, 0), (-1, -1), "CENTER"),
     ("ROWBACKGROUNDS", (0, 1), (-1, -2), [colors.white, colors.HexColor("#F6EFE6")]),
     ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#999999")),
     ("BACKGROUND", (0, -1), (-1, -1), VERMELHO),
