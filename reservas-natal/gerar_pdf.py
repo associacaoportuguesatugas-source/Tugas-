@@ -24,12 +24,12 @@ total_criancas = sum(int(r[2]) for r in reservas if r[2])
 titulo = ParagraphStyle("t", fontName="Helvetica-Bold", fontSize=22, textColor=VERMELHO, alignment=1, leading=26)
 sub = ParagraphStyle("s", fontName="Helvetica", fontSize=12, textColor=VERDE, alignment=1, leading=16)
 
-dados = [["Nº", "Nome da reserva", "Adultos", "Crianças", "Total"]]
+dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total"]]
 dados += [[str(i), nome, a, c, str(p)] for i, (nome, a, c, p) in enumerate(reservas, 1)]
 dados += [[str(len(reservas) + i), "", "", "", ""] for i in range(1, LINHAS_EM_BRANCO + 1)]
 dados.append(["", "TOTAL", str(total_adultos), str(total_criancas), str(total)])
 
-tabela = Table(dados, colWidths=[13 * mm, 95 * mm, 20 * mm, 20 * mm, 20 * mm], rowHeights=9 * mm, repeatRows=1)
+tabela = Table(dados, colWidths=[13 * mm, 87 * mm, 26 * mm, 20 * mm, 20 * mm], rowHeights=9 * mm, repeatRows=1)
 tabela.setStyle(TableStyle([
     ("BACKGROUND", (0, 0), (-1, 0), VERDE),
     ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
@@ -46,15 +46,15 @@ tabela.setStyle(TableStyle([
     ("ALIGN", (1, -1), (1, -1), "RIGHT"),
 ]))
 
-doc = SimpleDocTemplate(str(AQUI / "Reservas_Festa_de_Natal.pdf"), pagesize=A4,
+doc = SimpleDocTemplate(str(AQUI / "Reservierungen_Weihnachtsfeier.pdf"), pagesize=A4,
                         topMargin=18 * mm, bottomMargin=18 * mm,
-                        title="Reservas – Festa de Natal", author="Associação Portuguesa Tuga")
+                        title="Weihnachtsfeier – Reservierungen", author="Associação Portuguesa Tuga")
 doc.build([
-    Paragraph("Festa de Natal – Reservas", titulo),
+    Paragraph("Weihnachtsfeier – Reservierungen", titulo),
     Spacer(1, 4 * mm),
-    Paragraph("Associação Portuguesa Tuga · Sábado, 5 de Dezembro de 2026", sub),
+    Paragraph("Associação Portuguesa Tuga · Samstag, 5. Dezember 2026", sub),
     Spacer(1, 2 * mm),
-    Paragraph(f"{len(reservas)} reserva{'s' if len(reservas) != 1 else ''} · {total} pessoa{'s' if total != 1 else ''} · atualizado a {date.today():%d/%m/%Y}", sub),
+    Paragraph(f"{len(reservas)} Reservierung{'en' if len(reservas) != 1 else ''} · {total} Person{'en' if total != 1 else ''} · aktualisiert am {date.today():%d.%m.%Y}", sub),
     Spacer(1, 8 * mm),
     tabela,
 ])
