@@ -1,11 +1,15 @@
-nome;adultos;criancas;pessoas
-Nuno Johnson;2;0;2
-Marco Pereira;2;2;4
-Carla Pereira;4;0;4
-Conceição;14;0;14
-Henriques Nuno;2;0;2
-Rui Vieira;3;0;3
-Lin;4;2;6
-Andreas Graf;2;0;2
-Mário da Costa;1;0;1
-Miguel Lobo;4;0;4
+nome;adultos;criancas;pessoas;confirmado
+Nuno Johnson;2;0;2;sim
+Marco Pereira;2;2;4;sim
+Carla Pereira;4;0;4;sim
+Conceição;14;0;14;sim
+Henriques Nuno;2;0;2;sim
+Rui Vieira;3;0;3;sim
+Lin;4;2;6;sim
+Andreas Graf;2;0;2;sim
+Mário da Costa;1;0;1;sim
+Miguel Lobo;4;0;4;sim
+Botschaft;2;0;2;sim
+Pombas;2;0;2;nao
+Ciborro;2;0;2;nao
+Domingos;1;0;1;nao
