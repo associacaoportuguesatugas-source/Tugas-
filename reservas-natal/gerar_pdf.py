@@ -13,7 +13,7 @@ AQUI = Path(__file__).parent
 VERMELHO = colors.HexColor("#B3202A")
 VERDE = colors.HexColor("#1E5B3A")
 LARANJA = colors.HexColor("#C77700")
-LINHAS_EM_BRANCO = 5
+LINHAS_EM_BRANCO = 3
 
 with open(AQUI / "reservas.csv", encoding="utf-8") as f:
     linhas = list(csv.DictReader(f, delimiter=";"))
