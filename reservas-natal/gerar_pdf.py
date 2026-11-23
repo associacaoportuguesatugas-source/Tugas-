@@ -34,7 +34,7 @@ def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
               for i, (nome, a, c, p) in enumerate(lista, 1)]
     dados += [[str(len(lista) + i), "", "", "", ""] for i in range(1, em_branco + 1)]
     dados.append(["", "TOTAL", str(adultos) + sufixo, str(criancas), str(total) + sufixo])
-    tabela = Table(dados, colWidths=[13 * mm, 87 * mm, 26 * mm, 20 * mm, 20 * mm], rowHeights=8 * mm, repeatRows=1)
+    tabela = Table(dados, colWidths=[13 * mm, 87 * mm, 26 * mm, 20 * mm, 20 * mm], rowHeights=7.5 * mm, repeatRows=1)
     tabela.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), cor),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
