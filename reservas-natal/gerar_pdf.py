@@ -13,7 +13,7 @@ AQUI = Path(__file__).parent
 VERMELHO = colors.HexColor("#B3202A")
 VERDE = colors.HexColor("#1E5B3A")
 LARANJA = colors.HexColor("#C77700")
-LINHAS_EM_BRANCO = 3
+LINHAS_EM_BRANCO = 2
 
 with open(AQUI / "reservas.csv", encoding="utf-8") as f:
     linhas = list(csv.DictReader(f, delimiter=";"))
@@ -70,7 +70,7 @@ doc.build([
     Spacer(1, 8 * mm),
     criar_tabela(reservas, VERDE, colors.HexColor("#F6EFE6"), em_branco=LINHAS_EM_BRANCO),
 ] + ([
-    Spacer(1, 10 * mm),
+    Spacer(1, 7 * mm),
     Paragraph("Noch nicht bestätigt (?)", secao),
     Spacer(1, 3 * mm),
     criar_tabela(pendentes, LARANJA, colors.HexColor("#FDF1DE"), sufixo=" ?"),
