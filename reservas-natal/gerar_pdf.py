@@ -30,10 +30,10 @@ def totais(lista):
 def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
     adultos, criancas, total = totais(lista)
     dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total"]]
-    dados += [[str(i), nome + sufixo, a + sufixo if a else "", c, str(p) + sufixo]
+    dados += [[str(i), nome + sufixo, a + sufixo if a else "", c + sufixo if c not in ("", "0") else c, str(p) + sufixo]
               for i, (nome, a, c, p) in enumerate(lista, 1)]
     dados += [[str(len(lista) + i), "", "", "", ""] for i in range(1, em_branco + 1)]
-    dados.append(["", "TOTAL", str(adultos) + sufixo, str(criancas), str(total) + sufixo])
+    dados.append(["", "TOTAL", str(adultos) + sufixo, str(criancas) + (sufixo if criancas else ""), str(total) + sufixo])
     tabela = Table(dados, colWidths=[13 * mm, 87 * mm, 26 * mm, 20 * mm, 20 * mm], rowHeights=7 * mm, repeatRows=1)
     tabela.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), cor),
