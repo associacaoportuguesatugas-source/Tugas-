@@ -13,7 +13,7 @@ AQUI = Path(__file__).parent
 VERMELHO = colors.HexColor("#B3202A")
 VERDE = colors.HexColor("#1E5B3A")
 LARANJA = colors.HexColor("#C77700")
-VERDE_CLARO = colors.HexColor("#1FA34A")
+VERDE_CLARO = colors.HexColor("#8EE0A0")
 LINHAS_EM_BRANCO = 2
 NUMEROS = ["adultos", "criancas", "pessoas", "leitao", "bacalhau", "frango"]
 
@@ -41,7 +41,7 @@ def encomenda_definida(r):
 def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
     dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total", "Leitão", "Bacalhau", "Frango", "Menü"]]
     dados += [[str(i), r["nome"] + sufixo] + [celula(r[c], sufixo) for c in NUMEROS]
-              + ["*" if encomenda_definida(r) else ""]
+              + [""]
               for i, r in enumerate(lista, 1)]
     dados += [[str(len(lista) + i)] + [""] * 8 for i in range(1, em_branco + 1)]
     # Os totais dos pratos só aparecem quando já há escolhas registadas
@@ -68,12 +68,8 @@ def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
         ("FONTNAME", (0, -1), (-1, -1), "Helvetica-Bold"),
         ("ALIGN", (1, -1), (1, -1), "RIGHT"),
         ("LINEBEFORE", (8, 0), (8, -1), 1.5, cor),
-        ("FONTNAME", (8, 1), (8, -2), "Helvetica-Bold"),
-        ("FONTSIZE", (8, 1), (8, -2), 18),
-        ("TEXTCOLOR", (8, 1), (8, -2), VERDE_CLARO),
-        ("VALIGN", (8, 1), (8, -2), "MIDDLE"),
-        ("TOPPADDING", (8, 1), (8, -2), 7),
-    ]))
+    ] + [("BACKGROUND", (8, i), (8, i), VERDE_CLARO)
+         for i, r in enumerate(lista, 1) if encomenda_definida(r)]))
     return tabela
 
 
@@ -95,7 +91,7 @@ doc.build([
     Spacer(1, 2 * mm),
     Paragraph("Menüwahl pro Person: <b>Leitão</b> = Spanferkel · <b>Bacalhau</b> = Stockfisch mit Maisbrotkruste (com broa)"
               " · <b>Frango</b> = Brathähnchen (assado)"
-              " · <font color='#1FA34A'><b>*</b></font> = Menü vollständig bestellt", legenda),
+              " · <font backColor='#8EE0A0'>&nbsp;&nbsp;&nbsp;&nbsp;</font> = Menü vollständig bestellt", legenda),
     Spacer(1, 5 * mm),
     criar_tabela(reservas, VERDE, colors.HexColor("#F6EFE6"), em_branco=LINHAS_EM_BRANCO),
 ] + ([
