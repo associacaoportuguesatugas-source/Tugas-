@@ -14,37 +14,46 @@ VERMELHO = colors.HexColor("#B3202A")
 VERDE = colors.HexColor("#1E5B3A")
 LARANJA = colors.HexColor("#C77700")
 LINHAS_EM_BRANCO = 2
+NUMEROS = ["adultos", "criancas", "pessoas", "leitao", "bacalhau", "frango"]
 
 with open(AQUI / "reservas.csv", encoding="utf-8") as f:
-    linhas = list(csv.DictReader(f, delimiter=";"))
-reservas = [(r["nome"].strip(), r["adultos"].strip(), r["criancas"].strip(), int(r["pessoas"]))
-            for r in linhas if r["confirmado"].strip() == "sim"]
-pendentes = [(r["nome"].strip(), r["adultos"].strip(), r["criancas"].strip(), int(r["pessoas"]))
-             for r in linhas if r["confirmado"].strip() != "sim"]
+    linhas = [{k: (v or "").strip() for k, v in r.items()} for r in csv.DictReader(f, delimiter=";")]
+reservas = [r for r in linhas if r["confirmado"] == "sim"]
+pendentes = [r for r in linhas if r["confirmado"] != "sim"]
 
 
-def totais(lista):
-    return (sum(int(r[1]) for r in lista if r[1]), sum(int(r[2]) for r in lista if r[2]), sum(r[3] for r in lista))
+def soma(lista, campo):
+    return sum(int(r[campo]) for r in lista if r[campo])
+
+
+def celula(valor, sufixo):
+    # O "?" só faz sentido em valores que existem e não são zero
+    return valor + sufixo if valor not in ("", "0") else valor
 
 
 def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
-    adultos, criancas, total = totais(lista)
-    dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total"]]
-    dados += [[str(i), nome + sufixo, a + sufixo if a else "", c + sufixo if c not in ("", "0") else c, str(p) + sufixo]
-              for i, (nome, a, c, p) in enumerate(lista, 1)]
-    dados += [[str(len(lista) + i), "", "", "", ""] for i in range(1, em_branco + 1)]
-    dados.append(["", "TOTAL", str(adultos) + sufixo, str(criancas) + (sufixo if criancas else ""), str(total) + sufixo])
-    tabela = Table(dados, colWidths=[13 * mm, 87 * mm, 26 * mm, 20 * mm, 20 * mm], rowHeights=7 * mm, repeatRows=1)
+    dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total", "Leitão", "Bacalhau", "Frango"]]
+    dados += [[str(i), r["nome"] + sufixo] + [celula(r[c], sufixo) for c in NUMEROS]
+              for i, r in enumerate(lista, 1)]
+    dados += [[str(len(lista) + i)] + [""] * 7 for i in range(1, em_branco + 1)]
+    # Os totais dos pratos só aparecem quando já há escolhas registadas
+    dados.append(["", "TOTAL"] + [celula(str(soma(lista, c)), sufixo)
+                                  if c in ("adultos", "criancas", "pessoas") or any(r[c] for r in lista) else ""
+                                  for c in NUMEROS])
+    tabela = Table(dados, colWidths=[9 * mm, 49 * mm, 21 * mm, 15 * mm, 15 * mm, 17 * mm, 19 * mm, 17 * mm],
+                   rowHeights=7 * mm, repeatRows=1)
     tabela.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), cor),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
         ("FONTSIZE", (0, 0), (-1, -1), 10),
+        ("FONTSIZE", (0, 0), (-1, 0), 9),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("ALIGN", (0, 0), (0, -1), "CENTER"),
         ("ALIGN", (2, 0), (-1, -1), "CENTER"),
         ("ROWBACKGROUNDS", (0, 1), (-1, -2), [colors.white, cor_linhas]),
         ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#999999")),
+        ("LINEBEFORE", (5, 0), (5, -1), 1.5, cor),
         ("BACKGROUND", (0, -1), (-1, -1), cor if sufixo else VERMELHO),
         ("TEXTCOLOR", (0, -1), (-1, -1), colors.white),
         ("FONTNAME", (0, -1), (-1, -1), "Helvetica-Bold"),
@@ -53,13 +62,14 @@ def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
     return tabela
 
 
-total = totais(reservas)[2]
+total = soma(reservas, "pessoas")
 titulo = ParagraphStyle("t", fontName="Helvetica-Bold", fontSize=22, textColor=VERMELHO, alignment=1, leading=26)
 sub = ParagraphStyle("s", fontName="Helvetica", fontSize=12, textColor=VERDE, alignment=1, leading=16)
+legenda = ParagraphStyle("l", fontName="Helvetica", fontSize=9, textColor=colors.HexColor("#555555"), alignment=1, leading=12)
 secao = ParagraphStyle("h", fontName="Helvetica-Bold", fontSize=14, textColor=LARANJA, leading=18)
 
 doc = SimpleDocTemplate(str(AQUI / "Reservierungen_Weihnachtsfeier.pdf"), pagesize=A4,
-                        topMargin=18 * mm, bottomMargin=18 * mm,
+                        topMargin=12 * mm, bottomMargin=12 * mm,
                         title="Weihnachtsfeier – Reservierungen", author="Associação Portuguesa Tuga")
 doc.build([
     Paragraph("Weihnachtsfeier – Reservierungen", titulo),
@@ -67,10 +77,13 @@ doc.build([
     Paragraph("Associação Portuguesa Tuga · Samstag, 5. Dezember 2026", sub),
     Spacer(1, 2 * mm),
     Paragraph(f"{len(reservas)} Reservierung{'en' if len(reservas) != 1 else ''} · {total} Person{'en' if total != 1 else ''} bestätigt · aktualisiert am {date.today():%d.%m.%Y}", sub),
-    Spacer(1, 8 * mm),
+    Spacer(1, 2 * mm),
+    Paragraph("Menüwahl pro Person: <b>Leitão</b> = Spanferkel · <b>Bacalhau</b> = Stockfisch mit Maisbrotkruste (com broa)"
+              " · <b>Frango</b> = Brathähnchen (assado)", legenda),
+    Spacer(1, 5 * mm),
     criar_tabela(reservas, VERDE, colors.HexColor("#F6EFE6"), em_branco=LINHAS_EM_BRANCO),
 ] + ([
-    Spacer(1, 7 * mm),
+    Spacer(1, 5 * mm),
     Paragraph("Noch nicht bestätigt (?)", secao),
     Spacer(1, 3 * mm),
     criar_tabela(pendentes, LARANJA, colors.HexColor("#FDF1DE"), sufixo=" ?"),
