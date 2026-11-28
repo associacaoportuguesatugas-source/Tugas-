@@ -33,9 +33,10 @@ def celula(valor, sufixo):
 
 
 def encomenda_definida(r):
-    # Fica definida quando os pratos escolhidos cobrem todas as pessoas da reserva
+    # Fica definida quando os pratos escolhidos cobrem os menus da reserva
+    # (por defeito um por pessoa; a coluna "menus" indica quando são menos)
     pratos = sum(int(r[c]) for c in ("leitao", "bacalhau", "frango") if r[c])
-    return pratos > 0 and pratos == int(r["pessoas"])
+    return pratos > 0 and pratos == int(r.get("menus") or r["pessoas"])
 
 
 def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
