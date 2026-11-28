@@ -13,6 +13,7 @@ AQUI = Path(__file__).parent
 VERMELHO = colors.HexColor("#B3202A")
 VERDE = colors.HexColor("#1E5B3A")
 LARANJA = colors.HexColor("#C77700")
+VERDE_CLARO = colors.HexColor("#1FA34A")
 LINHAS_EM_BRANCO = 2
 NUMEROS = ["adultos", "criancas", "pessoas", "leitao", "bacalhau", "frango"]
 
@@ -31,16 +32,24 @@ def celula(valor, sufixo):
     return valor + sufixo if valor not in ("", "0") else valor
 
 
+def encomenda_definida(r):
+    # Fica definida quando os pratos escolhidos cobrem todas as pessoas da reserva
+    pratos = sum(int(r[c]) for c in ("leitao", "bacalhau", "frango") if r[c])
+    return pratos > 0 and pratos == int(r["pessoas"])
+
+
 def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
-    dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total", "Leitão", "Bacalhau", "Frango"]]
+    dados = [["Nr.", "Name", "Erwachsene", "Kinder", "Total", "Leitão", "Bacalhau", "Frango", "Menü"]]
     dados += [[str(i), r["nome"] + sufixo] + [celula(r[c], sufixo) for c in NUMEROS]
+              + ["*" if encomenda_definida(r) else ""]
               for i, r in enumerate(lista, 1)]
-    dados += [[str(len(lista) + i)] + [""] * 7 for i in range(1, em_branco + 1)]
+    dados += [[str(len(lista) + i)] + [""] * 8 for i in range(1, em_branco + 1)]
     # Os totais dos pratos só aparecem quando já há escolhas registadas
     dados.append(["", "TOTAL"] + [celula(str(soma(lista, c)), sufixo)
                                   if c in ("adultos", "criancas", "pessoas") or any(r[c] for r in lista) else ""
-                                  for c in NUMEROS])
-    tabela = Table(dados, colWidths=[9 * mm, 49 * mm, 21 * mm, 15 * mm, 15 * mm, 17 * mm, 19 * mm, 17 * mm],
+                                  for c in NUMEROS]
+                 + [str(sum(encomenda_definida(r) for r in lista)) + "/" + str(len(lista))])
+    tabela = Table(dados, colWidths=[9 * mm, 39 * mm, 21 * mm, 15 * mm, 15 * mm, 17 * mm, 19 * mm, 17 * mm, 13 * mm],
                    rowHeights=7 * mm, repeatRows=1)
     tabela.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), cor),
@@ -58,6 +67,12 @@ def criar_tabela(lista, cor, cor_linhas, sufixo="", em_branco=0):
         ("TEXTCOLOR", (0, -1), (-1, -1), colors.white),
         ("FONTNAME", (0, -1), (-1, -1), "Helvetica-Bold"),
         ("ALIGN", (1, -1), (1, -1), "RIGHT"),
+        ("LINEBEFORE", (8, 0), (8, -1), 1.5, cor),
+        ("FONTNAME", (8, 1), (8, -2), "Helvetica-Bold"),
+        ("FONTSIZE", (8, 1), (8, -2), 18),
+        ("TEXTCOLOR", (8, 1), (8, -2), VERDE_CLARO),
+        ("VALIGN", (8, 1), (8, -2), "MIDDLE"),
+        ("TOPPADDING", (8, 1), (8, -2), 7),
     ]))
     return tabela
 
@@ -79,7 +94,8 @@ doc.build([
     Paragraph(f"{len(reservas)} Reservierung{'en' if len(reservas) != 1 else ''} · {total} Person{'en' if total != 1 else ''} bestätigt · aktualisiert am {date.today():%d.%m.%Y}", sub),
     Spacer(1, 2 * mm),
     Paragraph("Menüwahl pro Person: <b>Leitão</b> = Spanferkel · <b>Bacalhau</b> = Stockfisch mit Maisbrotkruste (com broa)"
-              " · <b>Frango</b> = Brathähnchen (assado)", legenda),
+              " · <b>Frango</b> = Brathähnchen (assado)"
+              " · <font color='#1FA34A'><b>*</b></font> = Menü vollständig bestellt", legenda),
     Spacer(1, 5 * mm),
     criar_tabela(reservas, VERDE, colors.HexColor("#F6EFE6"), em_branco=LINHAS_EM_BRANCO),
 ] + ([
